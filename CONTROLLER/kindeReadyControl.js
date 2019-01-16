@@ -1,4 +1,3 @@
-
 // Requiring our models
 var db = require("../MODEL");
 
@@ -45,6 +44,23 @@ module.exports = function(app) {
             res.status(500).json(err);
         });
     });
+
+    // change student info
+    app.put("/student/change/:id", function(req,res) {
+        db.Student.update({
+            firstName : req.body.firstName,
+            lastName : req.body.lastName,
+            age : req.body.age,
+            avatar : req.body.avatars,
+        },{
+            id : req.params.id
+        }).then(function(result) {
+            res.end();
+        })
+        .catch(function(err){
+            res.status(500).json(err);
+        });
+    })
 
     // delete a student
     app.delete("/student/delete/:id", function(req,res) {
