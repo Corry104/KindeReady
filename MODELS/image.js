@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    sequelize.define("Activity",{
+    sequelize.define("Image",{
       title : {
         type : DataTypes.STRING,
         allowNull : false,
@@ -16,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
         timestamps : false
     });
 
-    Activity.associate = function(models) {
-        Activity.belongsTo(models.Unit, {
-          foreignKey: "unitId"
+    Image.associate = function(models) {
+        Image.belongsTo(models.Activity, {
+          foreignKey: "activityId"
         });
     };
   return Activity;

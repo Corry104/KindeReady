@@ -6,6 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../JS/user.js"></script>
 </head>
 <body>
     <div class="container">
@@ -19,8 +20,8 @@
                                 Current Student
                             </div>
                             <div class="card-body">
-                                
-                            </div>
+                                <li id="currentStudent"></li> 
+                            </div>                           
                         </div>
                     </div>
                 </div>
@@ -47,24 +48,24 @@
                 <div class="modal-body">
                     <label for="firstname"><b>Firstname</b></label> 
                     <br>
-                    <input type="text" placeholder="Enter Firstname" name="fname" required>
+                    <input id="f1" type="text" placeholder="Enter Firstname" name="fname" required>
                     <br>
                     <label for="lastname"><b>Lastname</b></label>
                     <br>
-                    <input type="text" placeholder="Enter Lastname" name="lname" required>
+                    <input id="f2" type="text" placeholder="Enter Lastname" name="lname" required>
                     <br>
                     <label for="age"><b>Age</b></label>
                     <br>
-                    <input type="age" placeholder="Enter age" name="age" required>
+                    <input id="f3" type="age" placeholder="Enter age" name="age" >
                     <br>
                     <label for="picture"><b>Avatar</b></label>
                     <p>Please choose one of the following avatar..</p>
                     <br>
-                    <img src="#" alt="avatar">
+                    <img id="f4" src="#" alt="avatar">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Create a student</button>
+                  <button type="button" class="btn btn-primary" id="#sSubmit">Create a student</button>
                 </div>
               </div>
             </div>
