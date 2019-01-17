@@ -9,8 +9,7 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("/asset/js"));
-app.use(express.static("/asset/html"));
+app.use(express.static("assets"));
 
 // Routes
 // =============================================================
@@ -20,7 +19,7 @@ var kindeReadyController = require("./controller/kindeReadyControl");
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force:true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
