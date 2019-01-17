@@ -45,9 +45,7 @@ module.exports = function(sequelize, DataTypes) {
   User.beforeUpdate(generateHash);
   return User;
   function generateHash(User) {
-    if (User === null) {
-    }
-    else if (!User.changed('password')) return User.password;
+    if (!User.changed('password')) return User.password;
     else {
       let salt = bcrypt.genSaltSync();
       return User.password = bcrypt.hashSync(User.password, salt);
