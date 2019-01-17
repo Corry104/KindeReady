@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="container" style="padding-top: 5px">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    
+                    <!-- SideBar -->
+                    <div class="col-lg-2" style="border: 1px black; border-style: solid dashed solid solid; padding-top: 5px">
+
+                        <!-- Sidebar Content -->
+                        <!-- Avatar -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img src="https://image.flaticon.com/icons/png/512/163/163811.png" style="border-radius: 100px; border: 1px solid black; width: 100%"/>
+                                <hr>
+                            </div>
+                        </div>
+                        <!-- Student Name (INSERT HANDLEBAR REF)-->
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <h5>Little Suzie</h5>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Student Awards/Badges -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- INSERT HB LOOP HERE FOR EACH COMPLETE ACTIVITY ~~ or not... I think we'll have to hard code each unit and have JS update the status -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Shapes & Colors:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Letter Recognition:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Number Recognition:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer style="position: absolute; bottom: 0">
+                            <hr>
+                            <div class="col-lg-12 text-center">
+                                <button id="changeStudent" class="btn btn-sm btn-primary">Change Student</button>
+                            </div>
+                            <br>
+
+                            <div class="col-lg-12 text-center">
+                                <button id="logout" class="btn btn-sm btn-danger">Logout</button>
+                            </div>
+                            <br>
+                        </footer>
+
+                    </div>
+
+                    <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
+                        
+                        <div class="row">
+
+                            <!-- Title -->
+                            <div class="col-lg-6">
+                                <img src="../../../IMAGES/shapes_colors/scTitle.png" style="padding-top: 10px; height: 50px"/>
+                            </div>
+                            <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
+                                <div class="card text-white bg-dark mb-3" style="width: 25%; float: right">
+                                    <div class="card-header"><em>Activity 2</em></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12"><hr></div>
+
+                            <!-- Activity Description -->
+                            <div class="col-lg-12">
+                                <em><strong>Activity Description:</strong>
+                                    <ul type="square">
+                                        <li>Lesson Type: PG - Parent Guided</li>
+                                        <li>Estimated Time: 10 - 15 min</li>
+                                        <li>Instructions: Using the shapes and colors from the previous activity, work with your student to complete the activity, below. The objective is to continue developing your student's recognition of the colors (<strong>red, yellow, blue, green</strong>) and shapes(<strong>square, circle, rectangle, triangle</strong>) by identifying and selecting the correct choice in each drop-down.</li>
+                                    </ul>
+                                </em>
+                                <hr>
+                            </div>
+
+                            <!-- Activity -->
+                            <div class="col-lg-12">
+                                <div class="row">
+
+                                    <!-- Shapes -->
+                                    <div class="col-lg-6 text-right" style="width: 100%">
+                                        <ul style="padding: 0" type="none">
+                                            <li>
+                                                <p>
+                                                    <select id="Q1" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>CIRCLE</option>
+                                                        <option>TRIANGLE</option>
+                                                        <option>SQUARE</option>
+                                                        <option>RECTANGLE</option>
+                                                    </select>
+                                                    &#8212; <img src="../../../IMAGES/shapes_colors/square_noFill.png"/>
+                                                </p>
+                                            </li>
+                                            <br>
+                                            <li>
+                                                <p>
+                                                    <select id="Q2" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>CIRCLE</option>
+                                                        <option>TRIANGLE</option>
+                                                        <option>SQUARE</option>
+                                                        <option>RECTANGLE</option>
+                                                    </select>
+                                                    &#8212; <img src="../../../IMAGES/shapes_colors/circle_noFill.png"/>
+                                                </p>
+                                            </li>
+                                            <br>
+                                            <li>
+                                                <p>
+                                                    <select id="Q3" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>CIRCLE</option>
+                                                        <option>TRIANGLE</option>
+                                                        <option>SQUARE</option>
+                                                        <option>RECTANGLE</option>
+                                                    </select>
+                                                    &#8212; <img src="../../../IMAGES/shapes_colors/rectangle_noFill.png"/>
+                                                </p>
+                                            </li>
+                                            <br>
+                                            <li>
+                                                <p>
+                                                    <select id="Q4" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>CIRCLE</option>
+                                                        <option>TRIANGLE</option>
+                                                        <option>SQUARE</option>
+                                                        <option>RECTANGLE</option>
+                                                    </select>
+                                                    &#8212; <img src="../../../IMAGES/shapes_colors/triangle_noFill.png"/>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Colors -->
+                                    <div class="col-lg-6 text-left" style="width: 100%">
+                                        <ul style="padding: 0" type="none">
+                                            <li>
+                                                <p>
+                                                    <img src="../../../IMAGES/shapes_colors/square_red.png"/> &#8212; 
+                                                    <select id="Q4" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>BLUE</option>
+                                                        <option>YELLOW</option>
+                                                        <option>RED</option>
+                                                        <option>GREEN</option>
+                                                    </select>
+                                                </p>
+                                            </li>
+                                            <br>
+                                            <li>
+                                                <p>
+                                                    <img src="../../../IMAGES/shapes_colors/circle_yellow.png"/> &#8212; 
+                                                    <select id="Q4" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>BLUE</option>
+                                                        <option>YELLOW</option>
+                                                        <option>RED</option>
+                                                        <option>GREEN</option>
+                                                    </select>
+                                                </p>
+                                            </li>
+                                            <br>
+                                            <li>
+                                                <p>
+                                                    <img src="../../../IMAGES/shapes_colors/rectangle_blue.png"/> &#8212; 
+                                                    <select id="Q4" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>BLUE</option>
+                                                        <option>YELLOW</option>
+                                                        <option>RED</option>
+                                                        <option>GREEN</option>
+                                                    </select>
+                                                </p>
+                                            </li>
+                                            <br>
+                                            <li>
+                                                <p>
+                                                    <img src="../../../IMAGES/shapes_colors/triangle_green.png"/> &#8212; 
+                                                    <select id="Q4" class="form-control form-control-sm" style="width: 30%; display: inline-block">
+                                                        <option></option>
+                                                        <option>BLUE</option>
+                                                        <option>YELLOW</option>
+                                                        <option>RED</option>
+                                                        <option>GREEN</option>
+                                                    </select>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Back & Next Buttons -->
+                            <div class="col-lg-12" style="padding-bottom: 10px; padding-top: 10px">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-2 text-left">
+                                        <button class="btn btn-secondary btn-sm">&#8592; Previous</button>
+                                    </div>
+
+                                    <div class="col-lg-8"></div>
+
+                                    <div class="col-lg-2 text-right">
+                                            <button class="btn btn-success btn-sm">Next &#8594;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
