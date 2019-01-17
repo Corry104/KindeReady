@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  sequelize.define("Student",{
+  var Student = sequelize.define("Student",{
       firstName : {
         type : DataTypes.STRING,
         allowNull : false,
@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Student.associate = function(models) {
       Student.belongsTo(models.User, {
-        foreignKey: "studentId"
+        foreignKey: "userId"
       });
     };
     return Student;

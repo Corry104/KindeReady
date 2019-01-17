@@ -1,19 +1,26 @@
 // Requiring our models
-var db = require("../MODEL");
+var db = require("../models");
+path = require('path')
 
-// Routes
-// =============================================================
 module.exports = function(app) {
+    // ====================== HTML Routes ====================== //
+    app.get("/",function(req,res) {
+       res.sendFile(path.join(__dirname,"../assets/html/welcome.html"))
+    });
+
+    // ====================== API Routes ====================== //
+
      // POST route for saving a new user
      app.post("/user", function (req, res) {
         db.User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            password: req.body.password
+            password: "MD5("+ req.body.password +")"
         })
         .then(function (dbUSer) {
             res.json(dbUser);
+            console.log(dbUSer);
         })
         .catch(function (err) {
             res.json(err);

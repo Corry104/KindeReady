@@ -24,32 +24,31 @@ $(document).ready(function () {
     // create new student
     $("#sSubmit").on("click",function(event) {
         var newStudent = {
-            firstName : $("f1").trim().val(),
-            lastName : $("f1").trim().val(),
-            age : $("f1").trim().val(),
-            avatar : $("f1").trim().val()
+            firstName : $("#f1").val(),
+            lastName : $("#f2").val(),
+            age : $("#f3").val(),
+            avatar : $(".avatar input:checked").data("src")
         }
+        console.log(newStudent);
         $.post("/currentStudent", newStudent ,function(result) {
             console.log("New Student Added!")
             location.reload();
         }).fail(function(err){
             alert("Please answer following question..")
         });
-
         $("f1").empty();
         $("f2").empty();
         $("f3").empty();
-        $("f4").empty();
     });
 
     // change student info
     $(".changeSt").on("click",function(event) {
         var id = $(this).data("id");
         var changeStudent = {
-            firstName : $("f1").trim().val(),
-            lastName : $("f1").trim().val(),
-            age : $("f1").trim().val(),
-            avatar : $("f1").trim().val()
+            firstName : $("#f1").val(),
+            lastName : $("#f2").val(),
+            age : $("#f3").val(),
+            avatar : $(".avatar input:checked").data("src")
         }
         $.post("/student/change/" + id,changeStudent ,function() {
             console.log("Student Info changed")
