@@ -13,9 +13,12 @@ app.use(express.static("assets"));
 
 // Routes
 // =============================================================
-var kindeReadyController = require("./controller/kindeReadyControl");
+var kindeReadyController = require("./controller/kindeReadyControl.js");
     kindeReadyController(app);
-
+var lettercontrol = require("./controller/letterandcontrol.js");
+    lettercontrol(app);
+var shapescontrol = require("./controller/shapesandcontrol.js");
+    shapescontrol(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

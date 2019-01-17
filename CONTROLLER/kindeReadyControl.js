@@ -8,6 +8,9 @@ module.exports = function(app) {
        res.sendFile(path.join(__dirname,"../assets/html/welcome.html"))
     });
 
+    app.get("/act1",function(req,res) {
+        res.sendFile(path.join(__dirname,"../assets/html/activities/shapesncolors/shapesAct1"))
+     });
     // ====================== API Routes ====================== //
 
      // POST route for saving a new user
