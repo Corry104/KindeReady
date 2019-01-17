@@ -18,6 +18,7 @@ $(document).ready(function () {
             $("#currentStudent").text(id+". " + name)
             $("#currentStudent").append(buttonc);
             $("#currentStudent").append(buttond);
+            $("#currentStudent").append("<br>");
         }
     });
 

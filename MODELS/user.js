@@ -46,7 +46,6 @@ module.exports = function(sequelize, DataTypes) {
   return User;
   function generateHash(User) {
     if (User === null) {
-      throw new Error('No found employee');
     }
     else if (!User.changed('password')) return User.password;
     else {

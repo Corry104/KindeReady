@@ -9,8 +9,28 @@ module.exports = function(app) {
     });
 
     app.get("/act1",function(req,res) {
-        res.sendFile(path.join(__dirname,"../assets/html/activities/shapesncolors/shapesAct1"))
+        res.sendFile(path.join(__dirname,"../assets/html/activities/shapesncolors/shapesAct1.html"))
      });
+
+    app.get("/act2",function(req,res) {
+        res.sendFile(path.join(__dirname,"../assets/html/activities/shapesncolors/shapesAct2.html"))
+     });
+    
+     app.get("/change",function(req,res) {
+        res.sendFile(path.join(__dirname,"../assets/html/user.html"))
+    });
+
+    app.get("/logout", function(req, res) {
+        res.sendFile(path.join(__dirname,"../assets/html/welcome.html"));
+    });
+ 
+    app.get("/previous", function(req, res) {
+        res.sendFile(path.join(__dirname, "../assets/html/activities/shapesncolors/shapesMain.html"));
+    });
+
+    app.get("/next", function(req, res) {
+        res.sendFile(path.join(__dirname, "../assets/html/activities/shapesncolors/shapesAct2.html"));
+    });
     // ====================== API Routes ====================== //
 
      // POST route for saving a new user
