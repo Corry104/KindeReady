@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap & CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <title>KindeReady: Letter Recognition</title>
+</head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
+
+body {
+margin: 0;
+padding: 0;
+}
+
+html {
+box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+box-sizing: inherit;
+}
+
+html,
+
+body {
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
+}
+
+
+
+.score-panel {
+background: #ffffff;
+font-family: 'Walter Turncoat', cursive;
+font-size: 16px;
+}
+
+.container {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+h1 {
+font-family: 'Walter Turncoat', cursive;
+}
+
+.deck {
+width: 920px;
+height: 540px;
+background: url("../../../IMAGES/chalkboard.jpg") no-repeat;
+background-size: contain;
+padding: 1rem;
+border-radius: 4px;
+box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
+margin: 0 0 3em;
+}
+
+.deck .card {
+height: 3.7rem;
+width: 3.7rem;
+margin: 0.2rem 4.2rem;
+background: whitesmoke;
+font-family: 'Walter Turncoat', cursive;
+font-size: 0;
+color: #ffffff;
+border-radius: 5px;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+transform: rotateY(0);
+background: black;
+cursor: default;
+animation-name: flipInY;
+-webkit-backface-visibility: visible !important;
+backface-visibility: visible !important;
+animation-duration: .75s;
+}
+
+.deck .card.show {
+font-size: 33px;
+}
+
+.deck .card.match {
+cursor: default;
+background: darkgreen;
+font-size: 33px;
+animation-name: rubberBand;
+-webkit-backface-visibility: visible !important;
+backface-visibility: visible !important;
+animation-duration: .75s;
+}
+
+.deck .card.unmatched {
+animation-name: pulse;
+-webkit-backface-visibility: visible !important;
+backface-visibility: visible !important;
+animation-duration: .75s;
+background: #e2043b;
+}
+
+.deck .card.disabled {
+pointer-events: none;
+opacity: 0.9;
+}
+
+.score-panel {
+text-align: left;
+margin-bottom: 10px;
+}
+
+.score-panel .stars {
+margin: 0;
+padding: 0;
+display: inline-block;
+margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+list-style: none;
+display: inline-block;
+}
+
+.score-panel .restart {
+float: right;
+cursor: pointer;
+}
+
+.fa-star {
+color: #FFD700;
+}
+
+.timer {
+display: inline-block;
+margin: 0 1rem;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(0, 0, 0, 0.7);
+transition: opacity 500ms;
+visibility: hidden;
+opacity: 0;
+}
+
+.overlay:target {
+visibility: visible;
+opacity: 1;
+}
+
+.popup {
+margin: 70px auto;
+padding: 20px;
+background: #ffffff;
+border-radius: 5px;
+width: 85%;
+position: relative;
+transition: all 5s ease-in-out;
+font-family: 'Walter Turncoat', cursive;
+}
+
+.popup h2 {
+margin-top: 0;
+color: #333;
+font-family: 'Walter Turncoat', cursive;
+}
+
+.popup .close {
+position: absolute;
+top: 20px;
+right: 30px;
+transition: all 200ms;
+font-size: 30px;
+font-weight: bold;
+text-decoration: none;
+color: #333;
+}
+
+.popup .close:hover {
+color: #E5F720;
+}
+
+.popup .content-1,
+.content-2 {
+max-height: 30%;
+overflow: auto;
+text-align: center;
+}
+
+.show {
+visibility: visible !important;
+opacity: 100 !important;
+}
+
+#starRating li {
+display: inline-block;
+}
+
+#play-again {
+background-color: #141214;
+padding: 0.7rem 1rem;
+font-size: 1.1rem;
+display: block;
+margin: 0 auto;
+width: 50%;
+font-family: 'Walter Turncoat', cursive;
+color: #ffffff;
+border-radius: 5px;
+}
+
+/* animations */
+@keyframes flipInY {
+from {
+transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+animation-timing-function: ease-in;
+opacity: 0;
+}
+
+40% {
+transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+animation-timing-function: ease-in;
+}
+
+60% {
+transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+opacity: 1;
+}
+
+80% {
+transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+}
+
+to {
+transform: perspective(400px);
+}
+}
+
+@keyframes rubberBand {
+from {
+transform: scale3d(1, 1, 1);
+}
+
+30% {
+transform: scale3d(1.25, 0.75, 1);
+}
+
+40% {
+transform: scale3d(0.75, 1.25, 1);
+}
+
+50% {
+transform: scale3d(1.15, 0.85, 1);
+}
+
+65% {
+transform: scale3d(.95, 1.05, 1);
+}
+
+75% {
+transform: scale3d(1.05, .95, 1);
+}
+
+to {
+transform: scale3d(1, 1, 1);
+}
+}
+
+@keyframes pulse {
+from {
+transform: scale3d(1, 1, 1);
+}
+
+50% {
+transform: scale3d(1.2, 1.2, 1.2);
+}
+
+to {
+transform: scale3d(1, 1, 1);
+}
+}
+
+@media (max-width: 320px) {
+.deck {
+width: 920px;
+height: 540px;
+}
+
+.deck .card {
+height: 4.7rem;
+width: 4.7rem;
+}
+}
+/* For Tablets and larger screens*/
+
+@media (min-width: 768px) {
+.container {
+font-size: 22px;
+}
+
+.deck {
+width: 920px;
+height: 540px;
+}
+
+.deck .card {
+height: 60px;
+width: 60px;
+}
+
+.popup {
+width: 60%;
+}
+}
+
+</style>
+
+<body>
+
+    <div class="container" style="padding-top: 5px">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+
+                    <!-- SideBar -->
+                    <div class="col-lg-2" style="border: 1px black; border-style: solid dashed solid solid; padding-top: 5px">
+
+                        <!-- Sidebar Content -->
+                        <!-- Avatar -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img src="https://image.flaticon.com/icons/png/512/163/163811.png" style="border-radius: 100px; border: 1px solid black; width: 100%" />
+                                <hr>
+                            </div>
+                        </div>
+                        <!-- Student Name (INSERT HANDLEBAR REF)-->
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <h5>Little Suzie</h5>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Student Awards/Badges -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- INSERT HB LOOP HERE FOR EACH COMPLETE ACTIVITY ~~ or not... I think we'll have to hard code each unit and have JS update the status -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Shapes & Colors:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Letter Recognition:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Number Recognition:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer>
+                            <hr>
+                            <div class="col-lg-12 text-center">
+                                <button id="changeStudent" class="btn btn-sm btn-primary">Change Student</button>
+                            </div>
+                            <br>
+
+                            <div class="col-lg-12 text-center">
+                                <button id="logout" class="btn btn-sm btn-danger">Logout</button>
+                            </div>
+                            <br>
+                        </footer>
+
+                    </div>
+
+                    <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
+                        <h1>Letter Recognition: Summary Activity (A - L)</h1>
+
+                        <section class="score-panel">
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+
+                            <span class="moves">0</span> Move(s)
+
+                            <div class="timer">
+                            </div>
+
+                            <div class="restart" onclick=startGame()>
+                                <button id="restart" class="btn btn-sm btn-dark">Restart</button>
+                            </div>
+                        </section>
+
+                        <ul class="deck" id="card-deck">
+                            <li class="card" type="A">A</li>
+                            <li class="card" type="B">B</li>
+                            <li class="card" type="C">C</li>
+                            <li class="card" type="D">D</li>
+                            <li class="card" type="E">E</li>
+                            <li class="card" type="F">F</li>
+                            <li class="card" type="G">G</li>
+                            <li class="card" type="H">H</li>
+                            <li class="card" type="I">I</li>
+                            <li class="card" type="J">J</li>
+                            <li class="card" type="K">K</li>
+                            <li class="card" type="L">L</li>
+                            <li class="card" type="A">A</li>
+                            <li class="card" type="B">B</li>
+                            <li class="card" type="C">C</li>
+                            <li class="card" type="D">D</li>
+                            <li class="card" type="E">E</li>
+                            <li class="card" type="F">F</li>
+                            <li class="card" type="G">G</li>
+                            <li class="card" type="H">H</li>
+                            <li class="card" type="I">I</li>
+                            <li class="card" type="J">J</li>
+                            <li class="card" type="K">K</li>
+                            <li class="card" type="L">L</li>
+                        </ul>
+
+                        <div id="popup1" class="overlay">
+                            <div class="popup">
+                                <h2>GREAT JOB!</h2>
+                                <a class="close" href=#>×</a>
+                                <div class="content-1">
+                                    Congratulations you know your letters!!
+                                </div>
+                                <div class="content-2">
+                                    <p>You made <span id=finalMove> </span> moves </p>
+                                    <p>in <span id=totalTime> </span> </p>
+                                    <p>Rating: <span id=starRating></span></p>
+                                </div>
+                                <button id="play-again" onclick="playAgain()">
+                                    Play again..</a>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // cards array holds all cards
+        var card = document.getElementsByClassName("card");
+        var cards = [...card]
+
+        // deck of all cards in game
+        var deck = document.getElementById("card-deck");
+
+        // declaring move variable
+        var moves = 0;
+        var counter = document.querySelector(".moves");
+
+        // declare variables for star icons
+        var stars = document.querySelectorAll(".fa-star");
+
+        // declaring variable of matchedCards
+        var matchedCard = document.getElementsByClassName("match");
+
+        // stars list
+        var starsList = document.querySelectorAll(".stars li");
+
+        // close icon in modal
+        var closeicon = document.querySelector(".close");
+
+        // declare modal
+        var modal = document.getElementById("popup1")
+
+        // array for opened cards
+        var openedCards = [];
+
+
+        // shuffles cards
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        };
+        
+        // shuffles cards when page loads
+        document.body.onload = startGame();
+        
+        // start a new play 
+        function startGame() {
+            // shuffle deck
+            cards = shuffle(cards);
+            // remove all exisiting classes from each card
+            for (var i = 0; i < cards.length; i++) {
+                deck.innerHTML = "";
+                [].forEach.call(cards, function (item) {
+                    deck.appendChild(item);
+                });
+                cards[i].classList.remove("show", "open", "match", "disabled");
+            }
+            // reset moves
+            moves = 0;
+            counter.innerHTML = moves;
+            // reset rating
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].style.color = "#FFD700";
+                stars[i].style.visibility = "visible";
+            }
+            //reset timer
+            second = 0;
+            minute = 0;
+            hour = 0;
+            var timer = document.querySelector(".timer");
+            timer.innerHTML = "0 mins 0 secs";
+            clearInterval(interval);
+        }
+
+        // open and show class to display cards
+        var displayCard = function () {
+            this.classList.toggle("open");
+            this.classList.toggle("show");
+            this.classList.toggle("disabled");
+        };
+
+
+        // add opened cards to OpenedCards list and check if cards match
+        function cardOpen() {
+            openedCards.push(this);
+            var len = openedCards.length;
+            if (len === 2) {
+                moveCounter();
+                if (openedCards[0].type === openedCards[1].type) {
+                    matched();
+                } else {
+                    unmatched();
+                }
+            }
+        };
+
+        // cards match
+        function matched() {
+            openedCards[0].classList.add("match", "disabled");
+            openedCards[1].classList.add("match", "disabled");
+            openedCards[0].classList.remove("show", "open", "no-event");
+            openedCards[1].classList.remove("show", "open", "no-event");
+            openedCards = [];
+        }
+
+        // cards don't match
+        function unmatched() {
+            openedCards[0].classList.add("unmatched");
+            openedCards[1].classList.add("unmatched");
+            disable();
+            setTimeout(function () {
+                openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
+                openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
+                enable();
+                openedCards = [];
+            }, 1100);
+        }
+
+        // disable cards temporarily
+        function disable() {
+            Array.prototype.filter.call(cards, function (card) {
+                card.classList.add('disabled');
+            });
+        }
+
+        // enable cards and disable matched cards
+        function enable() {
+            Array.prototype.filter.call(cards, function (card) {
+                card.classList.remove('disabled');
+                for (var i = 0; i < matchedCard.length; i++) {
+                    matchedCard[i].classList.add("disabled");
+                }
+            });
+        }
+
+        // count player's moves
+        function moveCounter() {
+            moves++;
+            counter.innerHTML = moves;
+            //start timer on first click
+            if (moves == 1) {
+                second = 0;
+                minute = 0;
+                hour = 0;
+                startTimer();
+            }
+            // stars based on moves
+            if (moves > 8 && moves < 12) {
+                for (i = 0; i < 3; i++) {
+                    if (i > 1) {
+                        stars[i].style.visibility = "collapse";
+                    }
+                }
+            }
+            else if (moves > 13) {
+                for (i = 0; i < 3; i++) {
+                    if (i > 0) {
+                        stars[i].style.visibility = "collapse";
+                    }
+                }
+            }
+        }
+
+        // game timer
+        var second = 0, minute = 0; hour = 0;
+        var timer = document.querySelector(".timer");
+        var interval;
+        function startTimer() {
+            interval = setInterval(function () {
+                timer.innerHTML = minute + "mins " + second + "secs";
+                second++;
+                if (second == 60) {
+                    minute++;
+                    second = 0;
+                }
+                if (minute == 60) {
+                    hour++;
+                    minute = 0;
+                }
+            }, 1000);
+        }
+
+        // matches complete
+        function congratulations() {
+            if (matchedCard.length == 24) {
+                clearInterval(interval);
+                finalTime = timer.innerHTML;
+
+                // modal
+                modal.classList.add("show");
+
+                // star rating
+                var starRating = document.querySelector(".stars").innerHTML;
+
+                //showing move, rating, time on modal
+                document.getElementById("finalMove").innerHTML = moves;
+                document.getElementById("starRating").innerHTML = starRating;
+                document.getElementById("totalTime").innerHTML = finalTime;
+
+                closeModal();
+            };
+        }
+
+        // close modal
+        function closeModal() {
+            closeicon.addEventListener("click", function (e) {
+                modal.classList.remove("show");
+                startGame();
+            });
+        }
+
+        function playAgain() {
+            modal.classList.remove("show");
+            startGame();
+        }
+        
+        // loop to add event listeners to each card
+        for (var i = 0; i < cards.length; i++) {
+            card = cards[i];
+            card.addEventListener("click", displayCard);
+            card.addEventListener("click", cardOpen);
+            card.addEventListener("click", congratulations);
+        };
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
