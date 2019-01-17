@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="../../../JS/ACTIVITIES/SHAPESNCOLORS/shapesAct3.js"></script>
 </head>
 <body>
 
@@ -113,8 +114,8 @@
                                 <img src="../../../IMAGES/shapes_colors/scTitle.png" style="padding-top: 10px; height: 50px"/>
                             </div>
                             <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
-                                <div class="card text-white bg-dark mb-3" style="width: 25%; float: right">
-                                    <div class="card-header"><em>Activity 3</em></div>
+                                <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
+                                    <div class="card-header text-center"><em>Activity 3</em></div>
                                 </div>
                             </div>
 
@@ -160,29 +161,36 @@
                                                 </div>
                                             </div>
 
-                                            <div class="card-body" style="background: url('https://www.toptal.com/designers/subtlepatterns/patterns/grey.png')">
+                                            <div class="card-body" style="background: url('https://www.toptal.com/designers/subtlepatterns/patterns/grey.png'); height: 250px">
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+
+                                                    <!-- Start Activity Button -->
+                                                    <div id="Start" class="col-lg-12" style="display: block">
+                                                        <button id="start" class="btn btn-large btn-outline-success" style="width:50%; position: relative; top: 70px"><h1><strong>START</strong></h1></button>
+                                                    </div>
+
+                                                    <!-- Activity Body -->
+                                                    <div class="col-lg-12 activity3" style="display: none">
                                                         <br>
                                                         <div class="row">
                                                             <!-- Color Prompt -->
                                                             <div class="col-lg-5 text-right">
-                                                                <h1><strong><span id="colorQ">YELLOW</span></strong></h1>
+                                                                <h1><strong><span id="colorChoice" style="position: relative; top: 25px">____________</span></strong></h1>
                                                             </div>
                                                             <!-- Student Solution -->
                                                             <div class="col-lg-2">
-                                                                <img src="../../../IMAGES/shapes_colors/solution_block.png" alt="Student Solution" class="img-thumbnail" style="width: 100px"/>
+                                                                <img id="questionBlock" src="../../../IMAGES/shapes_colors/question_block.png" alt="Student Solution" class="img-thumbnail" style="width: 100px"/>
                                                             </div>
                                                             <!-- Shape Prompt -->
-                                                            <div class="col-lg-5 text-left">
-                                                                <h1><strong><span id="shapeQ">TRIANGLE</span></strong></h1>
+                                                            <div class="col-lg-5 text-left align-middle">
+                                                                <h1><strong><span id="shapeChoice" style="position: relative; top: 25px">____________</span></strong></h1>
                                                             </div>
                                                         </div>
                                                         <br>
                                                         <br>
                                                     </div>
 
-                                                    <div class="col-lg-12 text-center">
+                                                    <div class="col-lg-12 text-center activity3" style="display: none">
                                                         <button id="checkAnswer" type="button" class="btn btn-success">Check Answer</button>
                                                     </div>
                                                 </div>
