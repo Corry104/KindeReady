@@ -1,9 +1,45 @@
+.circle {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+    border-radius: 50%;
+}
 
-#act1, #act2, #act3, #summary {
+.triangle-up {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+    border-radius: 50%;
+
+}
+
+.trapezoid {
+    border-bottom: 50px solid #555;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	height: 0;
+	width: 125px;
+}
+
+.rectangle {
+    height: 50px;
+    width: 100px;
+    background-color: #555;
+  }
+
+
+
+
+
+
+
+
+
+/* #act1, #act2, #act3, #summary {
     padding-top: 5px; 
     border-style: solid; 
-    margin: 5px;
-    width: 48%;
+    margin: 50px 50px;
+    width: 30%;
     height: 35%; 
     float: left;
     border-color: black;
@@ -11,9 +47,9 @@
     font-family: fantasy;
     font-weight: bold;
     font-size: 50px;
-}
+} */
 
-h1 {
+/* h1 {
     text-align: center;
     font-family: fantasy;
     font-weight: bold;
@@ -21,9 +57,9 @@ h1 {
     letter-spacing: 3px;
     padding: 6px;
 
-}
+} */
 
-#act1{
+/* #act1{
     background-color: yellow;
 }
 
@@ -34,11 +70,13 @@ h1 {
 #act3{
     background-color: blue;
 
-}
+} */
 
-#summary {
+/* #summary {
  background-color: green
-}
+} */
+
+/* Website to be responsive*/
 /* 
 @media only screen and (min-width: 320px) and (max-width: 680px) {
     body {
@@ -56,7 +94,7 @@ h1 {
     body {
         background: orange;
     }
-}  */
+} 
 
 
-
+ */
