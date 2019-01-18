@@ -30,8 +30,18 @@ $(document).ready(function() {
         var correctAnswer = $("#questionBlock").attr("data-answer");
         checkAnswer(studentAnswer, correctAnswer);
     });
-    
+
+    $(".closeRetry").on("click", function() {
+        $("#incorrectModal").modal("hide");
+    });
+
+    $(".closeNext").on("click", function() {
+        $("#correctModal").modal("hide");
+        activity3();
+    });    
 });
+
+var numCorrect = 0;
 
 function activity3() {
 
@@ -61,12 +71,12 @@ function checkAnswer(studentAnswer, correctAnswer) {
     var studentColor = studentSplit[1];
     
     if (studentAnswer === correctAnswer) {
-        alert("You did it!");
-        
-        activity3();
+        $("#correctModal").modal("show");
+        numCorrect++;
+        checkNumCorrect();
     }
     else {
-        alert("Try again!");
+        $("#incorrectModal").modal("show");
 
         if (studentShape !== correctShape) {
             $("#shapeChoice").text("____________");
@@ -75,5 +85,13 @@ function checkAnswer(studentAnswer, correctAnswer) {
         if (studentColor !== correctColor) {
             $("#colorChoice").text("____________");
         }
+    }
+}
+
+function checkNumCorrect() {
+
+    if (numCorrect === 6) {
+        $("#nextAct").css("display", "block");
+        $("#nextReady").css("display", "block");
     }
 }
