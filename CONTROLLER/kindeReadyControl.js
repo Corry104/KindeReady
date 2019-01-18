@@ -6,7 +6,31 @@ var bcrypt = require("bcryptjs");
 module.exports = function(app) {
     // ====================== HTML Routes ====================== //
     app.get("/",function(req,res) {
-       res.sendFile(path.join(__dirname,"../assets/html/welcome.html"))
+        if (req.session.user) {
+            res.sendFile(path.join(__dirname,"../assets/html/user.html"));
+        } else if (req.headers.cookie.indexOf("token=") !== -1) {
+            // use regex to grab cookie from headers string
+            var cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/);
+            // compare cookie against db records
+            db.User.findOne({
+                where : {
+                    token : cookie
+                }
+            }).then(function(data) {
+                if (data) {
+                    // save user object on session 
+                    req.session.user = data;
+                    return res.redirect("/");
+                } else {
+                    // no match, so clear cookie
+                    res.clearCookie("token");
+                    res.redirect("/");
+                }
+            });    
+            // if no session or cookie, send to log in/create account
+        } else {
+            res.sendFile(path.join(__dirname,"../assets/html/welcome.html"))
+        }
     });
     
     // ====================== API Routes ====================== //
@@ -15,7 +39,6 @@ module.exports = function(app) {
      app.post("/user", function (req, res) {
             bcrypt.hash(req.body.password, 10 , function(err,hash) {
                 if (err) throw err;
-                console.log(hash)
                 db.User.create({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
@@ -34,18 +57,35 @@ module.exports = function(app) {
 
     // User login
     app.post("/login",function(req,res) {
-        var email = req.body.email;
-        var password = req.body.password;
+        var logEmail = req.body.email;
+        var logPassword = req.body.password;
         db.User.findOne({
             where : {
-                email : email,
-                password : password
+                email : logEmail,
+                // password : logPassword
             }
         }).then(function(result) {
             if (result) {
-                res.json(result)
+                // create random token and "save" in fake database
+                var newToken = "t" + Math.random();
+                    // stored token in detabase
+                    db.User.update({
+                        token : newToken
+                    },{
+                        where : {
+                            email : logEmail
+                        }
+                    }).then(function() {
+                        console.log("token saved");
+                         // also set token as a cookie that browser can read
+                        res.cookie("token", newToken, {expires: new Date(Date.now() + 14)});
+                    
+                        // and save user object on session for back-end to continue to use
+                        req.session.user = result;
+                        res.send("Log in successful!")
+                    });
             } else {
-                res.send("Incorrect password or email")
+                res.send("Incorrect password or email");
             }
         })
     })
@@ -102,5 +142,13 @@ module.exports = function(app) {
             res.end();
         });
     });
+
+    app.get("/logout", function(req, res) {
+        // clear cookie and session
+        console.log("log out");
+        res.clearCookie("token");
+        req.session.destroy();
+        res.redirect("/");
+      });
 
 }

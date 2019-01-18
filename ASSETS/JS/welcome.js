@@ -14,10 +14,13 @@ $(document).ready(function () {
         // send an AJAX POST-request with jQuery
         $.post("/user", newUser)
         // on success, run this callback
-        .then(function () {
-            // tell the user we're adding a user with an alert window
-            alert("Adding new user...");
-            location.reload();
+        .then(function (result) {
+            if (result) {
+                alert("Adding new user...");
+                location.reload();
+            } else {
+                alert("This email is already exist, please input another email..");
+            }
         }).fail(function(err){
             alert("Please answer following question..")
         });
@@ -41,7 +44,7 @@ $(document).ready(function () {
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-
+            window.location.href = "http://localhost:3000/"
           } else {
             alert("Incorrect password or email");
           }
