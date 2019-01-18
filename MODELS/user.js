@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User",{
       firstName : {
@@ -28,29 +28,14 @@ module.exports = function(sequelize, DataTypes) {
       password : {
         type : DataTypes.STRING,
         allowNull : false,
+      },
+      token : {
+        type : DataTypes.STRING,
+        allowNull : true
       }
     },{
         timestamps : false
-    },{
-      hooks : {
-          beforeCreate : (User , options) => {
-              {
-                  User.password = User.password && User.password != "" ? bcrypt.hashSync(User.password, 10) : "";
-              }
-          }
-      }
-  });
-  
-  User.beforeCreate(generateHash);
-  User.beforeUpdate(generateHash);
+    });
   return User;
-  function generateHash(User) {
-    if (!User.changed('password')) return User.password;
-    else {
-      let salt = bcrypt.genSaltSync();
-      return User.password = bcrypt.hashSync(User.password, salt);
-    }
-  }
-
   };
 
