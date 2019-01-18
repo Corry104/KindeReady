@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
 #act1, #act2, #act3, #summary {
     padding-top: 5px; 
@@ -9,37 +10,47 @@
     border-color: black;
     border-radius: 10%;
     text-align: center;
-    font-family: fantasy;
+    font-family: "Walter Turncoat", cursive;
     font-weight: bold;
     font-size: 50px;
 }
 
+p {
+    padding-left: 40px;
+}
+
 h1 {
     text-align: center;
-    font-family: fantasy;
+    font-family: "Walter Turncoat", cursive;
     text-decoration-color: blue;
     font-weight: bold;
 }
 
 #act1{
-    background-color: yellow;
+    background: url("../../IMAGES/abc1.jpg") no-repeat;
+    background-size: 300px 150px;
+    background-position: center bottom;
 }
 
 #act2 {
-    background-color: red;
+    background: url("../../IMAGES/abc2.jpg") no-repeat;
+    background-size: 300px 200px;
+    background-position: center bottom;
 }
 
 #act3{
-    background-color: blue;
+    background: url("../../IMAGES/abc3.gif") no-repeat;
+    background-size: 300px 150px;
+    background-position: center bottom;
 
 }
 
 #summary {
- background-color: green
+    background: url("../../IMAGES/abc4.png") no-repeat;
+    background-size: 300px 150px;
+    background-position: center bottom;
 }
 
 p {
-    text-align: right;
+    text-align: center;
 }
-
-

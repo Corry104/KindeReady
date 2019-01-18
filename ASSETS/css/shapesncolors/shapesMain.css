@@ -1,100 +1,56 @@
-.circle {
-    height: 50px;
-    width: 50px;
-    background-color: #555;
-    border-radius: 50%;
-}
+@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
-.triangle-up {
-    height: 50px;
-    width: 50px;
-    background-color: #555;
-    border-radius: 50%;
-
-}
-
-.trapezoid {
-    border-bottom: 50px solid #555;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	height: 0;
-	width: 125px;
-}
-
-.rectangle {
-    height: 50px;
-    width: 100px;
-    background-color: #555;
-  }
-
-
-
-
-
-
-
-
-
-/* #act1, #act2, #act3, #summary {
+#act1, #act2, #act3, #summary {
     padding-top: 5px; 
     border-style: solid; 
-    margin: 50px 50px;
-    width: 30%;
-    height: 35%; 
+    margin: 5px;
+    width: 48%;
+    height: 42%; 
     float: left;
     border-color: black;
     border-radius: 10%;
-    font-family: fantasy;
+    text-align: center;
+    font-family: "Walter Turncoat", cursive;
     font-weight: bold;
     font-size: 50px;
-} */
+}
 
-/* h1 {
+p {
+    padding-left: 40px;
+}
+
+h1 {
     text-align: center;
-    font-family: fantasy;
+    font-family: "Walter Turncoat", cursive;
+    text-decoration-color: blue;
     font-weight: bold;
-    color: blue;
-    letter-spacing: 3px;
-    padding: 6px;
+}
 
-} */
-
-/* #act1{
-    background-color: yellow;
+#act1{
+    background: url("../../../ASSETS/IMAGES/shapes1.jpg") no-repeat;
+    background-size: 320px 200px;
+    background-position: center bottom;
 }
 
 #act2 {
-    background-color: red;
+    background: url("../../../ASSETS/IMAGES/shapes2.jpg") no-repeat;
+    background-size: 300px 180px;
+    background-position: center bottom;
 }
 
 #act3{
-    background-color: blue;
+    background: url("../../../ASSETS/IMAGES/colors1.png") no-repeat;
+    background-size: 400px 180px;
+    background-position: center bottom;
 
-} */
-
-/* #summary {
- background-color: green
-} */
-
-/* Website to be responsive*/
-/* 
-@media only screen and (min-width: 320px) and (max-width: 680px) {
-    body {
-        background:yellow;
-    }
 }
-  
-@media only screen and (min-width: 680px) and (max-width: 1023px) and (orientation: landscape) {
-    body {
-        background: blue;
-    }
+
+#summary {
+    background: url("../../../ASSETS/IMAGES/colors2.jpg") no-repeat;
+    background-size: 440px 200px;
+    background-position: center bottom;
 }
-  
-@media only screen and (min-width: 1024px) {
-    body {
-        background: orange;
-    }
-} 
 
-
- */
+p {
+    text-align: center;
+}
