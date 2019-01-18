@@ -8,7 +8,7 @@ module.exports = function(app) {
     app.get("/",function(req,res) {
         if (req.session.user) {
             res.sendFile(path.join(__dirname,"../assets/html/user.html"));
-        } else if (req.headers.cookie.indexOf("token=") !== -1) {
+        } else if (req.headers.cookie && req.headers.cookie.indexOf("token=") !== -1) {
             // use regex to grab cookie from headers string
             var cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/);
             // compare cookie against db records
@@ -36,57 +36,70 @@ module.exports = function(app) {
     // ====================== API Routes ====================== //
 
      // POST route for saving a new user
-     app.post("/user", function (req, res) {
-            bcrypt.hash(req.body.password, 10 , function(err,hash) {
-                if (err) throw err;
-                db.User.create({
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
-                    email: req.body.email,
-                    password: hash
-                })
-                .then(function (dbUSer) {
-                    res.json(dbUser);
-                    console.log(dbUSer);
-                })
-                .catch(function (err) {
-                    res.json(err);
-                });
-            });     
+    app.post("/user", function (req, res) {
+        db.User.findOne({
+             where : {
+                 email : req.body.email
+             }
+        })
+        .then(function(result) {
+            if (result) {
+                res.status(404).send("This email is already exist..");
+            } else {
+                bcrypt.hash(req.body.password, 10 , function(err,hash) {
+                    if (err) throw err;
+                    db.User.create({
+                        firstName: req.body.firstName,
+                        lastName: req.body.lastName,
+                        email: req.body.email,
+                        password: hash
+                    })
+                    .then(function (dbUSer) {
+                        res.json(dbUser);
+                        console.log(dbUSer);
+                    })
+                    .catch(function (err) {
+                        res.status(404).send("Please input all of the following questions..");
+                    });
+                });     
+            }
+        });
     });
 
     // User login
     app.post("/login",function(req,res) {
         var logEmail = req.body.email;
         var logPassword = req.body.password;
+
         db.User.findOne({
             where : {
                 email : logEmail,
-                // password : logPassword
             }
         }).then(function(result) {
-            if (result) {
-                // create random token and "save" in fake database
-                var newToken = "t" + Math.random();
-                    // stored token in detabase
-                    db.User.update({
-                        token : newToken
-                    },{
-                        where : {
-                            email : logEmail
-                        }
-                    }).then(function() {
-                        console.log("token saved");
-                         // also set token as a cookie that browser can read
-                        res.cookie("token", newToken, {expires: new Date(Date.now() + 14)});
-                    
-                        // and save user object on session for back-end to continue to use
-                        req.session.user = result;
-                        res.send("Log in successful!")
-                    });
-            } else {
-                res.send("Incorrect password or email");
-            }
+            bcrypt.compare(logPassword, result.password, function(err, response) {
+                if (response) {
+                    // create random token and "save" in database
+                    var newToken = "t" + Math.random();
+                        // stored token in detabase
+                        db.User.update({
+                            token : newToken
+                        },{
+                            where : {
+                                email : logEmail
+                            }
+                        }).then(function() {
+                            console.log("token saved");
+                             // also set token as a cookie that browser can read
+                            res.cookie("token", newToken, {expires: new Date(Date.now() + 999999999999)});
+                        
+                            // and save user object on session for back-end to continue to use
+                            req.session.user = result;
+                            res.send("Log in successful!")
+                        });
+                } else {
+                    res.status(404).send("Incorrect password or email");
+                }
+            });
         })
     })
 
@@ -143,6 +156,7 @@ module.exports = function(app) {
         });
     });
 
+    // log out
     app.get("/logout", function(req, res) {
         // clear cookie and session
         console.log("log out");
