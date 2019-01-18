@@ -59,6 +59,20 @@ width: 100px;
 float: right;
 margin-top: 30px;
 }
+
+#answers {
+font-family: "Walter Turncoat", cursive;
+}
+
+#message {
+font-family: "Walter Turncoat", cursive;
+}
+
+#banner {
+height: 300px;
+width: 900px;
+}
+
 </style>
 
 <body>
@@ -142,10 +156,42 @@ margin-top: 30px;
 
                     <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
                         <h1>Letter Recognition: Activity 3</h1>
+                        <!-- Activity Description -->
+                        <div class="col-lg-12">
+                            <em><strong>Activity Description:</strong>
+                                <ul type="square">
+                                    <li>Lesson Type: <strong>PG</strong> - Parent Guided</li>
+                                    <li>Estimated Time: 20 min</li>
+                                    <li>Instructions: Have the student enter the missing letters to complete the alphabet.</li>
+                                </ul>
+                            </em>
+                            <hr>
+                        </div>
+                        <img src="../../../IMAGES/banner.png" id="banner" alt="alphabet banner">
+                        <hr>
+                        <input id="guess" class="input-group-sm" type="text">
+                        <input type="button" class="btn btn-sm btn-dark" value="submit" onClick="guessOne()" />
+                        <input type="button" class="btn btn-sm btn-dark" value="reset" onClick="quit()" />
+                        <p id="message">&nbsp;</p>
+                        <p>
+                            <font size="+3"><span id="answer">game is loading..</span></font>
+                        </p>
+                         <!-- Back & Next Buttons -->
+                         <div class="col-lg-12" style="padding-bottom: 10px; padding-top: 10px">
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-2 text-left">
+                                    <button class="btn btn-outline-dark btn-sm">&#8592; Previous</button>
+                                </div>
 
-                        <div id="display"></div>
-                        <div id="buttons"></div>
-                        <button id="clear">clear</button>
+                                <div class="col-lg-8"></div>
+
+                                <div class="col-lg-2 text-right">
+                                        <button class="btn btn-outline-dark btn-sm">Next &#8594;</button>
+                                </div>
+                            </div>
+                        </div>
+              
                     </div>
                 </div>
             </div>
@@ -153,51 +199,8 @@ margin-top: 30px;
     </div>
     <!-- Optional JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            // array to create buttons on the screen
-            var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-            // for-loop to iterate through the letters array.
-            for (var i = 0; i < letters.length; i++) {
-
-                var letterBtn = $("<button>");
-
-                letterBtn.addClass("letter-button letter letter-button-color");
-
-                letterBtn.attr("data-letter", letters[i]);
-
-                letterBtn.text(letters[i]);
-
-                $("#buttons").append(letterBtn);
-
-            }
-
-            // "on-click" event attached to the ".letter-button" class.
-            $(".letter-button").on("click", function () {
-
-                var letterTile = $("<div>");
-
-                letterTile.addClass("letter tile-color");
-
-                letterTile.text($(this).attr("data-letter"));
-
-                $("#display").append(letterTile);
-
-            });
-
-            // "on-click" event attached to the "#clear" button id.
-            $("#clear").on("click", function () {
-
-                $("#display").empty();
-
-            });
-
-        });
-    </script>
-
+    
+    <script src="../../../JS/ACTIVITIES/letterRecog/letterRecogActThree.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
