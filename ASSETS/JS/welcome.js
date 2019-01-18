@@ -11,19 +11,17 @@ $(document).ready(function () {
         };
         console.log(newUser);
         if (password === repPass) {
-        // send an AJAX POST-request with jQuery
-        $.post("/user", newUser)
-        // on success, run this callback
-        .then(function (result) {
-            if (result) {
-                alert("Adding new user...");
-                location.reload();
-            } else {
-                alert("This email is already exist, please input another email..");
-            }
-        }).fail(function(err){
-            alert("Please answer following question..")
-        });
+            // send an AJAX POST-request with jQuery
+            $.post("/user", newUser)
+            // on success, run this callback
+            .then(function (result) {
+                if (result) {
+                    alert("Adding new user...");
+                    location.reload();
+                } 
+            }).fail(function(err){
+                alert(err.responseText);
+            });
         } else {
             alert("Password doesn't match, please re-enter password..")
         }
@@ -45,9 +43,10 @@ $(document).ready(function () {
         $.post("/login", userLogin ,function(data) {
           if (data) {
             window.location.href = "http://localhost:3000/"
-          } else {
-            alert("Incorrect password or email");
-          }
+          } 
+        })
+        .fail(function(err) {
+            alert("Incorrect password or email..")
         })
     })
 });
