@@ -29,27 +29,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull : true
       }
     },{
-    //   unit1 : {
-    //     progress : {
-    //       type : DataTypes.INTEGER,
-    //       defaultValue : 0
-    //     }, 
-    //     complete : {
-    //       type : DataTypes.BOOLEAN,
-    //       defaultValue : false
-    //     }
-    //   },
-    //   unit2 : {
-    //     progress : {
-    //       type : DataTypes.INTEGER,
-    //       defaultValue : 0
-    //     }, 
-    //     complete : {
-    //       type : DataTypes.BOOLEAN,
-    //       defaultValue : false
-    //     }
-    //   }
-    // },{
         timestamps : false
     });
 
