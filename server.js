@@ -15,8 +15,8 @@ app.use(express.static("assets"));
 // =============================================================
 var kindeReadyController = require("./controller/kindeReadyControl.js");
     kindeReadyController(app);
-var lettercontrol = require("./controller/letterandcontrol.js");
-    lettercontrol(app);
+// var lettercontrol = require("./controller/letterandcontrol.js");
+//     lettercontrol(app);
 var shapescontrol = require("./controller/shapesandcontrol.js");
     shapescontrol(app);
 

@@ -37,17 +37,23 @@
               </button>
             </div>
             <div class="modal-body">
-                <label for="uname"><b>Email</b></label>
+                <label for="semail"><b>Email</b></label>
                 <br>
-                <input type="text" placeholder="Enter an Email" name="email" required>
+                <input type="text" id="semail" placeholder="Enter an Email" required>
                 <br>
-                <label for="psw"><b>Password</b></label>
+                <label for="spassword"><b>Password</b></label>
                 <br>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" id="spassword" placeholder="Enter Password" required>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Remember me
+                  </label>
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Sign In</button>
+              <button type="button" id="signIn" class="btn btn-primary">Sign In</button>
             </div>
           </div>
         </div>
