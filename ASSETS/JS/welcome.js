@@ -1,25 +1,23 @@
 $(document).ready(function () {
     $("#submit").on("click", function (event) {
         event.preventDefault();
-        console.log(this);
         var repPass = $("#psw-repeat").val();
         var password = $("#password").val()
-        var dataString = {
+        var newUser = {
             firstName : $("#firstname").val(),
             lastName : $("#lastname").val(),
             email : $("#email").val(),
             password : $("#password").val(),
         };
+        console.log(newUser);
         if (password === repPass) {
-            // send an AJAX POST-request with jQuery
-        $.post("/user", dataString)
+        // send an AJAX POST-request with jQuery
+        $.post("/user", newUser)
         // on success, run this callback
-        .then(function (dataString) {
-            // log the data we found
-            console.log(dataString);
+        .then(function () {
             // tell the user we're adding a user with an alert window
-            // alert("Adding new user...");
-            // location.reload();
+            alert("Adding new user...");
+            location.reload();
         }).fail(function(err){
             alert("Please answer following question..")
         });
@@ -34,6 +32,21 @@ $(document).ready(function () {
         $("#password").val("");
         $("#psw-repeat").val("");
     });
+
+    $("#signIn").on("click",function(event) {
+        event.preventDefault();
+        var userLogin = {
+            email : $("#semail").val(),
+            password : $("#spassword").val()
+        }
+        $.post("/login", userLogin ,function(data) {
+          if (data) {
+
+          } else {
+            alert("Incorrect password or email");
+          }
+        })
+    })
 });
 
 
