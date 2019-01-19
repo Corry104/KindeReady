@@ -45,6 +45,18 @@ $(document).ready(function () {
         }
 
         $(".studentList").on("mouseover", function() {
+            $(this).css({"cursor": "pointer", "background-color": "lemonchiffon"});
+            $(".buttonSpan", this).show();
+        });
+
+        $(".studentList").on("click", function() {
+
+            $(".studentList").not(this).each(function() {
+                $(this).css("background-color", "white");
+            });
+
+            $(".studentProgress").css("display", "none");
+
             $(".buttonSpan", this).show();
             $(this).css({"background-color": "lemonchiffon", "cursor": "pointer"});
 
@@ -52,7 +64,7 @@ $(document).ready(function () {
 
             $.get("/currentStudent/" + id, function(result) {
                 $("#studentAvatar").attr("src", result.avatar);
-                $("#studentName").text(result.firstName + " " + result.lastName);
+                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt fa fa-pencil-square-o change-btn' style='font-size: 16px'> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger fa fa-trash-o delete-btn' style='font-size: 16px'> Remove Student</button></p>");
                 $(".studentProgress").css("display", "block");
 
                 iProg = 0;
@@ -75,7 +87,7 @@ $(document).ready(function () {
 
         $(".studentList").on("mouseleave", function() {
             $(".buttonSpan", this).hide();
-            $(".studentProgress").css("display", "none");
+            // $(".studentProgress").css("display", "none");
             $(this).css("background-color", "white");
         });
     });
@@ -103,7 +115,6 @@ $(document).ready(function () {
     // change student info
     $(".change-btn").on("click",function(event) {
 
-        console.log("Hi");
         var id = $(this).data("id");
         var changeStudent = {
             firstName : $("#f1").val(),
@@ -119,7 +130,6 @@ $(document).ready(function () {
 
     $(".delete-btn").on("click", function(event) {
 
-        console.log(event);
         var id = $(this).data("id");
         $.post("/student/delete/" + id ,function() {
             console.log("Delete a student")
