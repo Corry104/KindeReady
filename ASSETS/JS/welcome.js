@@ -42,7 +42,7 @@ $(document).ready(function () {
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-            window.location.href = "http://localhost:3000/"
+            window.location.href = "/student"
           } 
         })
         .fail(function(err) {

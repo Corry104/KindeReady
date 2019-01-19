@@ -5,6 +5,7 @@ var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
     // ====================== HTML Routes ====================== //
+
     app.get("/",function(req,res) {
         if (req.session.user) {
             res.sendFile(path.join(__dirname,"../assets/html/user.html"));
@@ -33,6 +34,9 @@ module.exports = function(app) {
         }
     });
     
+    app.get("/student",function(req,res) {
+        res.sendFile(path.join(__dirname,"../assets/html/user.html"))
+    });
     // ====================== API Routes ====================== //
 
      // POST route for saving a new user
@@ -54,12 +58,13 @@ module.exports = function(app) {
                         email: req.body.email,
                         password: hash
                     })
-                    .then(function (dbUSer) {
+                    .then(function (dbUser) {
                         res.json(dbUser);
-                        console.log(dbUSer);
+                        console.log(dbUser);
                     })
                     .catch(function (err) {
-                        res.status(404).send("Please input all of the following questions..");
+                        console.log(err);
+                        res.status(500).send("Please input all of the following questions..");
                     });
                 });     
             }
