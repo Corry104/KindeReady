@@ -27,26 +27,26 @@ h1 {
 }
 
 #act1{
-    background: url("../../../ASSETS/IMAGES/shapes1.jpg") no-repeat;
+    background: url("/images/shapes1.jpg") no-repeat;
     background-size: 320px 200px;
     background-position: center bottom;
 }
 
 #act2 {
-    background: url("../../../ASSETS/IMAGES/shapes2.jpg") no-repeat;
+    background: url("/images/shapes2.jpg") no-repeat;
     background-size: 300px 180px;
     background-position: center bottom;
 }
 
 #act3{
-    background: url("../../../ASSETS/IMAGES/colors1.png") no-repeat;
+    background: url("/images/colors1.png") no-repeat;
     background-size: 400px 180px;
     background-position: center bottom;
 
 }
 
 #summary {
-    background: url("../../../ASSETS/IMAGES/colors2.jpg") no-repeat;
+    background: url("/images/colors2.jpg") no-repeat;
     background-size: 440px 200px;
     background-position: center bottom;
 }

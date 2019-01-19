@@ -27,26 +27,26 @@ h1 {
 }
 
 #act1{
-    background: url("../../IMAGES/abc1.jpg") no-repeat;
+    background: url("/images/abc1.jpg") no-repeat;
     background-size: 300px 150px;
     background-position: center bottom;
 }
 
 #act2 {
-    background: url("../../IMAGES/abc2.jpg") no-repeat;
+    background: url("/images/abc2.jpg") no-repeat;
     background-size: 300px 200px;
     background-position: center bottom;
 }
 
 #act3{
-    background: url("../../IMAGES/abc3.gif") no-repeat;
+    background: url("/images/abc3.gif") no-repeat;
     background-size: 300px 150px;
     background-position: center bottom;
 
 }
 
 #summary {
-    background: url("../../IMAGES/abc4.png") no-repeat;
+    background: url("/images/abc4.png") no-repeat;
     background-size: 300px 150px;
     background-position: center bottom;
 }
