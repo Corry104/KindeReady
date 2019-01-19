@@ -101,7 +101,7 @@ $(document).ready(function () {
     });
 
     // change student info
-    $(".changeSt").on("click",function(event) {
+    $(".change-btn").on("click",function(event) {
 
         console.log("Hi");
         var id = $(this).data("id");
