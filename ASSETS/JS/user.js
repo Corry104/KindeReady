@@ -102,7 +102,6 @@ $(document).ready(function () {
 
     // change student info
     $(".change-btn").on("click",function(event) {
-
         console.log("Hi");
         var id = $(this).data("id");
         var changeStudent = {
