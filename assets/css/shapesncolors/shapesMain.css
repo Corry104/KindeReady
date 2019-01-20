@@ -1,0 +1,56 @@
+@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
+
+#act1, #act2, #act3, #summary {
+    padding-top: 5px; 
+    border-style: solid; 
+    margin: 5px;
+    width: 48%;
+    height: 42%; 
+    float: left;
+    border-color: black;
+    border-radius: 10%;
+    text-align: center;
+    font-family: "Walter Turncoat", cursive;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+p {
+    padding-left: 40px;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Walter Turncoat", cursive;
+    text-decoration-color: blue;
+    font-weight: bold;
+}
+
+#act1{
+    background: url("/images/shapes1.jpg") no-repeat;
+    background-size: 320px 200px;
+    background-position: center bottom;
+}
+
+#act2 {
+    background: url("/images/shapes2.jpg") no-repeat;
+    background-size: 300px 180px;
+    background-position: center bottom;
+}
+
+#act3{
+    background: url("/images/colors1.png") no-repeat;
+    background-size: 400px 180px;
+    background-position: center bottom;
+
+}
+
+#summary {
+    background: url("/images/colors2.jpg") no-repeat;
+    background-size: 440px 200px;
+    background-position: center bottom;
+}
+
+p {
+    text-align: center;
+}

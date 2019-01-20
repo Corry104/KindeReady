@@ -23,14 +23,14 @@ app.use(express.static("assets"));
 // =============================================================
 var kindeReadyController = require("./controller/kindeReadyControl.js");
     kindeReadyController(app);
-// var lettercontrol = require("./controller/letterandcontrol.js");
-//     lettercontrol(app);
+var lettercontrol = require("./controller/letterandcontrol.js");
+    lettercontrol(app);
 var shapescontrol = require("./controller/shapesandcontrol.js");
     shapescontrol(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force:true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
