@@ -66,9 +66,6 @@ $(document).ready(function () {
 
             $.get("/currentStudent/" + id, function(result) {
 
-                // Clear Student from sessionStorage
-                sessionStorage.clear();
-
                 // Add Clicked Student Info to sessionStorage
                 sessionStorage.setItem('studentId', JSON.stringify(id));
 
@@ -202,6 +199,10 @@ $(document).ready(function () {
             console.log("Delete a student")
             location.reload();
         });
+    });
+
+    $("#logout").on("click", function() {
+        sessionStorage.clear();
     });
 });
 
