@@ -66,9 +66,6 @@ $(document).ready(function () {
 
             $.get("/currentStudent/student/" + id, function(result) {
 
-                // Clear Student from sessionStorage
-                sessionStorage.clear();
-
                 // Add Clicked Student Info to sessionStorage
                 sessionStorage.setItem('studentId', JSON.stringify(id));
 
