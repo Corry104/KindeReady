@@ -8,7 +8,7 @@ module.exports = function(app) {
 
     app.get("/",function(req,res) {
         if (req.session.user) {
-            res.sendFile(path.join(__dirname,"/html/user.html"));
+            res.sendFile(path.join(__dirname,"../assets/html/user.html"));
         } else if (req.headers.cookie && req.headers.cookie.indexOf("token=") !== -1) {
             // use regex to grab cookie from headers string
             var cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/);
@@ -21,21 +21,21 @@ module.exports = function(app) {
                 if (data) {
                     // save user object on session 
                     req.session.user = data;
-                    return res.redirect('/html/welcome.html');
+                    res.redirect("/");
                 } else {
                     // no match, so clear cookie
                     res.clearCookie("token");
-                    res.redirect('/html/welcome.html');
+                    res.redirect("/");
                 }
             });    
             // if no session or cookie, send to log in/create account
         } else {
-            res.redirect('/html/welcome.html');
+            res.sendFile(path.join(__dirname,"../assets/html/welcome.html"))
         }
     });
     
     app.get("/student",function(req,res) {
-        res.sendFile(path.join(__dirname,"/html/user.html"))
+        res.sendFile(path.join(__dirname,"../assets/html/user.html"))
     });
     // ====================== API Routes ====================== //
 

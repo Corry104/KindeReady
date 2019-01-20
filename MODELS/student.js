@@ -33,6 +33,13 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Student.associate = function (models) {
-      Student.belongsTo(models.User)};
+      models.Student.belongsTo(models.User, {
+        onDelete: "CASCADE",
+        foreignKey: {
+          allowNull: false,
+          name : "userId"
+        }
+      });
+    };
     return Student;
   };
