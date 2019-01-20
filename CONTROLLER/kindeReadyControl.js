@@ -21,7 +21,7 @@ module.exports = function(app) {
                 if (data) {
                     // save user object on session 
                     req.session.user = data;
-                    res.redirect("/");
+                    return res.redirect("/");
                 } else {
                     // no match, so clear cookie
                     res.clearCookie("token");
@@ -92,52 +92,43 @@ module.exports = function(app) {
                             where : {
                                 email : logEmail
                             }
-                        }).then(function(data) {
+                        }).then(function() {
                             console.log("token saved");
                              // also set token as a cookie that browser can read
                             res.cookie("token", newToken, {expires: new Date(Date.now() + 999999999999)});
-                            var userLogin = {
-                                id : (result.dataValues.id).toString(),
-                                firstName : (result.dataValues.firstName).toString(),
-                                lastName : (result.dataValues.lastName).toString(),
-                            }
+                        
                             // and save user object on session for back-end to continue to use
                             req.session.user = result;
-                            console.log(userLogin)
-                            res.send(userLogin);
+                            res.send("Log in successful!")
                         });
                 } else {
-                    res.status(404).send("Incorrect password");
+                    res.status(404).send("Incorrect password or email");
                 }
             });
-        }).catch(function(err) {
-            res.status(404).send("Incorrect email");
-        })
+        });
     });
 
-    // display student names list in browser
-    app.get("/student/create/:id",function(req,res) {
-        db.Student.findAll({
-            where : {
-                userId : req.params.id
-            }
-        },{
-            include: [db.User]
-        }).then(function(result) {
+    // Get userId from Login Address
+    app.get("/login/:email",function(req,res) {
+        db.User.findOne({where: {email: req.params.email}})
+        .then(function(result) {
+            res.json(result);
+        });
+    });
+
+    // display student names list in browser for logged in user
+    app.get("/currentStudent/:userId",function(req,res) {
+        db.Student.findAll({where: {userId: req.params.userId}})
+        .then(function(result) {
             res.json(result);
         });
     });
 
     // display student names list in browser
-    app.get("/currentStudent/:id",function(req,res) {
-        db.Student.findOne({
-            where: { 
-                id : req.params.id 
-            },
-            include: [db.User] 
-        })
+    app.get("/currentStudent/student/:id",function(req,res) {
+        db.Student.findOne({where: {id: req.params.id}})
         .then(function(result) {
-            res.json(result)
+            res.json(result);
         });
     });
 

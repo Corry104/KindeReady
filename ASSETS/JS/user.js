@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    checkNumStudents();
-    var userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
-    var user_id = userLogin.id
+    var userId = JSON.parse(sessionStorage.getItem('userId'));
 
-    $.get("/student/create/" + user_id,function(result) {
+    checkNumStudents();
+
+    $.get("/currentStudent/" + userId, function(result) {
 
         for (var i = 0 ; i < result.length ; i++) {
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
             var id = $(this).attr("data-id");
 
-            $.get("/currentStudent/" + id, function(result) {
+            $.get("/currentStudent/student/" + id, function(result) {
 
                 // Clear Student from sessionStorage
                 sessionStorage.clear();
@@ -119,8 +119,6 @@ $(document).ready(function () {
                 }
 
                 function animateProgress(unit1, unit2) {
-                    
-                    console.log(unit1, unit2);
 
                     var SnCprogressBar = $("#SnC");
                     var letRecProgressBar = $("#letRec");
@@ -156,22 +154,19 @@ $(document).ready(function () {
 
     // create new student
     $("#sSubmit").on("click",function() {
-        // var userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
-        // var user_id = userLogin.id
-        //     console.log(userLogin,user_id);
+
         var newStudent = {
             firstName : $("#f1").val().trim(),
             lastName : $("#f2").val().trim(),
             age : $("#f3").val().trim(),
             avatar : $(".avatar input:checked").attr("data-src"),
-            userId : user_id
+            userId: userId
         };
 
         $.post("/currentStudent", newStudent, function(result) {
             createUnits(result.id);
 
         }).fail(function(err){
-            console.log(err)
             alert("Please answer following question..")
         });
         $("f1").empty();
@@ -181,7 +176,7 @@ $(document).ready(function () {
 
     // change student info
     $(".change-btn").on("click",function(event) {
-        console.log("Hi");
+
         var id = $(this).data("id");
         var changeStudent = {
             firstName : $("#f1").val(),
@@ -202,6 +197,10 @@ $(document).ready(function () {
             console.log("Delete a student")
             location.reload();
         });
+    });
+
+    $("#logout").on("click", function() {
+        sessionStorage.clear();
     });
 });
 

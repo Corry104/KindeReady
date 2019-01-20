@@ -17,6 +17,7 @@ $(document).ready(function () {
             .then(function (result) {
                 if (result) {
                     alert("Adding new user...");
+                    sessionStorage.setItem('userId', JSON.stringify(result.id));
                     location.reload();
                 } 
             }).fail(function(err){
@@ -40,12 +41,20 @@ $(document).ready(function () {
             email : $("#semail").val(),
             password : $("#spassword").val()
         }
+
         $.post("/login", userLogin ,function(data) {
           if (data) {
             console.log(data);
-            sessionStorage.setItem("userLogin", JSON.stringify(data));
+            
             window.location.href = "/student"
           } 
+        })
+        .then(function() {
+            sessionStorage.setItem("userEmail", userLogin.email);
+
+            $.get("/login/" + userLogin.email, function(response) {
+                sessionStorage.setItem("userId", response.id);
+            });
         })
         .fail(function(err) {
             alert(err.responseText)
