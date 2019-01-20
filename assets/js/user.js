@@ -94,7 +94,7 @@ $(document).ready(function () {
                         $("#SnCActCount").text(unit1Prog + " / 4");
                         unit1Prog = (unit1Prog * 25);
                         sessionStorage.setItem('unit1Prog', JSON.stringify(unit1Prog));
-
+                        
                     }).then(function() {
                         $.get("/unit2/" + id, function(result) {
                             var values = Object.values(result);
@@ -104,41 +104,18 @@ $(document).ready(function () {
                                     unit2Prog++;
                                 }
                             }
-                    
+                            
                             $("#letActCount").text(unit2Prog + " / 4");
                             unit2Prog = unit2Prog * 25;
                             sessionStorage.setItem('unit2Prog', JSON.stringify(unit2Prog));
-
+                            
                         }).then(function() {
-                            animateProgress(unit1Prog, unit2Prog);
+                            // animateProgress(unit1Prog, unit2Prog);
+                            $("#SnC").css("width", unit1Prog + "%");
+                            $("#letRec").css("width", unit2Prog + "%");
                         });
                     });
                 }
-
-                function animateProgress(unit1, unit2) {
-
-                    var SnCprogressBar = $("#SnC");
-                    var letRecProgressBar = $("#letRec");
-
-                    if (unit1 > 0 || unit2 > 0) {
-                        if (SnCProg < unit1) {
-                            SnCProg++;
-                            SnCprogressBar.css("width", SnCProg + "%");
-                            setTimeout(animateProgress(unit1, unit2), 15);
-                        }
-
-                        if (letRecProg < unit2) {
-                            letRecProg++;
-                            letRecProgressBar.css("width", letRecProg + "%");
-                            setTimeout(animateProgress(unit1, unit2), 15);
-                        }
-                    }
-                    else {
-                        SnCprogressBar.css("width", unit1 + "%");
-                        letRecProgressBar.css("width", unit2 + "%");
-                    }
-                }
-
                 activityProg(id);
             });
         });

@@ -45,35 +45,11 @@ $(document).ready(function() {
                     unit2Prog = unit2Prog * 25;
 
                 }).then(function() {
-                    animateProgress(unit1Prog, unit2Prog);
+                    $("#SnC").css("width", unit1Prog + "%");
+                    $("#letRec").css("width", unit2Prog + "%");
                 });
             });
         }
-
-        function animateProgress(unit1, unit2) {
-            
-            var SnCprogressBar = $("#SnC");
-            var letRecProgressBar = $("#letRec");
-
-            if (unit1 > 0 || unit2 > 0) {
-                if (SnCProg < unit1) {
-                    SnCProg++;
-                    SnCprogressBar.css("width", SnCProg + "%");
-                    setTimeout(animateProgress(unit1, unit2), 15);
-                }
-
-                if (letRecProg < unit2) {
-                    letRecProg++;
-                    letRecProgressBar.css("width", letRecProg + "%");
-                    setTimeout(animateProgress(unit1, unit2), 15);
-                }
-            }
-            else {
-                SnCprogressBar.css("width", unit1 + "%");
-                letRecProgressBar.css("width", unit2 + "%");
-            }
-        }
-
         activityProg(id);
     });
 
