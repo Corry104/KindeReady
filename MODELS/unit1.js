@@ -16,8 +16,6 @@ module.exports = function(sequelize, DataTypes) {
             type : DataTypes.BOOLEAN,
             defaultValue : false
         }
-    },{
-        timestamps : false
     });
   
       Unit1.associate = function(models) {

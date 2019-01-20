@@ -63,31 +63,91 @@ $(document).ready(function () {
             var id = $(this).attr("data-id");
 
             $.get("/currentStudent/" + id, function(result) {
+
+                // Clear Student from sessionStorage
+                sessionStorage.clear();
+
+                // Add Clicked Student Info to sessionStorage
+                sessionStorage.setItem('studentId', JSON.stringify(id));
+
+                // Show Student Information
                 $("#studentAvatar").attr("src", result.avatar);
                 $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt fa fa-pencil-square-o change-btn' style='font-size: 16px'> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger fa fa-trash-o delete-btn' style='font-size: 16px'> Remove Student</button></p>");
                 $(".studentProgress").css("display", "block");
 
-                iProg = 0;
+                // Animate Student Progress
+                var unit1Prog = 0;
+                var unit2Prog = 0;
+                    SnCProg = 0;
+                    letRecProg = 0;
 
-                function animateProgress() {
-                    var progressBar = $("#SnC");
-                    var progress = 75;
+                function activityProg(id) {
+                
+                    $.get("/unit1/" + id, function(unit1Result) {
+                        var values = Object.values(unit1Result);
+                        
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i] === true) {
+                                unit1Prog++;
+                            }
+                        }
 
-                    if (iProg < progress) {
-                        iProg++;
-                        progressBar.css("width", iProg + "%");
-                    }
+                        $("#SnCActCount").text(unit1Prog + " / 4");
+                        unit1Prog = (unit1Prog * 25);
+                        sessionStorage.setItem('unit1Prog', JSON.stringify(unit1Prog));
 
-                    setTimeout(animateProgress, 15);
+                    }).then(function() {
+                        $.get("/unit2/" + id, function(result) {
+                            var values = Object.values(result);
+                            
+                            for (let i = 0; i < values.length; i++) {
+                                if (values[i] === true) {
+                                    unit2Prog++;
+                                }
+                            }
+                    
+                            $("#letActCount").text(unit2Prog + " / 4");
+                            unit2Prog = unit2Prog * 25;
+                            sessionStorage.setItem('unit2Prog', JSON.stringify(unit2Prog));
+
+                        }).then(function() {
+                            animateProgress(unit1Prog, unit2Prog);
+                        });
+                    });
                 }
 
-                animateProgress();
+                function animateProgress(unit1, unit2) {
+                    
+                    console.log(unit1, unit2);
+
+                    var SnCprogressBar = $("#SnC");
+                    var letRecProgressBar = $("#letRec");
+
+                    if (unit1 > 0 || unit2 > 0) {
+                        if (SnCProg < unit1) {
+                            SnCProg++;
+                            SnCprogressBar.css("width", SnCProg + "%");
+                            setTimeout(animateProgress(unit1, unit2), 15);
+                        }
+
+                        if (letRecProg < unit2) {
+                            letRecProg++;
+                            letRecProgressBar.css("width", letRecProg + "%");
+                            setTimeout(animateProgress(unit1, unit2), 15);
+                        }
+                    }
+                    else {
+                        SnCprogressBar.css("width", unit1 + "%");
+                        letRecProgressBar.css("width", unit2 + "%");
+                    }
+                }
+
+                activityProg(id);
             });
         });
 
         $(".studentList").on("mouseleave", function() {
             $(".buttonSpan", this).hide();
-            // $(".studentProgress").css("display", "none");
             $(this).css("background-color", "white");
         });
     });
@@ -103,7 +163,8 @@ $(document).ready(function () {
         };
 
         $.post("/currentStudent", newStudent, function(result) {
-            location.reload();
+            createUnits(result.id);
+
         }).fail(function(err){
             console.log(err)
             alert("Please answer following question..")
@@ -148,4 +209,21 @@ function checkNumStudents() {
         var maxHeight = $("#currentStudent li").height() * 6;
         $("#currentStudent").css({"max-height": maxHeight, "overflow-y": "auto"});
     }
+}
+
+function createUnits(id) {
+
+    $.post("/unit1/" + id, function(result) {
+        console.log(result);
+    }).fail(function(err){
+        alert("Whoops! Something went wrong.")
+    });
+
+    $.post("/unit2/" + id, function(result) {
+        console.log(result);
+    }).fail(function(err){
+        alert("Whoops! Something went wrong.")
+    });
+
+    location.reload();
 }
