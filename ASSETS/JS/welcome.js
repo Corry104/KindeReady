@@ -42,7 +42,7 @@ $(document).ready(function () {
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-            window.location.href = "/student"
+            window.location.href = "/user.html"
           } 
         })
         .fail(function(err) {

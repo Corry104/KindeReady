@@ -105,6 +105,7 @@ $(document).ready(function () {
         $.post("/currentStudent", newStudent, function(result) {
             location.reload();
         }).fail(function(err){
+            console.log(err)
             alert("Please answer following question..")
         });
         $("f1").empty();

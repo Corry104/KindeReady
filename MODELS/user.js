@@ -32,10 +32,13 @@ module.exports = function(sequelize, DataTypes) {
       token : {
         type : DataTypes.STRING,
         allowNull : true
-      }
+      },
     },{
         timestamps : false
     });
-  return User;
+
+    User.associate = function (models) {
+      User.hasMany(models.Student)};
+    return User;
   };
 

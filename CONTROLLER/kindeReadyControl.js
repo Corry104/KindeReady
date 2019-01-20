@@ -8,7 +8,7 @@ module.exports = function(app) {
 
     app.get("/",function(req,res) {
         if (req.session.user) {
-            res.sendFile(path.join(__dirname,"../assets/html/user.html"));
+            res.sendFile(path.join(__dirname,"/html/user.html"));
         } else if (req.headers.cookie && req.headers.cookie.indexOf("token=") !== -1) {
             // use regex to grab cookie from headers string
             var cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/);
@@ -21,21 +21,21 @@ module.exports = function(app) {
                 if (data) {
                     // save user object on session 
                     req.session.user = data;
-                    return res.redirect("/");
+                    return res.redirect('/html/welcome.html');
                 } else {
                     // no match, so clear cookie
                     res.clearCookie("token");
-                    res.redirect("/");
+                    res.redirect('/html/welcome.html');
                 }
             });    
             // if no session or cookie, send to log in/create account
         } else {
-            res.sendFile(path.join(__dirname,"../assets/html/welcome.html"))
+            res.redirect('/html/welcome.html');
         }
     });
     
     app.get("/student",function(req,res) {
-        res.sendFile(path.join(__dirname,"../assets/html/user.html"))
+        res.sendFile(path.join(__dirname,"/html/user.html"))
     });
     // ====================== API Routes ====================== //
 
@@ -110,15 +110,21 @@ module.exports = function(app) {
 
     // display student names list in browser
     app.get("/currentStudent",function(req,res) {
-        db.Student.findAll()
-        .then(function(result) {
-            res.json(result)
+        db.Student.findAll({
+            include: [db.User]
+        }).then(function(result) {
+            res.json(result);
         });
     });
 
     // display student names list in browser
     app.get("/currentStudent/:id",function(req,res) {
-        db.Student.findOne({where: {id: req.params.id}})
+        db.Student.findOne({
+            where: { 
+                id : req.params.id 
+            },
+            include: [db.User] 
+        })
         .then(function(result) {
             res.json(result)
         });
@@ -130,7 +136,7 @@ module.exports = function(app) {
             firstName : req.body.firstName,
             lastName : req.body.lastName,
             age : req.body.age,
-            avatar : req.body.avatar
+            avatar : req.body.avatar,
         })
         .then(function(result) {
             res.json(result);
