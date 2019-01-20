@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
       models.Student.belongsTo(models.User, {
         onDelete: "CASCADE",
         foreignKey: {
-          allowNull: false,
+          allowNull: true,
           name : "userId"
         }
       });
