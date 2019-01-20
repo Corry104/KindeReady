@@ -42,13 +42,15 @@ $(document).ready(function () {
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-            window.location.href = "/student";
+            console.log(data);
+            sessionStorage.setItem("userLogin", JSON.stringify(data));
+            window.location.href = "/student"
           } 
         })
         .fail(function(err) {
-            alert("Incorrect password or email..")
-        })
-    })
+            alert(err.responseText)
+        });
+    });
 });
 
 

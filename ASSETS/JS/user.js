@@ -1,8 +1,10 @@
 $(document).ready(function () {
 
     checkNumStudents();
+    var userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
+    var user_id = userLogin.id
 
-    $.get("/currentStudent",function(result) {
+    $.get("/student/create/" + user_id,function(result) {
 
         for (var i = 0 ; i < result.length ; i++) {
 
@@ -154,12 +156,15 @@ $(document).ready(function () {
 
     // create new student
     $("#sSubmit").on("click",function() {
-
+        // var userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
+        // var user_id = userLogin.id
+        //     console.log(userLogin,user_id);
         var newStudent = {
             firstName : $("#f1").val().trim(),
             lastName : $("#f2").val().trim(),
             age : $("#f3").val().trim(),
-            avatar : $(".avatar input:checked").attr("data-src")
+            avatar : $(".avatar input:checked").attr("data-src"),
+            userId : user_id
         };
 
         $.post("/currentStudent", newStudent, function(result) {

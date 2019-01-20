@@ -92,25 +92,36 @@ module.exports = function(app) {
                             where : {
                                 email : logEmail
                             }
-                        }).then(function() {
+                        }).then(function(data) {
                             console.log("token saved");
                              // also set token as a cookie that browser can read
                             res.cookie("token", newToken, {expires: new Date(Date.now() + 999999999999)});
-                        
+                            var userLogin = {
+                                id : (result.dataValues.id).toString(),
+                                firstName : (result.dataValues.firstName).toString(),
+                                lastName : (result.dataValues.lastName).toString(),
+                            }
                             // and save user object on session for back-end to continue to use
                             req.session.user = result;
-                            res.send("Log in successful!")
+                            console.log(userLogin)
+                            res.send(userLogin);
                         });
                 } else {
-                    res.status(404).send("Incorrect password or email");
+                    res.status(404).send("Incorrect password");
                 }
             });
+        }).catch(function(err) {
+            res.status(404).send("Incorrect email");
         })
-    })
+    });
 
     // display student names list in browser
-    app.get("/currentStudent",function(req,res) {
+    app.get("/student/create/:id",function(req,res) {
         db.Student.findAll({
+            where : {
+                userId : req.params.id
+            }
+        },{
             include: [db.User]
         }).then(function(result) {
             res.json(result);
@@ -137,6 +148,7 @@ module.exports = function(app) {
             lastName : req.body.lastName,
             age : req.body.age,
             avatar : req.body.avatar,
+            userId : req.body.userId
         })
         .then(function(result) {
             res.json(result);
