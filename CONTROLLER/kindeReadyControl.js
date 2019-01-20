@@ -140,6 +140,58 @@ module.exports = function(app) {
         });
     });
 
+    // create a new entry for unit1
+    app.post("/unit1/:id",function(req,res) {
+
+        db.Unit1.create({
+            act1: false,
+            act2: false,
+            act3: false,
+            summary: false,
+            studentId: req.params.id
+        })
+        .then(function(result) {
+            res.status(200).json(result);
+        })
+        .catch(function(err){
+            res.status(500).json(err);
+        });
+    });
+
+    // create a new entry for unit2
+    app.post("/unit2/:id",function(req,res) {
+
+        db.Unit2.create({
+            act1: false,
+            act2: false,
+            act3: false,
+            summary: false,
+            studentId: req.params.id
+        })
+        .then(function(result) {
+            res.status(200).json(result);
+        })
+        .catch(function(err){
+            res.status(500).json(err);
+        });
+    });
+
+    // Pull Unit1 Activity Values
+    app.get("/unit1/:id",function(req,res) {
+        db.Unit1.findOne({where: {id: req.params.id}})
+        .then(function(result) {
+            res.json(result)
+        });
+    });
+
+    // Pull Unit2 Activity Values
+    app.get("/unit2/:id",function(req,res) {
+        db.Unit2.findOne({where: {id: req.params.id}})
+        .then(function(result) {
+            res.json(result)
+        });
+    });
+
     // change student info
     app.put("/student/change/:id", function(req,res) {
         db.Student.update({
