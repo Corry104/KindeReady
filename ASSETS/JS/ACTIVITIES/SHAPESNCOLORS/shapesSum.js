@@ -1,22 +1,19 @@
 $(function () {
-  var red = $("<img>").attr("src", "/IMAGES/shapes_colors/red_apple.jpeg");
-  var green = $("<img>").attr("src", "/IMAGES/shapes_colors/green_apple.jpeg");
-  var yellow = $("<img>").attr("src", "/IMAGES/shapes_colors/yellow_eleph.png");
-  var blue = $("<img>").attr("src", "/IMAGES/shapes_colors/blue_eleph.png");
+  var red = $("<img>").attr("src", "/images/shapes_colors/red_apple.jpeg");
+  var green = $("<img>").attr("src", "/images/shapes_colors/green_apple.jpeg");
+  var yellow = $("<img>").attr("src", "/images/shapes_colors/yellow_eleph.png");
+  var blue = $("<img>").attr("src", "/images/shapes_colors/blue_eleph.png");
 
-  var redBrush = $("<img>").attr("src", "/IMAGES/shapes_colors/paint_red.png");
-  var greenBrush = $("<img>").attr("src", "/IMAGES/shapes_colors/paint_green.png");
-  var blueBrush = $("<img>").attr("src", "/IMAGES/shapes_colors/paint_blue.png");
-  var yellowBrush = $("<img>").attr("src", "/IMAGES/shapes_colors/paint_yellow.png");
+  var redBrush = $("<img>").attr("src", "/images/shapes_colors/paint_red.png");
+  var greenBrush = $("<img>").attr("src", "/images/shapes_colors/paint_green.png");
+  var blueBrush = $("<img>").attr("src", "/images/shapes_colors/paint_blue.png");
+  var yellowBrush = $("<img>").attr("src", "/images/shapes_colors/paint_yellow.png");
 
   var all_images = ["red", "green", "yellow", "blue"];
   var used_brushes = ["redBrush", "greenBrush", "blueBrush", "yellowBrush"];
   var finalArray = [];
 
-  var randomImages = [];
-  var chosenImages = [];
-
-  var Time = 100;
+  var Time = 10;
   var contino = 0;
 
   function Randomize(Subject) {
@@ -32,22 +29,19 @@ $(function () {
     return Subject;
   }
 
-  function LoadGame() {
 
+  $("#start").click(function () {
+    StartGame();
+  })
+
+  function StartGame() {
+    Counter();
+    LoadGame();
+  }
+
+  function LoadGame() {
     CreateObjBottom();
     CreateObjTop();
-
-  }
-
-
-  function ClearArrays() {
-    randomImages.splice(0, randomImages.length);
-    chosenImages.splice(0, chosenImages.length);
-    used_brushes.splice(0, used_brushes.length);
-  }
-
-  function arraysEqual(a, b) {
-    return JSON.stringify(a) === JSON.stringify(b);
   }
 
   function Counter() {
@@ -60,14 +54,11 @@ $(function () {
         $('.counter').text(Countdown);
       }
       if (Countdown == 0) {
-        clearInterval(count);
-        ClearGame();
+        $('.counter').text("Game Over!");
+        location.reload();
       }
     }, 1000);
-
   }
-
-
 
   function CreateObjTop() {
     Randomize(all_images);
@@ -90,7 +81,6 @@ $(function () {
   }
 
   function CreateObjBottom() {
-
     Randomize(used_brushes);
 
     // set 4 random colors into random colors array
@@ -138,21 +128,19 @@ $(function () {
   function compare(finalArray) {
     if (finalArray[0] == all_images[0] && finalArray[1] == all_images[1] && finalArray[2] == all_images[2] && finalArray[3] == all_images[3]) {
       $("#correctModal").modal("show");
-      location.reload();
+      $('#nextUnit').click(function() {
+        window.location.href = "/html/activities/letters/letterMain.html";
+        return false;
+      });
+
     } else {
       $("#incorrectModal").modal("show");
-      location.reload();
+      $('#tryAgain').click(function() {
+        location.reload();
+        return false;
+      });
     }
+  
   }
-
-
-  function StartGame() {
-    Counter();
-    LoadGame();
-  }
-
-  $("#start").click(function () {
-    StartGame();
-  })
 
 });
