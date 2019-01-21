@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var path = require("path");
 var PORT = process.env.PORT || 3000;
 
 // Requiring our models for syncing
@@ -9,20 +10,18 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("assets"));
+console.log(path.join(__dirname, "/assets"));
+app.use(express.static(path.join(__dirname, "/assets")));
 
 // Routes
 // =============================================================
-var kindeReadyController = require("./controller/kindeReadyControl.js");
-    kindeReadyController(app);
-// var lettercontrol = require("./controller/letterandcontrol.js");
-//     lettercontrol(app);
-var shapescontrol = require("./controller/shapesandcontrol.js");
-    shapescontrol(app);
+require("./controller/kindeReadyControl.js")(app);
+
+require("./controller/shapesandcontrol.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force:true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
