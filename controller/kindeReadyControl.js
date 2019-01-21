@@ -340,36 +340,34 @@ module.exports = function(app) {
         }
     });
 
-    // change student info
-    app.post("/student/change/:id", function(req,res) {
-        db.Student.update({
-            firstName : req.body.firstName,
-            lastName : req.body.lastName,
-            age : req.body.age,
-            avatar : req.body.avatar
-        },{
-            id : req.params.id
+    // Update Student Info
+    app.post("/student/update/:id", function(req, res) {
+        db.Student.update(
+            req.body,
+        {
+            where: {
+                id: req.params.id
+            }
         }).then(function(result) {
-            res.end();
+            res.send("Student Updated");
         })
         .catch(function(err){
             res.status(500).json(err);
         });
     })
 
-    // delete a student
-    app.post("/student/delete/:id", function(req,res) {
+    // Delete a Student
+    app.post("/student/delete/:id", function(req, res) {
         db.Student.destroy({
-            where : {
-                id : req.params.id
+            where: {
+                id: req.params.id
             }
-        })
-        .then(function(result) {
-            res.end();
+        }).then(function(result) {
+            res.send("Student Deleted");
         });
     });
 
-    // log out
+    // Log Out
     app.get("/logout", function(req, res) {
         // clear cookie and session
         console.log("log out");
