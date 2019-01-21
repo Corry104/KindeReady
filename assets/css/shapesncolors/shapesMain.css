@@ -1,0 +1,168 @@
+
+* {
+    box-sizing: border-box;
+}
+
+#title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 10px;
+    height: 50px;
+    margin-bottom: 30px;
+
+}
+
+#sidebar {
+    border: 1px black;
+    border-style: solid dashed solid solid;
+    padding-top: 5px;
+}
+
+#avatar {
+    border-radius: 100px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+#sideTitle {
+    padding-top: 10px;
+    height: 50px;
+    width: 100%;
+    padding-bottom: 10px;
+
+}
+
+#progressBar {
+    color: black;
+    font-weight: bold;
+    width: 100%;
+}
+
+#circle {
+    margin: 40px;
+    width: 180px;
+    height: 180px;
+    background: blue;
+    -moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
+    border-radius: 160px;
+    float: left;
+}
+    
+
+#diamond {
+    padding: 20px;
+    width: 175px;
+    height: 175px;
+    background: #1eff00;
+/* Rotate */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    float: right;
+    margin:70px;
+}
+
+#trapezium {
+    border-bottom: 120px solid #ec3504;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    float: left;
+    margin: 30px;
+}
+
+#rectangle {
+    width: 250px;
+    height: 190px;
+    background: #fc5e5e;
+    margin: 50px;
+    float: right;
+}
+
+/* Child Name */
+h1 {
+    font-family: fantasy;
+    font-size: 2.5em;
+    text-align: center;
+    padding-top: 20%;
+}
+
+/* Activity Name */
+
+h2, h3, h4 {
+    font-family: fantasy;
+    font-size: 1.5em;
+}
+
+.shapes-holder {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+
+}
+
+
+
+/* Website to be responsive*/
+
+@media only screen and (min-width: 400px) and (max-width: 767px) {
+   
+    #avatar {
+        height: 100%;
+        width: 100%;
+    }
+
+    h2 {
+        margin:20px 0px 0px 0px;
+        font-size: 3em;
+    }
+
+    #title {
+        height: 10%;
+        width: 100%;
+        margin-bottom: 80px;
+    }
+    
+
+};
+  
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    
+    #avatar {
+        border: 1px solid black;
+        width: 50%;
+    }
+    
+
+    h2 {
+        margin:20px 0px 0px 0px;
+        font-size: 3em;
+        float: left;
+    }
+
+    #sideTitle {
+        width: 70%;
+        padding-bottom: 10px;
+        height: 90px;
+    }
+
+    #title {
+        height: 10%;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    #circle, #diamond, #trapezium #rectangle {
+        display: in-line;
+        
+    }
+
+
+
+}
+
+
