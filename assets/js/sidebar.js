@@ -25,8 +25,18 @@ $(document).ready(function() {
                     }
                 }
 
-                $("#SnCActCount").text(unit1Prog + " / 4");
-                unit1Prog = (unit1Prog * 25);
+                if (unit1Prog < 4) {
+                    $("#SnCActCount").text(unit1Prog + " / 4");
+                    $("#SnC").css("width", (unit1Prog * 25) + "%");
+                }
+                else {
+                    var star = $("<span>").addClass("fa fa-star").css("color", "gold");
+
+                    $("#SnCActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
+                    $("#SnCActCount").append(star);
+                    $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
+                }
+
                 sessionStorage.setItem('unit1Prog', unit1Prog);
 
             }).then(function() {
@@ -38,14 +48,20 @@ $(document).ready(function() {
                             unit2Prog++;
                         }
                     }
-            
-                    $("#letActCount").text(unit2Prog + " / 4");
-                    unit2Prog = unit2Prog * 25;
-                    sessionStorage.setItem('unit2Prog', unit2Prog);
 
-                }).then(function() {
-                    $("#SnC").css("width", unit1Prog + "%");
-                    $("#letRec").css("width", unit2Prog * 25 + "%");
+                    if (unit2Prog < 4) {
+                        $("#letActCount").text(unit2Prog + " / 4");
+                        $("#letRec").css({"width": (unit2Prog * 25) + "%"});
+                    }
+                    else {
+                        var star = $("<span>").addClass("fa fa-star").css("color", "gold");
+
+                        $("#letActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
+                        $("#letActCount").append(star);
+                        $("#letRec").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
+                    }
+                    
+                    sessionStorage.setItem('unit2Prog', unit2Prog);
                 });
             });
         }
