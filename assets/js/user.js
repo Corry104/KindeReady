@@ -17,7 +17,7 @@ $(document).ready(function () {
             var buttonc = $("<button>");
             buttonc.attr("data-id",id);
             buttonc.attr("data-toggle","modal");
-            buttonc.attr("data-target","#exampleModal");
+            buttonc.attr("data-target","#exampleModal1");
             buttonc.addClass("btn btn-sm btn-primary changeSt fa fa-pencil-square-o change-btn");
             
             // add delete button
@@ -165,19 +165,24 @@ $(document).ready(function () {
     });
 
     // change student info
-    $(".change-btn").on("click",function(event) {
-        console.log("Hi");
-        var id = $(this).data("id");
+    $("#eSubmit").on("click",function(event) {
+        console.log(this);
         var changeStudent = {
             firstName : $("#f1").val(),
             lastName : $("#f2").val(),
             age : $("#f3").val(),
             avatar : $(".avatar input:checked").data("src")
         }
-        $.post("/student/change/" + id,changeStudent ,function() {
+        $.post("/student/change/" + id , changeStudent ,function() {
             console.log("Student Info changed")
             location.reload();
-        })
+        }).fail(function(err){
+            console.log(err)
+            alert("Please answer following question..")
+        });
+        $("f1").empty();
+        $("f2").empty();
+        $("f3").empty();
     });
 
     $(".delete-btn").on("click", function(event) {

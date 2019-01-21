@@ -341,7 +341,7 @@ module.exports = function(app) {
     });
 
     // change student info
-    app.put("/student/change/:id", function(req,res) {
+    app.post("/student/change/:id", function(req,res) {
         db.Student.update({
             firstName : req.body.firstName,
             lastName : req.body.lastName,
@@ -358,7 +358,7 @@ module.exports = function(app) {
     })
 
     // delete a student
-    app.delete("/student/delete/:id", function(req,res) {
+    app.post("/student/delete/:id", function(req,res) {
         db.Student.destroy({
             where : {
                 id : req.params.id
