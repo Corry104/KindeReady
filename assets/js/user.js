@@ -8,7 +8,7 @@ $(document).ready(function () {
     // Welcome Greeting
     $("#loginUser").text(userName);
 
-    $.get("/student/create/" + user_id,function(result) {
+    $.get("/student/create/" + user_id, function(result) {
 
         for (var i = 0 ; i < result.length ; i++) {
 
@@ -17,24 +17,25 @@ $(document).ready(function () {
             var id = result[i].id;
             var firstName = result[i].firstName;
             var lastName = result[i].lastName;
-            // add change info button
+
+            // Add Change Info Button
             var buttonc = $("<button>");
-            buttonc.attr("data-id",id);
+            buttonc.attr("data-id", id);
             buttonc.attr("data-toggle","modal");
-            buttonc.attr("data-target","#exampleModal");
+            buttonc.attr("data-target","#exampleModal1");
             buttonc.addClass("btn btn-sm btn-primary changeSt fa fa-pencil-square-o change-btn");
             
-            // add delete button
+            // Add Delete Button
             var buttond = $("<button>");
-            buttond.attr("data-id",id);
-            buttond.addClass("btn btn-sm btn-danger fa fa-trash-o delete-btn");
+            buttond.attr("data-id", id);
+            buttond.addClass("btn btn-sm btn-danger fa fa-trash-o deleteSt");
 
             var buttons = $("<span>").append(buttonc, "  ", buttond).addClass("buttonSpan").css({"float": "right", "margin": "24px 10px 0px 0px"});
             buttons.hide();
 
             var studentText = $("<span>").html("  " + firstName + " " + lastName + "\xa0").css({"font-weight": "bold", "font-size": "20px", "display": "inline-block", "padding-left": "10px", "max-width": "260px", "vertical-align": "middle",  "white-space": "nowrap", "overflow": "hidden", "text-overflow": "ellipsis"});
 
-            // create avatar
+            // Create Avatar
             var studentAvatar = $("<img>").attr("src", result[i].avatar).css({"width": "75px", "border-right": "1px dotted black", "padding": "5px", "display": "inline-block"});
 
             var student = $("<li>").addClass("studentList").attr("data-id", id).css({"width": "90%", "border": "1px solid black", "border-radius": "25px"});
@@ -75,10 +76,10 @@ $(document).ready(function () {
 
                 // Show Student Information
                 $("#studentAvatar").attr("src", result.avatar);
-                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt change-btn' style='font-size: 16px'><span class='fa fa-pencil-square-o'></span> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger delete-btn' style='font-size: 16px'><span class='fa fa-trash-o'></span> Remove Student</button></p>");
+                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt change-btn' style='font-size: 16px' data-toggle='modal' data-target='#exampleModal1'><span class='fa fa-pencil-square-o'></span> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger delete-btn' style='font-size: 16px'><span class='fa fa-trash-o'></span> Remove Student</button></p>");
                 $(".studentProgress").css("display", "block");
 
-                // Animate Student Progress
+                // Update Student Progress
                 var unit1Prog = 0;
                 var unit2Prog = 0;
                     SnCProg = 0;
@@ -146,7 +147,7 @@ $(document).ready(function () {
         });
     });
 
-    // create new student
+    // Create New Student
     $("#sSubmit").on("click",function() {
         var newStudent = {
             firstName : $("#f1").val().trim(),
@@ -168,27 +169,37 @@ $(document).ready(function () {
         $("f3").empty();
     });
 
-    // change student info
-    $(".change-btn").on("click",function(event) {
-        console.log("Hi");
-        var id = $(this).data("id");
+    // Update Student Info
+    $("#eSubmit").on("click", function() {
+
+        var id = $(this).attr("data-id");
+        
         var changeStudent = {
-            firstName : $("#f1").val(),
-            lastName : $("#f2").val(),
-            age : $("#f3").val(),
-            avatar : $(".avatar input:checked").data("src")
+            firstName: $("#ef1").val(),
+            lastName: $("#ef2").val(),
+            age: $("#ef3").val(),
+            avatar: $(".avatar input:checked").data("src")
         }
-        $.post("/student/change/" + id,changeStudent ,function() {
-            console.log("Student Info changed")
+
+        $.post("/student/update/" + id, changeStudent, function(response) {
+            console.log(response);
             location.reload();
-        })
+        }).fail(function(err){
+            console.log(err)
+            alert("Please answer following question..")
+        });
+
+        $("ef1").empty();
+        $("ef2").empty();
+        $("ef3").empty();
     });
 
-    $(".delete-btn").on("click", function(event) {
+    $(document).on("click", ".deleteSt", function(event) {
 
-        var id = $(this).data("id");
-        $.post("/student/delete/" + id ,function() {
-            console.log("Delete a student")
+        var id = $(this).attr("data-id");
+
+        $.post("/student/delete/" + id, function(response) {
+            console.log(response);
             location.reload();
         });
     });
