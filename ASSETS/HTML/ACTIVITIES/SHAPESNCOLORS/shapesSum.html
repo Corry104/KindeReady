@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="../../../JS/ACTIVITIES/SHAPESNCOLORS/shapesAct3.js"></script>
+    <script src="../../../js/activities/shapesncolors/shapesSum.js"></script>
+
+</head>
+
+<body>
+
+    <style>
+        #pic0, #pic1, #pic2, #pic3{
+            box-shadow: 0 8px 6px -6px #888888;
+            transition: box-shadow 0.085s;
+        }
+
+        #brush0, #brush1, #brush2, #brush3:hover {
+            cursor: pointer;
+        }
+
+    </style>
+
+    <div class="container" style="padding-top: 5px">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+
+                    <!-- SideBar -->
+                    <div class="col-lg-2" style="border: 1px black; border-style: solid dashed solid solid; padding-top: 5px; background: url('https://www.toptal.com/designers/subtlepatterns/patterns/crossword.png')">
+
+                        <!-- Sidebar Content -->
+                        <!-- Avatar -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img src="https://image.flaticon.com/icons/png/512/163/163811.png" style="border-radius: 100px; border: 1px solid black; width: 100%; background-color: #ffffff; box-shadow: inset 0 0 8px #333333" />
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <h5>Little Suzie</h5>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Student Awards/Badges -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- INSERT HB LOOP HERE FOR EACH COMPLETE ACTIVITY ~~ or not... I think we'll have to hard code each unit and have JS update the status -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Shapes & Colors:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Letter Recognition:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Number Recognition:</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 100%"><span style="color: black; font-weight: bold">4 / 4</span></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer style="position: absolute; bottom: 0">
+                            <hr>
+                            <div class="col-lg-12 text-center">
+                                <button id="changeStudent" class="btn btn-sm btn-primary">Change Student</button>
+                            </div>
+                            <br>
+
+                            <div class="col-lg-12 text-center">
+                                <button id="logout" class="btn btn-sm btn-danger">Logout</button>
+                            </div>
+                            <br>
+                        </footer>
+
+                    </div>
+
+                    <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
+
+                        <div class="row">
+
+                            <!-- Title -->
+                            <div class="col-lg-6">
+                                <img src="../../../images/shapes_colors/scTitle.png" style="padding-top: 10px; height: 50px" />
+                            </div>
+                            <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
+                                <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
+                                    <div class="card-header text-center"><em>Summary</em></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <hr>
+                            </div>
+
+                            <!-- Activity Description -->
+                            <div class="col-lg-12">
+                                <em><strong>Activity Description:</strong>
+                                    <ul type="square">
+                                        <li>Lesson Type: <strong>SD</strong> - Final Activity - </li>
+                                        <li>Estimated Time: 2 - 3 minutes</li>
+                                        <li>Instructions: <strong>Final Activity:</strong>This is it... you are almost
+                                            done, let's put all this knowledge you have learned to test!
+                                            Now let's see if you can recognize colors and shapes out of ordinary
+                                            objects or ordinary animals.</li>
+                                            <li><b>You will have 1 minute and 30 seconds to match the colors from LEFT to RIGHT! Good Luck!</b></li>
+                                    </ul>
+                                    <strong>Let's Start:</strong>
+                                    <div class="counter"></div>
+                                </em>
+                                <hr>
+                            </div>
+
+                            <!-- Activity -->
+                            <div class="col-lg-12">
+                                <div class="row">
+
+                                    <!-- Quiz Card -->
+                                    <div class="col-lg-12">
+                                        <div class="card text-center">
+                                            <div class="card-header" style="background-color: white;">
+                                                <!-- Random firstSequence -->
+                                                <div class="row">
+                                                    <div class="col-sm-3" id="pic0" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3" id="pic1" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3" id="pic2" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3" id="pic3" style="height: 120px; width: 100px;"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body" style="height: 200px">
+                                                <div class="row">
+
+                                                    <!-- Start Activity Button -->
+                                                    <div id="Start" class="col-lg-12" style="display: block">
+                                                        <button id="start" class="btn btn-large btn-outline-success"
+                                                            style="width:50%; position: relative; top: 70px">
+                                                            <h1><strong>START</strong></h1>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-muted"style="background-color: white;">
+                                                <div class="row">
+                                                        <div class="col-sm-3" id="brush0" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3" id="brush1" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3" id="brush2" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3" id="brush3" style="height: 140px; width: 100px;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Back & Next Buttons -->
+                            <div class="col-lg-12" style="padding-bottom: 10px; padding-top: 10px">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-2 text-left">
+                                        <a href="shapesAct3.html"><button id="previousAct" class="btn btn-outline-dark btn-sm">&#8592;
+                                        Previous</button></a>
+                                    </div>
+
+                                    <div class="col-lg-8"></div>
+
+                                    <div class="col-lg-2 text-right">
+                                        <a href="letterMain.html"><button id="nextAct" class="btn btn-outline-dark btn-sm"
+                                                style="display: none"> Next &#8594;</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="correctModal" tabindex="-1" role="dialog" aria-labelledby="correctModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="correctModalTitle"><strong>Congratulations!!!<br> You did it!!</strong></h2>
+                    <button type="button" class="close closeNext" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <img src="../../../images/shapes_colors/correct-lg.png" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="nextUnit" class="btn btn-success closeNext">Next Unit &#8594;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="incorrectModal" tabindex="-1" role="dialog" aria-labelledby="incorrectModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="incorrectModalTitle"><strong>Whoops! Try Again.</strong></h4>
+                    <button type="button" class="close closeRetry" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="tryAgain" class="btn btn-danger closeRetry">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
