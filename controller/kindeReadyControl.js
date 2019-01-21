@@ -210,6 +210,136 @@ module.exports = function(app) {
         });
     });
 
+    // Update Unit Activity values
+    app.put("/activity/:id", function(req, res) {
+
+        var act = req.body.act;
+
+        if (parseInt(req.body.unit) === 1) {
+
+            switch (act) {
+
+                case "act1":
+                    db.Unit1.update({
+                        act1: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+
+                case "act2":
+                    db.Unit1.update({
+                        act2: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+
+                case "act3":
+                    db.Unit1.update({
+                        act3: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+
+                case "summary":
+                    db.Unit1.update({
+                        summary: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+            }
+        }
+
+        else if (parseInt(req.body.unit) === 2) {
+
+            switch (act) {
+
+                case "act1":
+                    db.Unit2.update({
+                        act1: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+
+                case "act2":
+                    db.Unit2.update({
+                        act2: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+
+                case "act3":
+                    db.Unit2.update({
+                        act3: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+
+                case "summary":
+                    db.Unit2.update({
+                        summary: true
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function() {
+                        res.send("Activity Completed");
+                    }).catch(function(err) {
+                        res.status(500).json(err);
+                    });
+                break;
+            }
+        }
+    });
+
     // change student info
     app.put("/student/change/:id", function(req,res) {
         db.Student.update({
