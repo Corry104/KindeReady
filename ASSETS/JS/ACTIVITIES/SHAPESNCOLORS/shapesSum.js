@@ -13,7 +13,7 @@ $(function () {
   var used_brushes = ["redBrush", "greenBrush", "blueBrush", "yellowBrush"];
   var finalArray = [];
 
-  var Time = 10;
+  var Time = 90;
   var contino = 0;
 
   function Randomize(Subject) {
