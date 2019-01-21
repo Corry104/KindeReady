@@ -52,14 +52,15 @@ $(document).ready(function () {
         }
 
         $(".studentList").on("mouseover", function() {
-            $(this).css({"cursor": "pointer", "background-color": "lemonchiffon"});
+            $(this).css({"cursor": "pointer", "box-shadow": "0 8px 6px -6px black"});
             $(".buttonSpan", this).show();
         });
 
         $(".studentList").on("click", function() {
 
             $(".studentList").not(this).each(function() {
-                $(this).css("background-color", "white");
+                $(this).css({"cursor": "pointer", "background-color": "white"});
+                $(this).css("box-shadow", "none");
             });
 
             $(".studentProgress").css("display", "none");
@@ -143,7 +144,7 @@ $(document).ready(function () {
 
         $(".studentList").on("mouseleave", function() {
             $(".buttonSpan", this).hide();
-            $(this).css("background-color", "white");
+            $(this).css("box-shadow", "none");
         });
     });
 
