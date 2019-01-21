@@ -67,11 +67,11 @@ $(document).ready(function () {
             $.get("/currentStudent/" + id, function(result) {
 
                 // Add Clicked Student Info to sessionStorage
-                sessionStorage.setItem('studentId', JSON.stringify(id));
+                sessionStorage.setItem('studentId', id);
 
                 // Show Student Information
                 $("#studentAvatar").attr("src", result.avatar);
-                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt fa fa-pencil-square-o change-btn' style='font-size: 16px'> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger fa fa-trash-o delete-btn' style='font-size: 16px'> Remove Student</button></p>");
+                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt change-btn' style='font-size: 16px'><span class='fa fa-pencil-square-o'></span> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger delete-btn' style='font-size: 16px'><span class='fa fa-trash-o'></span> Remove Student</button></p>");
                 $(".studentProgress").css("display", "block");
 
                 // Animate Student Progress
@@ -110,35 +110,10 @@ $(document).ready(function () {
                             sessionStorage.setItem('unit2Prog', JSON.stringify(unit2Prog));
 
                         }).then(function() {
-                            animateProgress(unit1Prog, unit2Prog);
+                            $("#SnC").css("width", unit1Prog + "%");
+                            $("#letRec").css("width", unit2Prog + "%");
                         });
                     });
-                }
-
-                function animateProgress(unit1, unit2) {
-                    
-                    console.log(unit1, unit2);
-
-                    var SnCprogressBar = $("#SnC");
-                    var letRecProgressBar = $("#letRec");
-
-                    if (unit1 > 0 || unit2 > 0) {
-                        if (SnCProg < unit1) {
-                            SnCProg++;
-                            SnCprogressBar.css("width", SnCProg + "%");
-                            setTimeout(animateProgress(unit1, unit2), 15);
-                        }
-
-                        if (letRecProg < unit2) {
-                            letRecProg++;
-                            letRecProgressBar.css("width", letRecProg + "%");
-                            setTimeout(animateProgress(unit1, unit2), 15);
-                        }
-                    }
-                    else {
-                        SnCprogressBar.css("width", unit1 + "%");
-                        letRecProgressBar.css("width", unit2 + "%");
-                    }
                 }
 
                 activityProg(id);
@@ -153,9 +128,6 @@ $(document).ready(function () {
 
     // create new student
     $("#sSubmit").on("click",function() {
-        // var userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
-        // var user_id = userLogin.id
-        //     console.log(userLogin,user_id);
         var newStudent = {
             firstName : $("#f1").val().trim(),
             lastName : $("#f2").val().trim(),
@@ -203,6 +175,10 @@ $(document).ready(function () {
 
     $("#logout").on("click", function() {
         sessionStorage.clear();
+    });
+
+    $(".studentProgress a").on("click", function() {
+        sessionStorage.setItem("currentUnit", $(this).attr("data-unit"));
     });
 });
 

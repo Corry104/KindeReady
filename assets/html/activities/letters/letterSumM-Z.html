@@ -412,12 +412,12 @@ width: 60%;
                         <footer>
                             <hr>
                             <div class="col-lg-12 text-center">
-                                <a href="/change" class="btn btn-sm btn-primary">Change Student</a>
+                                <a href="/change"><button id="change" class="btn btn-sm btn-primary clearSession">Change Student</button></a>
                             </div>
                             <br>
 
                             <div class="col-lg-12 text-center">
-                                <a href="/logout" class="btn btn-sm btn-danger">Logout</a>
+                                <a href="/logout""><button id="logout" class="btn btn-sm btn-danger clearSession">Logout</button></a>
                             </div>
                             <br>
                         </footer>
@@ -496,7 +496,7 @@ width: 60%;
                                 <div class="col-lg-8"></div>
 
                                 <div class="col-lg-2 text-right">
-                                    <a href="/letter/main"><button id="nextAct" class="btn btn-outline-dark btn-sm">Next &#8594;</button></a>
+                                    <a href="/letter/main"><button id="nextAct" data-act="summary" class="btn btn-outline-success btn-sm"><span class="fa fa-check-square-o"></span> Finish</button></a>
                                 </div>
                             </div>
                         </div>
