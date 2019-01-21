@@ -173,7 +173,9 @@ $(document).ready(function () {
     // Update Student Info
     $("#eSubmit").on("click", function() {
 
-        var id = $(this).attr("data-id");
+        var id = sessionStorage.getItem("studentId");
+
+        console.log(id);
         
         var changeStudent = {
             firstName: $("#ef1").val(),
