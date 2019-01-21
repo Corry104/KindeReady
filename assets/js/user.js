@@ -2,7 +2,11 @@ $(document).ready(function () {
 
     checkNumStudents();
     var userLogin = JSON.parse(sessionStorage.getItem("userLogin"));
-    var user_id = userLogin.id
+    var user_id = userLogin.id;
+    var userName = userLogin.firstName;
+
+    // Welcome Greeting
+    $("#loginUser").text(userName);
 
     $.get("/student/create/" + user_id,function(result) {
 
@@ -202,6 +206,10 @@ var students= [];
 var iProg = 0;
 
 function checkNumStudents() {
+
+    if ($("#currentStudent li").length > 0) {
+        $("#firstStudentAdd").hide();
+    }
 
     if ($("#currentStudent li").length > 5) {
         var maxHeight = $("#currentStudent li").height() * 6;

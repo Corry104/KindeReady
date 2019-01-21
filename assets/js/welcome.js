@@ -16,8 +16,8 @@ $(document).ready(function () {
             // on success, run this callback
             .then(function (result) {
                 if (result) {
-                    alert("Adding new user...");
-                    location.reload();
+                    sessionStorage.setItem("userLogin", JSON.stringify(result));
+                    window.location.href = "/student"
                 } 
             }).fail(function(err){
                 alert(err.responseText);
