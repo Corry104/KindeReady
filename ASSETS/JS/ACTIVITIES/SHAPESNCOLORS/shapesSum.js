@@ -101,23 +101,26 @@ $(function () {
       brushID.append(eval(brushName));
 
       secondSequence.push(brushName);
-
       x++;
+
     });
+
     $(redBrush).click(function choose() {
       buildArray("red");
     });
+
     $(greenBrush).click(function choose() {
       buildArray("green");
-
     });
+
     $(yellowBrush).click(function choose() {
       buildArray("yellow");
-
     });
+
     $(blueBrush).click(function choose() {
       buildArray("blue");
     });
+
   }
 
   function buildArray(color) {
@@ -134,10 +137,10 @@ $(function () {
 
   function compare(finalArray) {
     if (finalArray[0] == all_images[0] && finalArray[1] == all_images[1] && finalArray[2] == all_images[2] && finalArray[3] == all_images[3]) {
-      alert("bravo stronzo!");
+      $("#correctModal").modal("show");
       location.reload();
     } else {
-      alert("sei un daltonico di merda!!!.... frocetto");
+      $("#incorrectModal").modal("show");
       location.reload();
     }
   }
