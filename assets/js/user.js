@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
     checkNumStudents();
-    var userLogins = JSON.parse(localStorage.getItem("userLogins"));
-    console.log(userLogins);
-    var user_id = userLogins.id;
-    var userName = userLogins.firstName;
+    var userLogin = JSON.parse(localStorage.getItem("userLogin"));
+    console.log(userLogin);
+    var user_id = userLogin.id;
+    var userName = userLogin.firstName;
 
     // Welcome Greeting
     $("#loginUser").text(userName);

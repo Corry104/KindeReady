@@ -159,9 +159,9 @@ width: 900px;
                         </div>
                         <img src="../../../images/banner.png" id="banner" alt="alphabet banner">
                         <hr>
-                        <input id="guess" class="input-group-sm" type="text">
-                        <input type="button" class="btn btn-sm btn-dark" value="submit" onClick="guessOne()" />
-                        <input type="button" class="btn btn-sm btn-dark" value="reset" onClick="quit()" />
+                        <input id="guess" class="input-group-sm" type="text" maxlength="1">
+                        <input id="letterSubmit" type="button" class="btn btn-sm btn-dark" value="submit">
+                        <input id="letterReset" type="button" class="btn btn-sm btn-dark" value="reset">
                         <p id="message">&nbsp;</p>
                         <p>
                             <font size="+3"><span id="answer">game is loading..</span></font>
@@ -177,7 +177,7 @@ width: 900px;
                                 <div class="col-lg-8"></div>
 
                                 <div class="col-lg-2 text-right">
-                                    <a href="/letter/sum1"><button id="nextAct" data-act="act3" class="btn btn-outline-dark btn-sm">Next &#8594;</button></a>
+                                    <a href="/letter/sum1"><button id="nextAct" data-act="act3" class="btn btn-outline-dark btn-sm" style="display: none">Next &#8594;</button></a>
                                 </div>
                             </div>
                         </div>

@@ -188,6 +188,8 @@ function congratulations() {
         clearInterval(interval);
         finalTime = timer.innerHTML;
 
+        $("#nextAct").show();
+
         // modal
         modal.classList.add("show");
 
