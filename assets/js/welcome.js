@@ -61,7 +61,7 @@ $(document).ready(function () {
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-            localStorage.setItem("userLogins", JSON.stringify(data));
+            localStorage.setItem("userLogin", JSON.stringify(data));
             window.location.href = "/student"
           } 
         })
