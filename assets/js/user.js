@@ -243,6 +243,7 @@ $(document).ready(function () {
 
     $("#logout").on("click", function() {
         sessionStorage.clear();
+        localStorage.clear();
     });
 
     $(".studentProgress a").on("click", function() {
