@@ -60,9 +60,14 @@ $(document).ready(function() {
       }
       if (Countdown == 0) {
         $("#gameOver").modal("show");
-        $('#tryAgain').click(function() {
-        location.reload();
-        return false;
+        $('.tryAgain').click(function() {
+          clearInterval(count);
+          Time = 90;
+          contino = 0;
+          $("#gameOver").modal("hide");
+          $(".brushesDiv").empty();
+          StartGame();
+          return false;
         });
         
       }
@@ -159,7 +164,7 @@ $(document).ready(function() {
     } else {
       $("#incorrectModal").modal("show");
       clearInterval(count);
-      $('#tryAgain').click(function() {
+      $('.tryAgain').click(function() {
         clearInterval(count);
         Time = 90;
         contino = 0;
