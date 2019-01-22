@@ -25,7 +25,8 @@ $(document).ready(function () {
             // on success, run this callback
             .then(function (result) {
                 if (result) {
-                    sessionStorage.setItem("userLogin", JSON.stringify(result));
+                    console.log(result);
+                    localStorage.setItem("userLogin", JSON.stringify(result));
                     window.location.href = "/student"
                 } 
             }).fail(function(err){
@@ -60,8 +61,7 @@ $(document).ready(function () {
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-            console.log(data);
-            sessionStorage.setItem("userLogin", JSON.stringify(data));
+            sessionStorage.setItem("userLogins", JSON.stringify(data));
             window.location.href = "/student"
           } 
         })
