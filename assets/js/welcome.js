@@ -22,11 +22,13 @@ $(document).ready(function () {
                     window.location.href = "/student"
                 } 
             }).fail(function(err){
+                console.log(err.name);
                 alert(err.responseText);
                 location.reload();
             });
         } else {
             alert("Password doesn't match, please re-enter password..")
+            location.reload();
         }
 
         // empty each input box by replacing the value with an empty string
