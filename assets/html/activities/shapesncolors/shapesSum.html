@@ -18,10 +18,17 @@
     <style>
         #pic0, #pic1, #pic2, #pic3{
             box-shadow: 0 8px 6px -6px #888888;
+        }
+        .brush {
+            box-shadow: 0 8px 6px -6px #888888;
             transition: box-shadow 0.085s;
         }
-        #brush0, #brush1, #brush2, #brush3:hover {
+        .brush:hover {
             cursor: pointer;
+        }
+        .brush:active {
+            cursor: pointer;
+            box-shadow: none;
         }
     </style>
      <div class="container" style="padding-top: 5px">
@@ -94,7 +101,7 @@
 
                             <!-- Title -->
                             <div class="col-lg-6">
-                                <img src="../../../IMAGES/shapes_colors/scTitle.png" style="padding-top: 10px; height: 50px"/>
+                                <img src="../../../images/shapes_colors/scTitle.png" style="padding-top: 10px; height: 50px"/>
                             </div>
                             <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
                                 <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
@@ -116,7 +123,7 @@
                                             <li><b>You will have 1 minute and 30 seconds to match the colors from LEFT to RIGHT! Good Luck!</b></li>
                                     </ul>
                                     <br>
-                                    <strong>Press <button class="btn btn-sm btn-success" style="opacity: 1" disabled>START</button> when you're ready!</strong>
+                                    <strong id="whenReady">Press <button class="btn btn-sm btn-success" style="opacity: 1" disabled>START</button> when you're ready!</strong>
                                 </em>
                                 <hr>
                             </div>
@@ -129,10 +136,10 @@
                                             <div class="card-header" style="background-color: white;">
                                                 <!-- Random firstSequence -->
                                                 <div class="row">
-                                                    <div class="col-sm-3" id="pic0" style="height: 120px; width: 100px;"></div>
-                                                    <div class="col-sm-3" id="pic1" style="height: 120px; width: 100px;"></div>
-                                                    <div class="col-sm-3" id="pic2" style="height: 120px; width: 100px;"></div>
-                                                    <div class="col-sm-3" id="pic3" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3 imagesDiv" id="pic0" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3 imagesDiv" id="pic1" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3 imagesDiv" id="pic2" style="height: 120px; width: 100px;"></div>
+                                                    <div class="col-sm-3 imagesDiv" id="pic3" style="height: 120px; width: 100px;"></div>
                                                 </div>
                                             </div>
                                             <div class="card-body" style="height: 200px">
@@ -150,10 +157,10 @@
                                             </div>
                                             <div class="card-footer text-muted"style="background-color: white;">
                                                 <div class="row">
-                                                        <div class="col-sm-3" id="brush0" style="height: 140px; width: 100px;"></div>
-                                                        <div class="col-sm-3" id="brush1" style="height: 140px; width: 100px;"></div>
-                                                        <div class="col-sm-3" id="brush2" style="height: 140px; width: 100px;"></div>
-                                                        <div class="col-sm-3" id="brush3" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3 brushesDiv" id="brush0" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3 brushesDiv" id="brush1" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3 brushesDiv" id="brush2" style="height: 140px; width: 100px;"></div>
+                                                        <div class="col-sm-3 brushesDiv" id="brush3" style="height: 140px; width: 100px;"></div>
                                                     </div>
                                                 </div>
                                             </div>

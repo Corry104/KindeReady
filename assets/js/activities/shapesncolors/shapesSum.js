@@ -1,17 +1,18 @@
+var all_images = ["red", "green", "yellow", "blue"];
+var used_brushes = ["redBrush", "greenBrush", "blueBrush", "yellowBrush"];
+var finalArray;
+var firstSequence;
+
 $(document).ready(function() {
   var red = $("<img>").attr("src", "/images/shapes_colors/red_apple.jpeg");
   var green = $("<img>").attr("src", "/images/shapes_colors/green_apple.jpeg");
   var yellow = $("<img>").attr("src", "/images/shapes_colors/yellow_eleph.png");
   var blue = $("<img>").attr("src", "/images/shapes_colors/blue_eleph.png");
 
-  var redBrush = $("<img>").attr("src", "/images/shapes_colors/paint_red.png");
-  var greenBrush = $("<img>").attr("src", "/images/shapes_colors/paint_green.png");
-  var blueBrush = $("<img>").attr("src", "/images/shapes_colors/paint_blue.png");
-  var yellowBrush = $("<img>").attr("src", "/images/shapes_colors/paint_yellow.png");
-
-  var all_images = ["red", "green", "yellow", "blue"];
-  var used_brushes = ["redBrush", "greenBrush", "blueBrush", "yellowBrush"];
-  var finalArray = [];
+  var redBrush = $("<img>").attr("src", "/images/shapes_colors/paint_red.png").addClass("img-thumbnail brush");
+  var greenBrush = $("<img>").attr("src", "/images/shapes_colors/paint_green.png").addClass("img-thumbnail brush");
+  var blueBrush = $("<img>").attr("src", "/images/shapes_colors/paint_blue.png").addClass("img-thumbnail brush");
+  var yellowBrush = $("<img>").attr("src", "/images/shapes_colors/paint_yellow.png").addClass("img-thumbnail brush");
 
   var Time = 90;
   var contino = 0;
@@ -33,9 +34,12 @@ $(document).ready(function() {
   $("#start").click(function () {
     StartGame();
     $(this).hide();
+    $("#whenReady").css("visibility", "hidden");
   })
 
   function StartGame() {
+    finalArray = [];
+    firstSequence = [];
     Counter();
     LoadGame();
   }
@@ -66,27 +70,27 @@ $(document).ready(function() {
   }
 
   function CreateObjTop() {
-    Randomize(all_images);
 
-
-    $(this).delay(500).queue(function () {
-      $(this).hide();
+    all_images = Randomize(all_images);
 
       // set 4 random colors into random colors array
       var i = 0;
-      var firstSequence = [];
+      firstSequence = [];
       $.each(all_images, function (index, imgName) {
         var imgID = $("#pic" + i);
         imgID.append(eval(imgName));
         firstSequence.push(imgName);
         i++;
       });
-    });
-
   }
 
   function CreateObjBottom() {
     Randomize(used_brushes);
+
+    var redBrush = $("<img>").attr("src", "/images/shapes_colors/paint_red.png").addClass("img-thumbnail brush");
+    var greenBrush = $("<img>").attr("src", "/images/shapes_colors/paint_green.png").addClass("img-thumbnail brush");
+    var blueBrush = $("<img>").attr("src", "/images/shapes_colors/paint_blue.png").addClass("img-thumbnail brush");
+    var yellowBrush = $("<img>").attr("src", "/images/shapes_colors/paint_yellow.png").addClass("img-thumbnail brush");
 
     // set 4 random colors into random colors array
     var x = 0;
@@ -101,31 +105,39 @@ $(document).ready(function() {
     });
 
     $(redBrush).click(function choose() {
+      $(this).css({"box-shadow": "none", "background-color": "lightgrey", "opacity": "0.5"}).removeClass("brush");
       buildArray("red");
     });
 
     $(greenBrush).click(function choose() {
+      $(this).css({"box-shadow": "none", "background-color": "lightgrey", "opacity": "0.5"}).removeClass("brush");
       buildArray("green");
     });
 
     $(yellowBrush).click(function choose() {
+      $(this).css({"box-shadow": "none", "background-color": "lightgrey", "opacity": "0.5"}).removeClass("brush");
       buildArray("yellow");
     });
 
     $(blueBrush).click(function choose() {
+      $(this).css({"box-shadow": "none", "background-color": "lightgrey", "opacity": "0.5"}).removeClass("brush");
       buildArray("blue");
     });
   }
 
   function buildArray(color) {
     console.log(color);
-    finalArray.push(color);
-    console.log(finalArray);
-    contino++;
-    console.log(contino);
+    if (finalArray.includes(color)) {
+    }
+    else {
+      console.log(finalArray);
+      finalArray.push(color);
+      contino++;
+      console.log(contino);
+    }
+    
     if (contino == 4) {
       compare(finalArray);
-
     }
   }
 
@@ -135,13 +147,13 @@ $(document).ready(function() {
       clearInterval(count);
       $("#nextAct").show();
       $('#playAgain').click(function() {
+        clearInterval(count);
         Time = 90;
+        contino = 0;
         $("#correctModal").modal("hide");
+        $(".brushesDiv").empty();
+        // $(".imagesDiv").empty();
         StartGame();
-        return false;
-      });
-      $('#nextUnit').click(function() {
-        window.location.href = "/html/activities/letters/letterMain.html";
         return false;
       });
 
@@ -149,8 +161,12 @@ $(document).ready(function() {
       $("#incorrectModal").modal("show");
       clearInterval(count);
       $('#tryAgain').click(function() {
+        clearInterval(count);
         Time = 90;
+        contino = 0;
         $("#incorrectModal").modal("hide");
+        $(".brushesDiv").empty();
+        // $(".imagesDiv").empty();
         StartGame();
         return false;
       });
