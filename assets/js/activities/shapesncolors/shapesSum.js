@@ -152,7 +152,6 @@ $(document).ready(function() {
         contino = 0;
         $("#correctModal").modal("hide");
         $(".brushesDiv").empty();
-        // $(".imagesDiv").empty();
         StartGame();
         return false;
       });
@@ -166,7 +165,6 @@ $(document).ready(function() {
         contino = 0;
         $("#incorrectModal").modal("hide");
         $(".brushesDiv").empty();
-        // $(".imagesDiv").empty();
         StartGame();
         return false;
       });

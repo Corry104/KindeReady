@@ -17,6 +17,14 @@
 </head>
 
 <body>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+
+        html, body {
+            font-family: "Gloria Hallelujah", cursive;
+        }
+        
+    </style>
 
     <div class="container" style="padding-top: 5px">
         <div class="row">
@@ -29,7 +37,7 @@
                         <!-- Avatar -->
                         <div class="row">
                             <div class="col-lg-12">
-                                <img id="studentAvatar" src="" style="border-radius: 100px; border: 1px solid black; width: 100%; background-color: #ffffff; box-shadow: inset 0 0 8px #333333"/>
+                                <img id="studentAvatar" src="" style="border-radius: 100px; border: 1px solid black; width: 100%; background-color: #ffffff; box-shadow: inset 0 0 8px #333333" />
                                 <hr>
                             </div>
                         </div>
@@ -46,9 +54,14 @@
                                 <!-- Student Progress -->
                                 <div class="row">
                                     <div class="col-lg-12 studentProgress">
-                                        <a href="/shapes/main" data-unit="1"><h6 style="color: black">Shapes & Colors:</h6></a>
+                                        <a href="/shapes/main" data-unit="1">
+                                            <h6 style="color: black">Shapes & Colors:</h6>
+                                        </a>
                                         <div class="progress">
-                                            <div id="SnC" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; transition: width 1s; transition-timing-function: ease"><span id="SnCActCount" style="color: white; font-weight: bold"></span></div>
+                                            <div id="SnC" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 0%; transition: width 1s; transition-timing-function: ease"><span
+                                                    id="SnCActCount" style="color: white; font-weight: bold"></span></div>
                                         </div>
                                         <br>
                                     </div>
@@ -56,9 +69,14 @@
 
                                 <div class="row">
                                     <div class="col-lg-12 studentProgress">
-                                        <a href="/letter/main" data-unit="2"><h6 style="color: black">Letter Recognition:</h6></a>
+                                        <a href="/letter/main" data-unit="2">
+                                            <h6 style="color: black">Letter Recognition:</h6>
+                                        </a>
                                         <div class="progress">
-                                            <div id="letRec" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; transition: width 1s; transition-timing-function: ease"><span id="letActCount" style="color: white; font-weight: bold"></span></div>
+                                            <div id="letRec" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: 0%; transition: width 1s; transition-timing-function: ease"><span
+                                                    id="letActCount" style="color: white; font-weight: bold"></span></div>
                                         </div>
                                         <br>
                                     </div>
@@ -69,12 +87,13 @@
                         <footer>
                             <hr>
                             <div class="col-lg-12 text-center">
-                                <a href="/change"><button id="change" class="btn btn-sm btn-primary clearSession">Change Student</button></a>
+                                <a href="/change"><button id="change" class="btn btn-sm btn-primary clearSession">Change
+                                        Student</button></a>
                             </div>
                             <br>
 
                             <div class="col-lg-12 text-center">
-                                <a href="/logout""><button id="logout" class="btn btn-sm btn-danger clearSession">Logout</button></a>
+                                <a href="/logout""><button id=" logout" class="btn btn-sm btn-danger clearSession">Logout</button></a>
                             </div>
                             <br>
                         </footer>
@@ -84,34 +103,34 @@
 
                         <a href="/shapes/act1">
                             <div class="container" id="act1" class="circle">
-                            <div class="row">
-                                <p>Activity 1</p>
+                                <div class="row">
+                                    <p>Activity 1</p>
+                                </div>
                             </div>
-                            </div>
-                        </a>     
+                        </a>
 
                         <a href="/shapes/act2">
-                        <div class="container" id="act2" class="oval">
-                            <div class="row">
-                                <p>Activity 2</p>
+                            <div class="container" id="act2" class="oval">
+                                <div class="row">
+                                    <p>Activity 2</p>
+                                </div>
                             </div>
-                        </div>
                         </a>
 
                         <a href="/shapes/act3">
-                        <div class="container" id="act3">
-                            <div class="row">
-                                <p>Activity 3</p>
+                            <div class="container" id="act3">
+                                <div class="row">
+                                    <p>Activity 3</p>
+                                </div>
                             </div>
-                        </div>
                         </a>
 
                         <a href="/shapes/sum">
-                        <div class="container" id="summary">
-                            <div class="row">
-                                <p>Summary</p>
+                            <div class="container" id="summary">
+                                <div class="row">
+                                    <p>Summary</p>
+                                </div>
                             </div>
-                        </div>
                         </a>
                     </div>
                 </div>

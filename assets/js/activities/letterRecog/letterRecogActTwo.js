@@ -1,3 +1,5 @@
+var count = 0;
+
 
 $(document).ready(function () {
 
@@ -30,7 +32,14 @@ $(document).ready(function () {
 
         $("#display").append(letterTile);
 
-    });
+        count++;
+
+        if (count > 28) {
+            $("#display").empty();
+            count = 0;
+        }
+
+    }); 
 
     // "on-click" event attached to the "#clear" button id.
     $("#clear").on("click", function () {
