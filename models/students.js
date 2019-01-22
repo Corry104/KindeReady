@@ -27,6 +27,10 @@ module.exports = function(sequelize, DataTypes) {
       avatar : {
         type : DataTypes.STRING,
         allowNull : true
+      },
+      complete : {
+        type : DataTypes.BOOLEAN,
+        defaultValue : false
       }
     },{
         timestamps : false
