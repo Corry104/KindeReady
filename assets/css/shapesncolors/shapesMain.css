@@ -4,8 +4,8 @@
     padding-top: 5px; 
     border-style: solid; 
     margin: 5px;
-    width: 48%;
-    height: 42%; 
+    width: 442px;
+    height: 234px; 
     float: left;
     border-color: black;
     border-radius: 10%;
@@ -27,26 +27,26 @@ h1 {
 }
 
 #act1{
-    background: url("/images/shapes1.jpg") no-repeat;
+    background: url("../../images/shapes_colors/shapes_act1.png") no-repeat;
     background-size: 320px 200px;
     background-position: center bottom;
 }
 
 #act2 {
-    background: url("/images/shapes2.jpg") no-repeat;
-    background-size: 300px 180px;
+    background: url("../../images/shapes_colors/shapes_act2.png") no-repeat;
+    background-size: 442px 215px;
     background-position: center bottom;
 }
 
 #act3{
-    background: url("/images/colors1.png") no-repeat;
+    background: url("../../images/shapes_colors/shapes_act3.png") no-repeat;
     background-size: 400px 180px;
     background-position: center bottom;
 
 }
 
 #summary {
-    background: url("/images/colors2.jpg") no-repeat;
+    background: url("../../images/shapes_colors/shapes_summary.jpg") no-repeat;
     background-size: 440px 200px;
     background-position: center bottom;
 }
