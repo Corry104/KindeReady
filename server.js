@@ -32,7 +32,7 @@ var shapescontrol = require("./controller/shapesandcontrol.js");
 // =============================================================
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    console.log("Server listening on: http://localhost:" + PORT);
   });
 });
 
