@@ -34,14 +34,20 @@ $(document).ready(function() {
 
                     $("#SnCActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
                     $("#SnCActCount").append(star);
-                    $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
+                    $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit1Prog * 25) + "%");
+
+                    $.post("/student/update/" + id, {unit1Complete: true}, function(result) {
+                        console.log(result);
+                    });
+
+                    // sessionStorage.setItem("unit1Complete", true);
                 }
 
                 sessionStorage.setItem('unit1Prog', unit1Prog);
 
             }).then(function() {
-                $.get("/unit2/" + id, function(result) {
-                    var values = Object.values(result);
+                $.get("/unit2/" + id, function(unit2Result) {
+                    var values = Object.values(unit2Result);
                     
                     for (let i = 0; i < values.length; i++) {
                         if (values[i] === true) {
@@ -51,7 +57,7 @@ $(document).ready(function() {
 
                     if (unit2Prog < 4) {
                         $("#letActCount").text(unit2Prog + " / 4");
-                        $("#letRec").css({"width": (unit2Prog * 25) + "%"});
+                        $("#letRec").css("width", (unit2Prog * 25) + "%");
                     }
                     else {
                         var star = $("<span>").addClass("fa fa-star").css("color", "gold");
@@ -59,6 +65,12 @@ $(document).ready(function() {
                         $("#letActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
                         $("#letActCount").append(star);
                         $("#letRec").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
+
+                        $.post("/student/update/" + id, {unit2Complete: true}, function(result) {
+                            console.log(result);
+                        });
+
+                        // sessionStorage.setItem("unit2Complete", true);
                     }
                     
                     sessionStorage.setItem('unit2Prog', unit2Prog);
@@ -67,6 +79,10 @@ $(document).ready(function() {
         }
 
         activityProg(id);
+    });
+
+    $(".studentProgress a").on("click", function() {
+        sessionStorage.setItem("currentUnit", $(this).attr("data-unit"));
     });
 
     $("#nextAct").on("click", function() {

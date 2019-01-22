@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -50,10 +51,10 @@
                         <!-- Student Awards/Badges -->
                         <div class="row">
                             <div class="col-lg-12">
-                                <!-- INSERT HB LOOP HERE FOR EACH COMPLETE ACTIVITY ~~ or not... I think we'll have to hard code each unit and have JS update the status -->
+                                <!-- Student Progress -->
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <a href="/shapes/main"><h6 style="color: black">Shapes & Colors:</h6></a>
+                                    <div class="col-lg-12 studentProgress">
+                                        <a href="/shapes/main" data-unit="1"><h6 style="color: black">Shapes & Colors:</h6></a>
                                         <div class="progress">
                                             <div id="SnC" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%""><span id="SnCActCount" style="color: white; font-weight: bold"></span></div>
                                         </div>
@@ -62,8 +63,8 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <a href="/letter/main"><h6 style="color: black">Letter Recognition:</h6></a>
+                                    <div class="col-lg-12 studentProgress">
+                                        <a href="/letter/main" data-unit="2"><h6 style="color: black">Letter Recognition:</h6></a>
                                         <div class="progress">
                                             <div id="letRec" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; transition: width 1s; transition-timing-function: ease"><span id="letActCount" style="color: white; font-weight: bold"></span></div>
                                         </div>
@@ -76,12 +77,12 @@
                         <footer style="position: absolute; bottom: 0">
                             <hr>
                             <div class="col-lg-12 text-center">
-                                <button id="changeStudent" class="btn btn-sm btn-primary">Change Student</button>
+                                <a href="/change"><button id="change" class="btn btn-sm btn-primary clearSession">Change Student</button></a>
                             </div>
                             <br>
 
                             <div class="col-lg-12 text-center">
-                                <button id="logout" class="btn btn-sm btn-danger">Logout</button>
+                                <a href="/logout""><button id="logout" class="btn btn-sm btn-danger clearSession">Logout</button></a>
                             </div>
                             <br>
                         </footer>
@@ -97,7 +98,7 @@
                             </div>
                             <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
                                 <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
-                                    <div class="card-header text-center"><em>Activity 3</em></div>
+                                    <div class="card-header text-center"><em>Summary</em></div>
                                 </div>
                             </div>
 
@@ -114,8 +115,8 @@
                                             objects or ordinary animals.</li>
                                             <li><b>You will have 1 minute and 30 seconds to match the colors from LEFT to RIGHT! Good Luck!</b></li>
                                     </ul>
-                                    <strong>Let's Start:</strong>
-                                    <div class="counter"></div>
+                                    <br>
+                                    <strong>Press <button class="btn btn-sm btn-success" style="opacity: 1" disabled>START</button> when you're ready!</strong>
                                 </em>
                                 <hr>
                             </div>
@@ -142,6 +143,8 @@
                                                             style="width:50%; position: relative; top: 70px">
                                                             <h1><strong>START</strong></h1>
                                                         </button>
+                                                        <br><br>
+                                                        <div class="counter"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,7 +189,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="correctModalTitle"><strong>Congratulations!!!<br> You did it!!</strong></h2>
+                    <h2 class="modal-title" id="correctModalTitle"><strong>You did it! Great Job!</strong></h2>
                     <button type="button" class="close closeNext" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -195,8 +198,8 @@
                     <img src="../../../images/shapes_colors/correct-lg.png" />
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="playAgain" class="btn btn-success closeNext">Play Again</button>
-                    <button type="button" id="nextUnit" class="btn btn-success closeNext">Next Unit &#8594;</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" id="playAgain" class="btn btn-sm btn-primary closeNext"><span class="fa fa-refresh"></span> Play Again?</button>
                 </div>
             </div>
         </div>
@@ -212,7 +215,7 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="tryAgain" class="btn btn-danger closeRetry">Try Again</button>
+                    <button type="button" id="tryAgain" class="btn btn-danger closeRetry">Try Again?</button>
                 </div>
             </div>
         </div>
@@ -228,7 +231,7 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <button type="button" id="tryAgain" class="btn btn-danger closeRetry">Try Again</button>
+                <button type="button" id="tryAgain" class="btn btn-danger closeRetry">Try Again?</button>
             </div>
         </div>
     </div>

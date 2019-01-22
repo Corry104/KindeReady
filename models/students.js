@@ -28,7 +28,11 @@ module.exports = function(sequelize, DataTypes) {
         type : DataTypes.STRING,
         allowNull : true
       },
-      complete : {
+      unit1Complete : {
+        type : DataTypes.BOOLEAN,
+        defaultValue : false
+      },
+      unit2Complete : {
         type : DataTypes.BOOLEAN,
         defaultValue : false
       }

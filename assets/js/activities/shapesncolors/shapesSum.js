@@ -32,6 +32,7 @@ $(document).ready(function() {
 
   $("#start").click(function () {
     StartGame();
+    $(this).hide();
   })
 
   function StartGame() {
@@ -46,12 +47,12 @@ $(document).ready(function() {
 
   function Counter() {
     var Countdown = Time;
-    $('.counter').text(Countdown);
+    $('.counter').html("<h1>Time Remaining: <strong>" + Countdown + "</strong></h1>");
 
     count = setInterval(function () {
       Countdown--;
       if (Countdown >= 0) {
-        $('.counter').text(Countdown);
+        $('.counter').html("<h1>Time Remaining: <strong>" + Countdown + "</strong></h1>");
       }
       if (Countdown == 0) {
         $("#gameOver").modal("show");
@@ -114,7 +115,6 @@ $(document).ready(function() {
     $(blueBrush).click(function choose() {
       buildArray("blue");
     });
-
   }
 
   function buildArray(color) {
@@ -133,8 +133,11 @@ $(document).ready(function() {
     if (finalArray[0] == all_images[0] && finalArray[1] == all_images[1] && finalArray[2] == all_images[2] && finalArray[3] == all_images[3]) {
       $("#correctModal").modal("show");
       clearInterval(count);
+      $("#nextAct").show();
       $('#playAgain').click(function() {
-        window.location.href = "/html/activities/shapesncolors/shapesSum.html";
+        Time = 90;
+        $("#correctModal").modal("hide");
+        StartGame();
         return false;
       });
       $('#nextUnit').click(function() {
@@ -144,12 +147,13 @@ $(document).ready(function() {
 
     } else {
       $("#incorrectModal").modal("show");
+      clearInterval(count);
       $('#tryAgain').click(function() {
-        location.reload();
+        Time = 90;
+        $("#incorrectModal").modal("hide");
+        StartGame();
         return false;
       });
     }
-  
   }
-  
-  });
+});

@@ -9,6 +9,8 @@ $(document).ready(function () {
             email : $("#email").val(),
             password : $("#password").val(),
         };
+
+        $("#exampleModal").hide();
         console.log(newUser);
         if (password === repPass) {
             // send an AJAX POST-request with jQuery
@@ -21,6 +23,7 @@ $(document).ready(function () {
                 } 
             }).fail(function(err){
                 alert(err.responseText);
+                location.reload();
             });
         } else {
             alert("Password doesn't match, please re-enter password..")
@@ -49,6 +52,7 @@ $(document).ready(function () {
         })
         .fail(function(err) {
             alert(err.responseText)
+            location.reload();
         });
     });
 });
