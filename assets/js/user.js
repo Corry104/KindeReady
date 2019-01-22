@@ -95,7 +95,7 @@ $(document).ready(function () {
 
                 // Show Student Information
                 $("#studentAvatar").attr("src", result.avatar);
-                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt change-btn' style='font-size: 16px' data-toggle='modal' data-target='#exampleModal1'><span class='fa fa-pencil-square-o'></span> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger delete-btn' style='font-size: 16px'><span class='fa fa-trash-o'></span> Remove Student</button></p>");
+                $("#studentName").html("<p style='font-size: 24px; font-weight: bold'>" + result.firstName + " " + result.lastName + "</p><p id='profile-btns'><button class='btn btn-sm btn-outline-primary changeSt change-btn' style='font-size: 16px' data-toggle='modal' data-target='#exampleModal1'><span class='fa fa-pencil-square-o'></span> Edit Profile</button>" + "\xa0" + "<button class='btn btn-sm btn-outline-danger deleteSt' data-id='" + id + "' style='font-size: 16px'><span class='fa fa-trash-o'></span> Remove Student</button></p>");
                 $(".studentProgress").css("display", "block");
 
                 // Update Student Progress
@@ -217,6 +217,7 @@ $(document).ready(function () {
         $("ef3").empty();
     });
 
+    // Delete Student
     $(document).on("click", ".deleteSt", function(event) {
 
         var id = $(this).attr("data-id");
