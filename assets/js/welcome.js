@@ -1,4 +1,11 @@
 $(document).ready(function () {
+
+    $(".createAccount input").keyup(function(e) {
+        if (e.keyCode === 13) {
+            $("#submit").click();
+        }
+    });
+
     $("#submit").on("click", function (event) {
         event.preventDefault();
         var repPass = $("#psw-repeat").val();
@@ -24,7 +31,7 @@ $(document).ready(function () {
             }).fail(function(err){
                 console.log(err.name);
                 alert(err.responseText);
-                location.reload();
+                $("#exampleModal").show();
             });
         } else {
             alert("Password doesn't match, please re-enter password..")
@@ -37,6 +44,12 @@ $(document).ready(function () {
         $("#email").val("");
         $("#password").val("");
         $("#psw-repeat").val("");
+    });
+
+    $(".signInAccount input").keyup(function(e) {
+        if (e.keyCode === 13) {
+            $("#signIn").click();
+        }
     });
 
     $("#signIn").on("click",function(event) {
@@ -54,7 +67,6 @@ $(document).ready(function () {
         })
         .fail(function(err) {
             alert(err.responseText)
-            location.reload();
         });
     });
 });
