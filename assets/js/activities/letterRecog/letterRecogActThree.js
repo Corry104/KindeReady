@@ -2,6 +2,7 @@
 var word = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // answerArray stores the answer board (starting with all _ and gradually filled in)
 var answerArray = [];
+var remaining_letters = 26;
 
 function init() {
 
@@ -14,6 +15,14 @@ function init() {
     document.getElementById("message").innerHTML = "Type a letter in the box then press submit.  You can press reset to start over."
 }
 init();
+
+$("#guess").keyup(function(e) {
+    if (e.keyCode === 13) {
+        $("#letterSubmit").click();
+    }
+});
+
+$("#letterSubmit").on("click", guessOne);
 
 function guessOne() {
     // Get a guess from the player
@@ -29,21 +38,14 @@ function guessOne() {
             if (word[i] === guess) {
                 answerArray[i] = guess;
                 showThisMessage = "Good job! " + guess + " is in the alphabet.  What other letters are missing?";
-            }
-        }
-
-        // Update the game for remaining unknowns
-        var remaining_letters = answerArray.length;
-        // recount the remaining letters
-        for (i = 0; i < answerArray.length; i++) {
-            if (answerArray[i] !== '_') {
-                remaining_letters -= 1;
+                remaining_letters--;
             }
         }
 
         // if no remaining letters, hurray, you won
-        if (remaining_letters == 0) {
-            showThisMessage = "Great Job!  You know the alphabet!!";
+        if (remaining_letters === 0) {
+            showThisMessage = "Great Job! You know the alphabet!!";
+            $("#nextAct").show();
         }
 
         // (otherwise) if we have no message, wrong guess 
@@ -60,7 +62,10 @@ function guessOne() {
     document.getElementById("message").innerHTML = showThisMessage;
 }
 
+$("#letterReset").on("click", quit);
+
 function quit() {
+    remaining_letters = 26;
     document.getElementById("message").innerHTML = "Here is the Alphabet. " + word;
     for (var j = 0; j < word.length; j++) {
         answerArray[j] = word[j];

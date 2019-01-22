@@ -143,16 +143,16 @@
                         <div class="col-md-6">
                             <p>
                                 <label for="firstname"><b>First Name: </b></label> 
-                                <input id="f1" type="text" placeholder="Enter Firstname" name="fname" required>
+                                <input tabindex="1" id="f1" type="text" placeholder="Enter Firstname" name="fname" required>
                             </p>
                             <p>
-                                <label for="lastname"><b>Last Name: </b></label>
-                                <input id="f2" type="text" placeholder="Enter Lastname" name="lname" required>
+                                <label for="age"><b>Age: </b></label>
+                                <input tabindex="3" id="f3" type="age" placeholder="Enter Age" name="age">
                             </p>
                         </div>
                         <div class="col-md-6">
-                            <label for="age"><b>Age: </b></label>
-                            <input id="f3" type="age" placeholder="Enter Age" name="age" >
+                            <label for="lastname"><b>Last Name: </b></label>
+                            <input tabindex="2" id="f2" type="text" placeholder="Enter Lastname" name="lname" required>
                         </div>
                     </div>
                     <br>
@@ -162,7 +162,7 @@
                         <div class="col-md-6">
                             <div class="form-check">
                                 <label>
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="ava1" data-src="../images/avatars/cat.png" checked="checked">
+                                    <input tabindex="4" class="form-check-input" type="radio" name="exampleRadios" id="ava1" data-src="../images/avatars/cat.png" checked="checked">
                                     <img src="../images/avatars/cat.png" alt="cat">
                                 </label>
                             </div>
@@ -197,8 +197,8 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="padding-bottom: 0">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-sm btn-primary" id="sSubmit">Create Profile</button>
+                        <button tabindex="5" type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button tabindex="6" type="button" class="btn btn-sm btn-primary" id="sSubmit">Create Profile</button>
                     </div>
                 </div>
             </div>
@@ -218,15 +218,18 @@
                 <div class="modal-body studentUpdate">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="firstname"><b>First Name: </b></label> 
-                            <input id="ef1" type="text" placeholder="Enter Firstname" name="fname" required>
-                            <br><br>
-                            <label for="lastname"><b>Last Name: </b></label>
-                            <input id="ef2" type="text" placeholder="Enter Lastname" name="lname" required>
+                            <p>
+                                <label for="firstname"><b>First Name: </b></label> 
+                                <input tabindex="1" id="ef1" type="text" placeholder="Enter Firstname" name="fname" required>
+                            </p>
+                            <p>
+                                <label for="age"><b>Age: </b></label>
+                                <input tabindex="3" id="ef3" type="age" placeholder="Enter Age" name="age" >
+                            </p>
                         </div>
                         <div class="col-md-6">
-                            <label for="age"><b>Age: </b></label>
-                            <input id="ef3" type="age" placeholder="Enter Age" name="age" >
+                            <label for="lastname"><b>Last Name: </b></label>
+                            <input tabindex="2" id="ef2" type="text" placeholder="Enter Lastname" name="lname" required>
                         </div>
                     </div>
                     <br>
@@ -269,8 +272,8 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="padding-bottom: 0">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-sm btn-primary" id="eSubmit">Update Student</button>
+                        <button tabindex="5" type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button tabindex="6" type="button" class="btn btn-sm btn-primary" id="eSubmit">Update Student</button>
                     </div>
                 </div>
             </div>
