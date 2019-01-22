@@ -168,6 +168,12 @@ $(document).ready(function () {
         });
     });
 
+    $(".studentAdd input").keyup(function(e) {
+        if (e.keyCode === 13) {
+            $("#sSubmit").click();
+        }
+    });
+
     // Create New Student
     $("#sSubmit").on("click",function() {
         var newStudent = {
@@ -188,6 +194,12 @@ $(document).ready(function () {
         $("f1").empty();
         $("f2").empty();
         $("f3").empty();
+    });
+
+    $(".exampleModal").keyup(function(e) {
+        if (e.keyCode === 13) {
+            $("#eSubmit").click();
+        }
     });
 
     // Update Student Info
