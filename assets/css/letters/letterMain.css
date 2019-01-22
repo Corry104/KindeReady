@@ -1,13 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
 
 
+html, body {
+    font-family: "Gloria Hallelujah", cursive;
+}
+
 
 #act1, #act2, #act3, #summary {
     padding-top: 5px; 
     border-style: solid; 
     margin: 5px;
-    width: 48%;
-    height: 42%; 
+    width: 442px;
+    height: 234px; 
     float: left;
     border-color: black;
     border-radius: 10%;
@@ -29,26 +33,26 @@ h1 {
 }
 
 #act1{
-    background: url("/images/abc1.jpg") no-repeat;
+    background: url("../../images/abc1.jpg") no-repeat;
     background-size: 300px 150px;
     background-position: center bottom;
 }
 
 #act2 {
-    background: url("/images/abc2.jpg") no-repeat;
+    background: url("../../images/abc2.jpg") no-repeat;
     background-size: 300px 200px;
     background-position: center bottom;
 }
 
 #act3{
-    background: url("/images/abc3.gif") no-repeat;
+    background: url("../../images/abc3.gif") no-repeat;
     background-size: 300px 150px;
     background-position: center bottom;
 
 }
 
 #summary {
-    background: url("/images/abc4.png") no-repeat;
+    background: url("../../images/abc4.png") no-repeat;
     background-size: 300px 150px;
     background-position: center bottom;
 }
