@@ -16,7 +16,6 @@
         label {
             margin-bottom: 0;
         }
-
         .avatar img {
             width: 75%;
         }
@@ -80,7 +79,7 @@
                                                     <div class="col-lg-12 studentProgress">
                                                         <a href="/shapes/main" data-unit="1" style="color: black"><h6><strong><span class="fa fa-puzzle-piece"></span>  Shapes & Colors:</strong></h6></a>
                                                         <div class="progress">
-                                                            <div id="SnC" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%""><span id="SnCActCount" style="color: white; font-weight: bold"></span></div>
+                                                            <div id="SnC" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; transition: width 1s; transition-timing-function: ease"><span id="SnCActCount" style="color: white; font-weight: bold"></span></div>
                                                         </div>
                                                         <br>
                                                     </div>
@@ -135,11 +134,14 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="firstname"><b>Firstname: </b></label> 
-                            <input id="f1" type="text" placeholder="Enter Firstname" name="fname" required>
-                            <br><br>
-                            <label for="lastname"><b>Lastname: </b></label>
-                            <input id="f2" type="text" placeholder="Enter Lastname" name="lname" required>
+                            <p>
+                                <label for="firstname"><b>Firstname: </b></label> 
+                                <input id="f1" type="text" placeholder="Enter Firstname" name="fname" required>
+                            </p>
+                            <p>
+                                <label for="lastname"><b>Lastname: </b></label>
+                                <input id="f2" type="text" placeholder="Enter Lastname" name="lname" required>
+                            </p>
                         </div>
                         <div class="col-md-6">
                             <label for="age"><b>Age: </b></label>
@@ -169,6 +171,7 @@
                     </div>
                     <div class="row avatar text-center">
                         <div class="col-md-6">
+                            <br>
                             <div class="form-check">
                                 <label>
                                     <input class="form-check-input" type="radio" name="exampleRadios" id="ava3" data-src="../images/avatars/lion.png">
@@ -177,6 +180,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <br>
                             <div class="form-check">
                                 <label>
                                     <input class="form-check-input" type="radio" name="exampleRadios" id="ava4" data-src="../images/avatars/pig.png">
