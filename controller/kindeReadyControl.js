@@ -8,7 +8,8 @@ module.exports = function(app) {
 
     app.get("/",function(req,res) {
         if (req.session.user) {
-            res.sendFile(path.join(__dirname,"../assets/html/user.html"));
+            console.log(req.session.user);
+            res.send((req.session.user).toString());
         } else if (req.headers.cookie && req.headers.cookie.indexOf("token=") !== -1) {
             // use regex to grab cookie from headers string
             var cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/);
