@@ -100,13 +100,14 @@ $(document).ready(function () {
                         if (unit1Prog < 4) {
                             $("#SnCActCount").text(unit1Prog + " / 4");
                             $("#SnC").css("width", (unit1Prog * 25) + "%");
+                            $("#SnC").addClass("bg-success progress-bar-animated");
                         }
                         else {
                             var star = $("<span>").addClass("fa fa-star").css("color", "gold");
         
                             $("#SnCActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
                             $("#SnCActCount").append(star);
-                            $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
+                            $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit1Prog * 25) + "%");
                         }
 
                         sessionStorage.setItem('unit1Prog', unit1Prog);
@@ -124,6 +125,7 @@ $(document).ready(function () {
                             if (unit2Prog < 4) {
                                 $("#letActCount").text(unit2Prog + " / 4");
                                 $("#letRec").css({"width": (unit2Prog * 25) + "%"});
+                                $("#letRec").addClass("bg-success progress-bar-animated");
                             }
                             else {
                                 var star = $("<span>").addClass("fa fa-star").css("color", "gold");

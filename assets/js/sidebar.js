@@ -69,6 +69,10 @@ $(document).ready(function() {
         activityProg(id);
     });
 
+    $(".studentProgress a").on("click", function() {
+        sessionStorage.setItem("currentUnit", $(this).attr("data-unit"));
+    });
+
     $("#nextAct").on("click", function() {
 
         var updateVal = {
