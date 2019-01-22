@@ -63,8 +63,11 @@ module.exports = function(app) {
                         console.log(dbUser);
                     })
                     .catch(function (err) {
-                        console.log(err);
-                        res.status(500).send("Please input all of the following questions..");
+                        if (err.errors[0].message === "Validation isEmail on email failed") {
+                            res.status(500).send("Please enter a valid email format..");
+                        } else {
+                            res.status(500).send("Please input all of the following questions..");
+                        }
                     });
                 });     
             }
