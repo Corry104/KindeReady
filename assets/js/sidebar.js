@@ -35,6 +35,12 @@ $(document).ready(function() {
                     $("#SnCActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
                     $("#SnCActCount").append(star);
                     $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit1Prog * 25) + "%");
+
+                    $.post("/student/update/" + id, {unit1Complete: true}, function(result) {
+                        console.log(result);
+                    });
+
+                    // sessionStorage.setItem("unit1Complete", true);
                 }
 
                 sessionStorage.setItem('unit1Prog', unit1Prog);
@@ -59,6 +65,12 @@ $(document).ready(function() {
                         $("#letActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
                         $("#letActCount").append(star);
                         $("#letRec").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
+
+                        $.post("/student/update/" + id, {unit2Complete: true}, function(result) {
+                            console.log(result);
+                        });
+
+                        // sessionStorage.setItem("unit2Complete", true);
                     }
                     
                     sessionStorage.setItem('unit2Prog', unit2Prog);

@@ -17,6 +17,10 @@ $(document).ready(function () {
             var id = result[i].id;
             var firstName = result[i].firstName;
             var lastName = result[i].lastName;
+            var unit1Complete = result[i].unit1Complete;
+            var unit2Complete = result[i].unit2Complete;
+
+            console.log(unit1Complete, unit2Complete);
 
             // Add Change Info Button
             var buttonc = $("<button>");
@@ -33,22 +37,34 @@ $(document).ready(function () {
             var buttons = $("<span>").append(buttonc, "  ", buttond).addClass("buttonSpan").css({"float": "right", "margin": "24px 10px 0px 0px"});
             buttons.hide();
 
-            var studentText = $("<span>").html("  " + firstName + " " + lastName + "\xa0").css({"font-weight": "bold", "font-size": "20px", "display": "inline-block", "padding-left": "10px", "max-width": "260px", "vertical-align": "middle",  "white-space": "nowrap", "overflow": "hidden", "text-overflow": "ellipsis"});
+            var studentText = $("<span>").html("  " + firstName + " " + lastName + "\xa0\xa0").css({"font-weight": "bold", "font-size": "20px", "display": "inline-block", "padding-left": "10px", "max-width": "260px", "vertical-align": "middle",  "white-space": "nowrap", "overflow": "hidden", "text-overflow": "ellipsis"});
 
             // Create Avatar
             var studentAvatar = $("<img>").attr("src", result[i].avatar).css({"width": "75px", "border-right": "1px dotted black", "padding": "5px", "display": "inline-block"});
 
             var student = $("<li>").addClass("studentList").attr("data-id", id).css({"width": "90%", "border": "1px solid black", "border-radius": "25px"});
-            student.append(studentAvatar);
-            student.append(studentText);
-            student.append(buttons);
             
             var lineBreak = $("<br>");
             
-            $("#currentStudent").append(student).append(lineBreak);
+            if (unit1Complete && unit2Complete) {
+
+                var completeCap = $("<span>").addClass("fa fa-star completeCap").css({"color": "gold", "font-size": "20px", "display": "inline-block", "vertical-align": "middle", "padding-left": "10px"});
+                student.append(studentAvatar);
+                student.append(studentText);
+                student.prepend(completeCap);
+                student.append(buttons);
+
+                $("#currentStudent").append(student).append(lineBreak);
+            }
+            else {
+                student.append(studentAvatar);
+                student.append(studentText);
+                student.append(buttons);
+
+                $("#currentStudent").append(student).append(lineBreak);
+            }
 
             checkNumStudents();
-
         }
 
         $(".studentList").on("mouseover", function() {
@@ -61,12 +77,14 @@ $(document).ready(function () {
             $(".studentList").not(this).each(function() {
                 $(this).css({"cursor": "pointer", "background-color": "white"});
                 $(this).css("box-shadow", "none");
+                $(".completeCap", this).css("color", "gold");
             });
 
             $(".studentProgress").css("display", "none");
 
             $(".buttonSpan", this).show();
             $(this).css({"background-color": "lemonchiffon", "cursor": "pointer"});
+            $(".completeCap", this).css("color", "black");
 
             var id = $(this).attr("data-id");
 
@@ -109,9 +127,9 @@ $(document).ready(function () {
                             $("#SnCActCount").append(star);
                             $("#SnC").removeClass("bg-success progress-bar-animated").css("width", (unit1Prog * 25) + "%");
                         }
-
-                        sessionStorage.setItem('unit1Prog', unit1Prog);
-
+                        
+                        sessionStorage.setItem("unit1Prog", unit1Prog);
+                        
                     }).then(function() {
                         $.get("/unit2/" + id, function(result) {
                             var values = Object.values(result);
@@ -121,7 +139,7 @@ $(document).ready(function () {
                                     unit2Prog++;
                                 }
                             }
-                    
+                            
                             if (unit2Prog < 4) {
                                 $("#letActCount").text(unit2Prog + " / 4");
                                 $("#letRec").css({"width": (unit2Prog * 25) + "%"});
@@ -129,13 +147,13 @@ $(document).ready(function () {
                             }
                             else {
                                 var star = $("<span>").addClass("fa fa-star").css("color", "gold");
-        
+                                
                                 $("#letActCount").html("<span class='fa fa-star' style='color: gold'></span> COMPLETE ");
                                 $("#letActCount").append(star);
                                 $("#letRec").removeClass("bg-success progress-bar-animated").css("width", (unit2Prog * 25) + "%");
                             }
 
-                            sessionStorage.setItem('unit2Prog', unit2Prog);
+                            sessionStorage.setItem("unit2Prog", unit2Prog);
                         });
                     });
                 }
