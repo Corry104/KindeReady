@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 
 #act1, #act2, #act3, #summary {
     padding-top: 5px; 
@@ -13,6 +13,18 @@
     font-family: "Gloria Hallelujah", cursive;
     font-weight: bold;
     font-size: 50px;
+    color: #222222;
+}
+
+#act1:hover, #act2:hover, #act3:hover, #summary:hover {
+    box-shadow: 0 8px 6px -6px #000000;
+    transition: box-shadow 0.1s;
+    border: 1px solid black;
+}
+
+#act1:active, #act2:active, #act3:active, #summary:active {
+    border: 2px solid black;
+    box-shadow: none;
 }
 
 p {

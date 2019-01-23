@@ -15,11 +15,17 @@
     <script src="../../../js/sidebar.js"></script>
     <style>
         
-        @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+        @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+        @import url('https://fonts.googleapis.com/css?family=Nunito:300');
 
         html, body {
             font-family: "Gloria Hallelujah", cursive;
         }
+
+        .btn, .modal {
+            font-family: 'Nunito', sans-serif;
+        }
+
         a img {
             box-shadow: 0 8px 6px -6px #888888;
             transition: box-shadow 0.085s;
@@ -32,6 +38,10 @@
         a img:active {
             cursor: pointer;
             box-shadow: none;
+        }
+
+        #start {
+            font-family: "Gloria Hallelujah", cursive;
         }
     </style>
 </head>
@@ -119,14 +129,13 @@
                             <div class="col-lg-12"><hr></div>
 
                             <!-- Activity Description -->
-                            <div class="col-lg-12">
-                                <em><strong>Activity Description:</strong>
+                            <div class="col-lg-12" style="font-family: 'Nunito', sans-serif">
+                                <em><strong>Activity Description:</strong></em>
                                     <ul type="square">
                                         <li>Lesson Type: <strong>SD</strong> - Student Driven</li>
                                         <li>Estimated Time: 15 - 20 min</li>
                                         <li>Instructions: <strong>It's the student's turn!</strong> Answer the following questions, matching the correct shape to the correct color. Try to minimize guidance, as best you can. The objective is to allow your student to demonstrate their understanding and recognition of the colors that have been covered in the previous excercises. You will be able to advance, after 6 matches have been made.</li>
                                     </ul>
-                                </em>
                                 <hr>
                             </div>
 
@@ -163,7 +172,7 @@
 
                                                     <!-- Start Activity Button -->
                                                     <div id="Start" class="col-lg-12" style="display: block">
-                                                        <button id="start" class="btn btn-large btn-outline-success" style="width:50%; position: relative; top: 70px"><h1><strong>START</strong></h1></button>
+                                                        <button id="start" class="btn btn-large btn-outline-success" style="width:50%; position: relative; top: 70px"><h1 style="margin-bottom: 0"><strong>START</strong></h1></button>
                                                     </div>
 
                                                     <!-- Activity Body -->
@@ -172,7 +181,7 @@
                                                         <div class="row">
                                                             <!-- Color Prompt -->
                                                             <div class="col-lg-5 text-right">
-                                                                <h1><strong><span id="colorChoice" style="position: relative; top: 25px">____________</span></strong></h1>
+                                                                <h1><strong><span id="colorChoice" style="position: relative; top: 25px">________</span></strong></h1>
                                                             </div>
                                                             <!-- Student Solution -->
                                                             <div class="col-lg-2">
@@ -180,7 +189,7 @@
                                                             </div>
                                                             <!-- Shape Prompt -->
                                                             <div class="col-lg-5 text-left align-middle">
-                                                                <h1><strong><span id="shapeChoice" style="position: relative; top: 25px">____________</span></strong></h1>
+                                                                <h1><strong><span id="shapeChoice" style="position: relative; top: 25px">________</span></strong></h1>
                                                             </div>
                                                         </div>
                                                         <br>

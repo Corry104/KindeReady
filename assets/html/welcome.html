@@ -11,35 +11,49 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/welcome.js"></script>
   <style>
-    @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+
+    @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+    @import url('https://fonts.googleapis.com/css?family=Nunito:300');
 
     html, body {
-        height: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        font-family: "Gloria Hallelujah", cursive;
-        color: black;
-        background: url("../images/welcome_bg/kindeready-bg-3.png");
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: "Gloria Hallelujah", cursive;
+    color: black;
+    background: url("../images/welcome_bg/kindeready-bg-3.png");
     }
+
+    .btn, .modal {
+      font-family: 'Nunito', sans-serif;
+    }
+
     .card {
-        width: 400px;
+      width: 400px;
     }
+
     img {
-        border-radius: 25%;
+      border-radius: 25%;
     }
+
     .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
+    font-size: 1.125rem;
+    text-anchor: middle;
     }
+
     input {
-        margin-bottom: 15px;
+      margin-bottom: 15px;
     }
+
     @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
+      .bd-placeholder-img-lg {
         font-size: 3.5rem;
-        }
+      }
     }
-</style>
+  </style>
+  <!-- Custom styles for this template -->
+  <!-- <link href="signin.css" rel="stylesheet"> -->
+
 </head>
 <body>
   <div class="container">
@@ -51,7 +65,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
-            <h4 style="line-height: 1.5em">We help pre-school scholars get ready for Kindergarten.</h4>
+            <h4 style="line-height: 1.5em; font-family: 'Nunito', sans-serif">We help pre-school scholars get ready for Kindergarten.</h4>
             <hr>
             <p><button type="button" class="btn btn-md btn-info" data-toggle="modal" data-target="#exampleModal">Create Account</button></p>
             <p style="margin-bottom: 0"><button type="button" class="btn btn-md btn-info" data-toggle="modal" data-target="#exampleModal1">Sign In</button></p>
@@ -75,7 +89,7 @@
             <br>
 
             <label for="spassword"><b>Password: </b></label>
-            <input type="password" id="spassword" placeholder="Enter Password" style="width: 62%" required>
+            <input type="password" id="spassword" placeholder="Enter Password" style="width: 62.5%" required>
 
             <div class="form-check text-center">
               <input class="form-check-input" type="checkbox" value="" id="remember">
@@ -109,19 +123,19 @@
                     <input type="text" placeholder="Enter Firstname" id="firstname" style="width: 35%" required>&nbsp;&nbsp;&nbsp;
 
                     <label for="lastname"><b>Last: </b></label>
-                    <input type="text" placeholder="Enter Lastname" id="lastname" style="width: 35%" required>
+                    <input type="text" placeholder="Enter Lastname" id="lastname" style="width: 45%" required>
                     <br>
                     
                     <label for="email"><b>Email: </b></label>
-                    <input type="text" placeholder="Enter Email" id="email" style="width: 86%" required>
+                    <input type="text" placeholder="Enter Email" id="email" style="width: 89.85%" required>
                     <br>
 
                     <label for="password"><b>Password: </b></label>
-                    <input type="password" placeholder="Enter Password" id="password" style="width: 80%" required>
+                    <input type="password" placeholder="Enter Password" id="password" style="width: 83%" required>
                     <br>
 
                     <label for="psw-repeat"><b>Re-Enter Password: </b></label>
-                    <input type="password" placeholder="Repeat Password" id="psw-repeat" style="width: 63%" required>
+                    <input type="password" placeholder="Repeat Password" id="psw-repeat" style="width: 68.5%" required>
                   </div>
                 </div>
               </div>
