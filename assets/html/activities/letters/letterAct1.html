@@ -2,70 +2,60 @@
 <html lang="en">
 
 <head>
+    <title>KindeReady: Letter Recognition</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>KindeReady: Letter Recognition</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Gloria Hallelujah", cursive;
+        }
+        html {
+            font-family: "Gloria Hallelujah", cursive;
+        }
+        .letter {
+            width: 30px;
+            height: 30px;
+            padding: 14px;
+            float: left;
+            margin: 20px;
+            font-family: "Walter Turncoat", cursive;
+            font-size: 40px;
+            box-sizing: content-box; 
+        }
+        .letter-button-color {
+            color: darkcyan;
+        }
+        .tile-color {
+            color: white;
+        }
+        #display {
+            background: url("../../../images/chalkboard.jpg") no-repeat;
+            background-size: contain;
+            margin-top: 30px;
+            height: 450px;
+            width: 700px;
+            margin-left: 90px;
+        }
+        #buttons {
+            padding-top: 30px;
+        }
+        #clear {
+            font-size: 25px;
+            color: black;
+            border-style: solid;
+            width: 100px;
+            float: right;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
-
-body {
-margin: 0;
-padding: 0;
-font-family: "Gloria Hallelujah", cursive;
-}
-
-html {
-    font-family: "Gloria Hallelujah", cursive;
-}
-
-.letter {
-width: 30px;
-height: 30px;
-padding: 14px;
-float: left;
-margin: 20px;
-font-family: "Walter Turncoat", cursive;
-font-size: 40px;
-box-sizing: content-box; 
-}
-
-.letter-button-color {
-color: darkcyan;
-}
-
-.tile-color {
-color: white;
-}
-
-#display {
-background: url("../../../images/chalkboard.jpg") no-repeat;
-background-size: contain;
-margin-top: 30px;
-height: 450px;
-width: 700px;
-margin-left: 90px;
-}
-
-#buttons {
-padding-top: 30px;
-}
-
-#clear {
-font-size: 25px;
-color: black;
-border-style: solid;
-width: 100px;
-float: right;
-margin-top: 30px;
-}
-</style>
 
 <body>
     <div class="container" style="padding-top: 5px">
