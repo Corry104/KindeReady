@@ -4,7 +4,6 @@ path = require('path');
 var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
-    // ====================== HTML Routes ====================== //
 
     app.get("/",function(req,res) {
         if (req.session.user) {
@@ -37,7 +36,6 @@ module.exports = function(app) {
     app.get("/student",function(req,res) {
         res.sendFile(path.join(__dirname,"../assets/html/user.html"))
     });
-    // ====================== API Routes ====================== //
 
      // POST route for saving a new user
     app.post("/user", function (req, res) {
@@ -97,14 +95,14 @@ module.exports = function(app) {
                             }
                         }).then(function(data) {
                             console.log("token saved");
-                             // also set token as a cookie that browser can read
+                             // set token as a cookie that browser can read
                             res.cookie("token", newToken, {expires: new Date(Date.now() + 999999999999)});
                             var userLogin = {
-                                id : (result.dataValues.id).toString(),
-                                firstName : (result.dataValues.firstName).toString(),
-                                lastName : (result.dataValues.lastName).toString(),
+                                id : (result.dataValues.id),
+                                firstName : (result.dataValues.firstName),
+                                lastName : (result.dataValues.lastName),
                             }
-                            // and save user object on session for back-end to continue to use
+                            // save user object on session for back-end to continue to use
                             req.session.user = result;
                             console.log(userLogin)
                             res.send(userLogin);
@@ -181,7 +179,6 @@ module.exports = function(app) {
 
     // create a new entry for unit2
     app.post("/unit2/:id",function(req,res) {
-
         db.Unit2.create({
             act1: false,
             act2: false,
@@ -215,13 +212,9 @@ module.exports = function(app) {
 
     // Update Unit Activity values
     app.put("/activity/:id", function(req, res) {
-
         var act = req.body.act;
-
         if (parseInt(req.body.unit) === 1) {
-
             switch (act) {
-
                 case "act1":
                     db.Unit1.update({
                         act1: true
@@ -281,9 +274,7 @@ module.exports = function(app) {
         }
 
         else if (parseInt(req.body.unit) === 2) {
-
             switch (act) {
-
                 case "act1":
                     db.Unit2.update({
                         act1: true
