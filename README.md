@@ -9,7 +9,7 @@ The app is comprised of _Units_, which are each based on the 9 milestones in ear
 
 ## Current Version Notes:
 * **Shapes & Colors**
-    * [Short Description HERE]
+    * Learn basic shapes and colors! This unit's activities will take the student through a series of matching and assess their recognition of repeated combinations of different shapes and colors.
 
 * **Letter Recognition**
-    *[Short Description HERE]
+    * The A's, the B's, and the C's! Always important to know! Throughout these activities, the student will be challeneged to learn and recognize the different letters of the alphabet and display their knowledge.
