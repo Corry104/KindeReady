@@ -54,7 +54,7 @@ function activity3() {
     var randShape = shapes[Math.floor(Math.random() * shapes.length)];
     var randColor = colors[Math.floor(Math.random() * colors.length)];
 
-    var imgSrc = "../../../IMAGES/shapes_colors/" + randShape + "_" + randColor + ".png";
+    var imgSrc = "../../../images/shapes_colors/" + randShape + "_" + randColor + ".png";
 
     $("#questionBlock").attr("src", imgSrc);
     $("#questionBlock").attr("data-answer", randShape + "_" + randColor);
