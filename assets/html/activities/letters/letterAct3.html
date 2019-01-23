@@ -13,7 +13,8 @@
     <title>KindeReady: Letter Recognition</title>
 </head>
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+    @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+    @import url('https://fonts.googleapis.com/css?family=Nunito:300');
 
 body {
 margin: 0;
@@ -25,49 +26,12 @@ html {
     font-family: "Gloria Hallelujah", cursive;
 }
 
-.letter {
-width: 30px;
-height: 30px;
-padding: 14px;
-float: left;
-margin: 20px;
-font-family: "Walter Turncoat", cursive;
-font-size: 40px;
-box-sizing: content-box; 
-}
-
-.letter-button-color {
-color: darkcyan;
+.btn, .modal {
+    font-family: 'Nunito', sans-serif;
 }
 
 .tile-color {
 color: white;
-}
-
-#display {
-background: url("../../../images/chalkboard.jpg") no-repeat;
-background-size: contain;
-margin-top: 30px;
-height: 450px;
-width: 700px;
-margin-left: 90px;
-}
-
-#buttons {
-padding-top: 30px;
-}
-
-#clear {
-font-size: 25px;
-color: black;
-border-style: solid;
-width: 100px;
-float: right;
-margin-top: 30px;
-}
-
-#answers {
-font-family: "Walter Turncoat", cursive;
 }
 
 #message {
@@ -76,7 +40,7 @@ font-family: "Walter Turncoat", cursive;
 
 #banner {
 height: 300px;
-width: 900px;
+width: 100%;
 }
 
 </style>
@@ -145,19 +109,28 @@ width: 900px;
                     </div>
 
                     <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
-                        <h1>Letter Recognition: Activity 3</h1>
+                        <div class="row" style="padding-top: 10px">
+                            <div class="col-lg-6 text-left ">
+                                <h1>Letter Recognition</h1>
+                            </div>
+                            <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
+                                <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
+                                    <div class="card-header text-center"><em>Activity 4</em></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
                         <!-- Activity Description -->
-                        <div class="col-lg-12">
-                            <em><strong>Activity Description:</strong>
+                        <div class="col-lg-12" style="font-family: 'Nunito', sans-serif">
+                            <em><strong>Activity Description:</strong></em>
                                 <ul type="square">
                                     <li>Lesson Type: <strong>PG</strong> - Parent Guided</li>
                                     <li>Estimated Time: 20 min</li>
                                     <li>Instructions: Have the student enter the missing letters to complete the alphabet.</li>
                                 </ul>
-                            </em>
                             <hr>
                         </div>
-                        <img src="../../../images/banner.png" id="banner" alt="alphabet banner">
+                        <img src="../../../images/letter_recog/banner.png" id="banner" alt="alphabet banner">
                         <hr>
                         <input id="guess" class="input-group-sm" type="text" maxlength="1">
                         <input id="letterSubmit" type="button" class="btn btn-sm btn-dark" value="submit">

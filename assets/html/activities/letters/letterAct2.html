@@ -13,8 +13,9 @@
     <title>KindeReady: Letter Recognition</title>
 </head>
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
-    @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
+    @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+    @import url('https://fonts.googleapis.com/css?family=Walter+Turncoat');
+    @import url('https://fonts.googleapis.com/css?family=Nunito:300');
 
 
 body {
@@ -25,6 +26,10 @@ font-family: "Gloria Hallelujah", cursive;
 
 html {
     font-family: "Gloria Hallelujah", cursive;
+}
+
+.btn, .modal {
+    font-family: 'Nunito', sans-serif;
 }
 
 .letter-tile {
@@ -60,7 +65,7 @@ font-family: "Walter Turncoat", cursive;
 }
 
 #display {
-background: url("../../../images/chalkboard.jpg") no-repeat;
+background: url("../../../images/letter_recog/chalkboard.png") no-repeat;
 background-size: contain;
 margin-top: 15px;
 height: 450px;
@@ -146,16 +151,25 @@ width: 100px;
                     </div>
 
                     <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
-                        <h1>Letter Recognition: Activity 2</h1>
+                        <div class="row" style="padding-top: 10px">
+                            <div class="col-lg-6 text-left ">
+                                <h1>Letter Recognition</h1>
+                            </div>
+                            <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
+                                <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
+                                    <div class="card-header text-center"><em>Activity 2</em></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
                         <!-- Activity Description -->
-                        <div class="col-lg-12">
-                            <em><strong>Activity Description:</strong>
+                        <div class="col-lg-12" style="font-family: 'Nunito', sans-serif">
+                            <em><strong>Activity Description:</strong></em>
                                 <ul type="square">
                                     <li>Lesson Type: <strong>PG</strong> - Parent Guided</li>
                                     <li>Estimated Time: 20 min</li>
                                     <li>Instructions: Review the alphabet with your student.  Click and say the letter.  Have your student click and say the letter.  Click on the letter and have the student identify the letter.  Spell simple three or four letter site words and ask the student to identify the letters in the word (be sure to use clear after each word.).</li>
                                 </ul>
-                            </em>
                             <hr>
                         </div>
 

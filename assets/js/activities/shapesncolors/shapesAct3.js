@@ -4,8 +4,8 @@ $(document).ready(function() {
     $("#start").on("click", function() {
         $(this).css("display", "none");
         $(".activity3").css("display", "block");
-        $("#shapeChoice").text("____________");
-        $("#colorChoice").text("____________");
+        $("#shapeChoice").text("________");
+        $("#colorChoice").text("________");
 
         activity3();
     });
@@ -45,8 +45,8 @@ var numCorrect = 0;
 
 function activity3() {
 
-    $("#shapeChoice").text("____________");
-    $("#colorChoice").text("____________");
+    $("#shapeChoice").text("________");
+    $("#colorChoice").text("________");
 
     var shapes = ["square", "circle", "rectangle", "triangle"];
     var colors = ["red", "yellow", "blue", "green"];
@@ -79,11 +79,11 @@ function checkAnswer(studentAnswer, correctAnswer) {
         $("#incorrectModal").modal("show");
 
         if (studentShape !== correctShape) {
-            $("#shapeChoice").text("____________");
+            $("#shapeChoice").text("________");
         }
 
         if (studentColor !== correctColor) {
-            $("#colorChoice").text("____________");
+            $("#colorChoice").text("________");
         }
     }
 }
