@@ -2,9 +2,14 @@ $(document).ready(function () {
 
     checkNumStudents();
     var userLogin = JSON.parse(localStorage.getItem("userLogin"));
-    console.log(userLogin);
-    var user_id = userLogin.id;
-    var userName = userLogin.firstName;
+    var userLoginS = JSON.parse(sessionStorage.getItem("userLoginS"));
+    if (userLoginS) {
+        var user_id = userLoginS.id;
+        var userName = userLoginS.firstName;
+    } else {
+        var user_id = userLogin.id;
+        var userName = userLogin.firstName;
+    }
 
     // Welcome Greeting
     $("#loginUser").text(userName);

@@ -55,14 +55,22 @@ $(document).ready(function () {
 
     $("#signIn").on("click",function(event) {
         event.preventDefault();
+        var remember = $("#remember").prop("checked");
         var userLogin = {
             email : $("#semail").val(),
             password : $("#spassword").val()
         }
         $.post("/login", userLogin ,function(data) {
           if (data) {
-            localStorage.setItem("userLogin", JSON.stringify(data));
-            window.location.href = "/student"
+            if (!remember) {
+                console.log("Not remember")
+                sessionStorage.setItem("userLoginS", JSON.stringify(data));
+                window.location.href = "/student"
+            } else {
+                console.log("remember");
+                localStorage.setItem("userLogin", JSON.stringify(data));
+                window.location.href = "/student"
+            }
           } 
         })
         .fail(function(err) {
