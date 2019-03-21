@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300');
+
+html, body {
+height: 100%;
+max-width: 100%;
+overflow-x: hidden;
+font-family: "Gloria Hallelujah", cursive;
+color: black;
+background: url("../images/welcome_bg/kindeready-bg-3.png");
+}
+
+.btn, .modal {
+  font-family: 'Nunito', sans-serif;
+}
+
+.card {
+  width: 400px;
+}
+
+img {
+  border-radius: 25%;
+}
+
+.bd-placeholder-img {
+font-size: 1.125rem;
+text-anchor: middle;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+#semailLabel, #spasswordLabel {
+  padding-right: 0;
+  text-align: right;
+}
+
+.welcomeInLabel {
+  margin-bottom: 0;
+}
+
+#firstname, #lastname {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+
+  #welcomeForm {
+    padding: 0;
+    margin: 0;
+  }
+
+  #firstname {
+    margin-bottom: 15px;
+  }
+
+  #email {
+    margin-bottom: 30px;
+  }
+
+#semailLabel, #spasswordLabel {
+  padding-right: 0;
+  text-align: left;
+}
+}
+
+@media screen and (max-width:480px) {
+  #welcomeForm {
+    padding: 0;
+    margin: 0;
+  }
+
+  #semail {
+    width: 72%;
+  }
+}

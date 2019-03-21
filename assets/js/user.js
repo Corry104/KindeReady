@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     checkNumStudents();
+    checkWindowSize();
     var userLogin = JSON.parse(localStorage.getItem("userLogin"));
     console.log(userLogin);
     var user_id = userLogin.id;
@@ -281,4 +282,33 @@ function createUnits(id) {
     });
 
     location.reload();
+}
+
+$(window).on("resize", function() {
+
+    if ($(this).width() <= 991) {
+        $("#addStudentBtn").html("Add");
+    } else {
+        $("#addStudentBtn").html("Add Student");
+    }
+
+    if ($(this).width() <= 767) {
+        $("#clickToBegin").html("<button id='firstStudent' type='button' class='btn btn-outline-primary easyRead' data-toggle='modal' data-target='#exampleModal'>Add Student</button>");
+    } else {
+        $("#clickToBegin").htme("<h3 id='clickToBegin'>Click <button id='firstStudent' type='button' class='btn btn-outline-primary easyRead' data-toggle='modal' data-target='#exampleModal'>Add Student</button> to Begin</h3>");
+    }
+});
+
+function checkWindowSize() {
+    if ($(window).width() <= 991) {
+        $("#addStudentBtn").html("Add");
+    } else {
+        $("#addStudentBtn").html("Add Student");
+    }
+
+    if ($(window).width() <= 767) {
+        $("#clickToBegin").html("<button id='firstStudent' type='button' class='btn btn-outline-primary easyRead' data-toggle='modal' data-target='#exampleModal'>Add Student</button>");
+    } else {
+        $("#clickToBegin").htme("<h3 id='clickToBegin'>Click <button id='firstStudent' type='button' class='btn btn-outline-primary easyRead' data-toggle='modal' data-target='#exampleModal'>Add Student</button> to Begin</h3>");
+    }
 }

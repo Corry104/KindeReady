@@ -4,11 +4,7 @@
     <title>KindeReady</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="../js/user.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
         @import url('https://fonts.googleapis.com/css?family=Nunito:300');
@@ -32,6 +28,10 @@
             width: 75%;
         }
 
+        #studentPane {
+            height: 68vh;
+        }
+
         .userTitle {
             border: 1px solid darkgray;
             border-style: none solid solid solid;
@@ -40,6 +40,41 @@
             background-color: white;
             box-shadow: 0 8px 6px -6px #000000;
             padding-bottom: 10px;
+        }
+
+        #addStudentBtn {
+            text-align: left;
+        }
+
+        #logoutUserBtn {
+            text-align: right;
+        }
+
+        @media screen and (max-width: 767px) {
+            #loggedInUser {
+                display: none;
+            }
+
+            #siteTitle {
+                text-align: center;
+            }
+
+            #addStudentBtn {
+                display: none;
+            }
+
+            #logoutUserBtn {
+                text-align: center;
+            }
+
+            #f1, #f2, #f3 {
+                width: 100%;
+            }
+
+            .form-check {
+                padding: 0;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -50,11 +85,11 @@
                 <div class="row">
                     <div class="col-md-12 userTitle">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div id="siteTitle" class="col-md-6">
                                 <strong style="font-size: 50px; padding: 5px">KindeReady</strong>
                             </div>
                             <div class="col-md-6 text-right" style="padding-top: 10px">
-                                <strong class="easyRead badge badge-dark" style="font-size: 28px; font-style: italic; height: 100%; padding-top: 20px; padding-right: 20px">Welcome, <span id="loginUser"></span>!</strong>
+                                <strong id="loggedInUser" class="easyRead badge badge-dark" style="font-size: 28px; font-style: italic; height: 100%; padding-top: 20px; padding-right: 20px">Welcome, <span id="loginUser"></span>!</strong>
                             </div>
                         </div>
                     </div>
@@ -67,10 +102,10 @@
                             <div class="card-header">
                                 <h5>Students</h5>
                             </div>
-                            <div class="card-body" style="height: 520px">
+                            <div id="studentPane" class="card-body" style="height: 520px">
                                 <div class="row">
                                     <div id="firstStudentAdd" class="col-lg-12 text-center" style="padding: 150px">
-                                        <h3>Click <button id="firstStudent" type="button" class="btn btn-outline-primary easyRead" data-toggle="modal" data-target="#exampleModal">Add Student</button> to Begin</h3>
+                                        <h3 id="clickToBegin">Click <button id="firstStudent" type="button" class="btn btn-outline-primary easyRead" data-toggle="modal" data-target="#exampleModal">Add Student</button> to Begin</h3>
                                     </div>
 
                                     <!-- Student Name -->
@@ -136,11 +171,11 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-2 text-left">
-                        <button type="button" class="btn btn-primary easyRead" data-toggle="modal" data-target="#exampleModal">Add Student</button>
+                    <div class="col-md-2">
+                        <button id="addStudentBtn" type="button" class="btn btn-primary easyRead" data-toggle="modal" data-target="#exampleModal">Add Student</button>
                     </div>
                     <div class="col-md-8"></div>
-                    <div class="col-md-2 text-right">
+                    <div id="logoutUserBtn" class="col-md-2">
                         <a href="/logout"><button id="logout" class="btn btn-danger easyRead">Logout</button></a>
                     </div>
                 </div>
@@ -165,14 +200,18 @@
                                 <label for="firstname"><b>First Name: </b></label> 
                                 <input tabindex="1" id="f1" type="text" placeholder="Enter Firstname" name="fname" required>
                             </p>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname"><b>Last Name: </b></label>
+                            <input tabindex="2" id="f2" type="text" placeholder="Enter Lastname" name="lname" style="margin-bottom: 16px" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <p>
                                 <label for="age"><b>Age: </b></label>
                                 <input tabindex="3" id="f3" type="age" placeholder="Enter Age" name="age">
                             </p>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="lastname"><b>Last Name: </b></label>
-                            <input tabindex="2" id="f2" type="text" placeholder="Enter Lastname" name="lname" required>
                         </div>
                     </div>
                     <br>
@@ -299,5 +338,11 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../js/user.js"></script>
 </body>
 </html>
