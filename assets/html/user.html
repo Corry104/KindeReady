@@ -45,15 +45,32 @@
         #addStudentBtn {
             text-align: left;
         }
+        
+        #newStudentBtn {
+            display: none;
+            position: absolute;
+            right: 10px;
+        }
 
         #logoutUserBtn {
             text-align: right;
         }
 
-        @media screen and (max-width: 767px) {
+        #backToStudents {
+            display: none;
+            position: absolute;
+            right: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+
             #loggedInUser {
                 display: none;
             }
+        }
+
+
+        @media screen and (max-width: 767px) {
 
             #siteTitle {
                 text-align: center;
@@ -75,6 +92,16 @@
                 padding: 0;
                 margin-bottom: 10px;
             }
+
+            #newStudentBtn {
+                display: inline-block;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .listedStudent {
+                font-size: 15px;
+            }
         }
     </style>
 </head>
@@ -88,8 +115,8 @@
                             <div id="siteTitle" class="col-md-6">
                                 <strong style="font-size: 50px; padding: 5px">KindeReady</strong>
                             </div>
-                            <div class="col-md-6 text-right" style="padding-top: 10px">
-                                <strong id="loggedInUser" class="easyRead badge badge-dark" style="font-size: 28px; font-style: italic; height: 100%; padding-top: 20px; padding-right: 20px">Welcome, <span id="loginUser"></span>!</strong>
+                            <div id="loggedInUser" class="col-md-6 text-right" style="padding-top: 10px">
+                                <strong class="easyRead badge badge-dark" style="font-size: 28px; font-style: italic; height: 100%; padding-top: 20px; padding-right: 20px">Welcome, <span id="loginUser"></span>!</strong>
                             </div>
                         </div>
                     </div>
@@ -100,23 +127,27 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Students</h5>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 style="margin-bottom: 0">Students <button id="newStudentBtn" type="button" class="btn btn-sm btn-primary easyRead" data-toggle="modal" data-target="#exampleModal">Add</button> <button id="backToStudents" type="button" class="btn btn-sm btn-secondary easyRead">&#8592; Back</button></h5>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="studentPane" class="card-body" style="height: 520px">
+                            <div id="studentPane" class="card-body">
                                 <div class="row">
                                     <div id="firstStudentAdd" class="col-lg-12 text-center" style="padding: 150px">
                                         <h3 id="clickToBegin">Click <button id="firstStudent" type="button" class="btn btn-outline-primary easyRead" data-toggle="modal" data-target="#exampleModal">Add Student</button> to Begin</h3>
                                     </div>
 
                                     <!-- Student Name -->
-                                    <div class="col-lg-6">
+                                    <div id="students" class="col-lg-6">
                                         <ul type="none" id="currentStudent" style="margin-bottom: 0">
 
                                         </ul>
                                     </div>
 
                                     <!-- Edit/Delete -->
-                                    <div class="col-lg-6 studentProgress" style="display: none; border-left: 1px dotted black">
+                                    <div id="studentInfo" class="col-lg-6 studentProgress" style="display: none; border-left: 1px dotted black">
 
                                         <!-- Avatar -->
                                         <div class="row">

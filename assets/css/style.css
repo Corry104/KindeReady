@@ -83,4 +83,8 @@ input {
   #semail {
     width: 72%;
   }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
 }
