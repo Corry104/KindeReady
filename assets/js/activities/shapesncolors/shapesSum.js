@@ -4,10 +4,10 @@ var finalArray;
 var firstSequence;
 
 $(document).ready(function() {
-  var red = $("<img>").attr("src", "/images/shapes_colors/red_apple.jpeg");
-  var green = $("<img>").attr("src", "/images/shapes_colors/green_apple.jpeg");
-  var yellow = $("<img>").attr("src", "/images/shapes_colors/yellow_eleph.png");
-  var blue = $("<img>").attr("src", "/images/shapes_colors/blue_eleph.png");
+  var red = $("<img>").attr("src", "/images/shapes_colors/red_apple.jpeg").addClass("img-thumbnail gamePiece");
+  var green = $("<img>").attr("src", "/images/shapes_colors/green_apple.jpeg").addClass("img-thumbnail gamePiece");
+  var yellow = $("<img>").attr("src", "/images/shapes_colors/yellow_eleph.png").addClass("img-thumbnail gamePiece");
+  var blue = $("<img>").attr("src", "/images/shapes_colors/blue_eleph.png").addClass("img-thumbnail gamePiece");
 
   var redBrush = $("<img>").attr("src", "/images/shapes_colors/paint_red.png").addClass("img-thumbnail brush");
   var greenBrush = $("<img>").attr("src", "/images/shapes_colors/paint_green.png").addClass("img-thumbnail brush");

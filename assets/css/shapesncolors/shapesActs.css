@@ -57,7 +57,7 @@ body {
     float: right;
 }
 
-#cC1 img, #cC2 img, #cC3 img, #cC4 img {
+#cC1 img, #cC2 img, #cC3 img, #cC4 img, #brush0 img, #brush1 img, #brush2 img, #brush3 img {
     height: 100px;
 }
 
@@ -86,6 +86,28 @@ body {
     font-family: "Gloria Hallelujah", cursive;
 }
 
+.gamePiece {
+    box-shadow: 0 4px 6px -6px #888888;
+}
+
+.brush {
+    box-shadow: 0 8px 6px -6px #888888;
+    transition: box-shadow 0.085s;
+}
+
+.brush:hover {
+    cursor: pointer;
+}
+
+.brush:active {
+    cursor: pointer;
+    box-shadow: none;
+}
+
+#onlyOnDesktop {
+    display: none;
+}
+
 @media screen and (max-width: 1199.5px) {
     .activities {
         padding: 0 180px;
@@ -93,6 +115,14 @@ body {
 
     #avatarContainer {
         text-align: center;
+    }
+
+    #onlyOnDesktop {
+        display: block;
+        font-size: 0.8rem;
+        color: red;
+        padding: 0;
+        font-family: 'Nunito', sans-serif;
     }
 }
 
@@ -139,6 +169,15 @@ body {
 
     #shapesList ul, #colorsList ul {
         text-align: center;
+    }
+
+    #toLetters h6 {
+        display: inline-block;
+    }
+
+    #onlyOnDesktop {
+        display: inline-block;
+        float: right;
     }
 }
 
@@ -196,11 +235,11 @@ body {
         padding: 5px;
     }
 
-    #sC1, #sC2, #sC3, #sC4, #cC1, #cC2, #cC3, #cC4 {
+    #sC1, #sC2, #sC3, #sC4, #cC1, #cC2, #cC3, #cC4, #pic0, #pic1, #pic2, #pic3, #brush0, #brush1, #brush2, #brush3 {
         max-width: 25%;
     }
 
-    #cC1 img, #cC2 img, #cC3 img, #cC4 img {
+    #cC1 img, #cC2 img, #cC3 img, #cC4 img, #brush0 img, #brush1 img, #brush2 img, #brush3 img {
         height: auto;
     }
 
@@ -223,6 +262,10 @@ body {
     #correctModalTitle {
         font-size: 1.25rem;
     }
+
+    #picHolder, #brushHolder {
+        justify-content: space-between;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -243,6 +286,10 @@ body {
         font-size: 20px;
         text-align-last: justify;
         padding: 0 30px;
+    }
+
+    .counter h1 {
+        font-size: 1.75rem;
     }
 }
 
