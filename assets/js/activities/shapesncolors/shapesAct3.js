@@ -91,7 +91,13 @@ function checkAnswer(studentAnswer, correctAnswer) {
 function checkNumCorrect() {
 
     if (numCorrect === 6) {
-        $("#nextAct").css("display", "block");
-        $("#nextReady").css("display", "block");
+
+        if ($(window).width() <= 575.5) {
+            $("#nextAct").css("display", "initial");
+            $("#nextReady").css("display", "block");
+        } else {
+            $("#nextAct").css("display", "block");
+            $("#nextReady").css("display", "block");
+        }
     }
 }

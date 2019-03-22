@@ -8,31 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script src="../../../js/sidebar.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
-        @import url('https://fonts.googleapis.com/css?family=Nunito:300');
-        
-        html, body {
-            font-family: "Gloria Hallelujah", cursive;
-        }
-
-        body {
-            background: url("../images/welcome_bg/kindeready-bg-3.png");
-        }
-
-        .col-lg-10 {
-            background-color: white;
-        }
-
-        .btn, .modal {
-            font-family: 'Nunito', sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../css/shapesncolors/shapesActs.css">
 </head>
 
 <body>
@@ -40,13 +16,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
+
                     <!-- SideBar -->
-                    <div class="col-lg-2" style="border: 1px black; border-style: solid dashed solid solid; padding-top: 5px; background: url('https://www.toptal.com/designers/subtlepatterns/patterns/crossword.png')">
+                    <div id="studentSidebar" class="col-lg-2" style="padding-top: 5px; background: url('https://www.toptal.com/designers/subtlepatterns/patterns/crossword.png')">
                         <!-- Sidebar Content -->
                         <!-- Avatar -->
                         <div class="row">
-                            <div class="col-lg-12">
-                                <img id="studentAvatar" src="" style="border-radius: 100px; border: 1px solid black; width: 100%; background-color: #ffffff; box-shadow: inset 0 0 8px #333333" />
+                            <div id="avatarContainer" class="col-lg-12">
+                                <img id="studentAvatar" src="" style="border-radius: 100px; border: 1px solid black; background-color: #ffffff; box-shadow: inset 0 0 8px #333333" />
                                 <hr>
                             </div>
                         </div>
@@ -69,7 +46,8 @@
                                         <div class="progress">
                                             <div id="SnC" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
                                                 role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 0%""><span id="SnCActCount" style="color: white; font-weight: bold"></span></div>
+                                                style="width: 0%; transition: width 1s; transition-timing-function: ease"><span
+                                                    id="SnCActCount" style="color: white; font-weight: bold"></span></div>
                                         </div>
                                         <br>
                                     </div>
@@ -77,7 +55,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-12 studentProgress">
-                                        <a href="/letter/main" data-unit="2">
+                                        <a id="toLetters" href="/letter/main" data-unit="2">
                                             <h6 style="color: black">Letter Recognition:</h6>
                                         </a>
                                         <div class="progress">
@@ -92,29 +70,28 @@
                             </div>
                         </div>
 
-                        <footer style="position: absolute; bottom: 0">
+                        <footer>
                             <hr>
-                            <div class="col-lg-12 text-center">
-                                <a href="/change"><button id="change" class="btn btn-sm btn-primary clearSession">Change
-                                        Student</button></a>
+                            <div class="col-lg-12 sidebarBtn">
+                                <a id="changeLink" href="/change"><button id="change" class="btn btn-sm btn-primary clearSession">Change Student</button></a>
                             </div>
                             <br>
 
-                            <div class="col-lg-12 text-center">
-                                <a href="/logout""><button id=" logout" class="btn btn-sm btn-danger clearSession">Logout</button></a>
+                            <div class="col-lg-12 sidebarBtn">
+                                <a id="logoutLink" href="/logout""><button id=" logout" class="btn btn-sm btn-danger clearSession">Logout</button></a>
                             </div>
                             <br>
                         </footer>
                     </div>
 
-                    <div class="col-lg-10" style="border: 1px black; border-style: solid solid solid none; padding-top: 5px">
+                    <div id="actSection" class="col-lg-10" style="padding-top: 5px">
 
                         <div class="row">
                             <!-- Title -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 title">
                                 <img src="../../../images/shapes_colors/scTitle.png" style="padding-top: 10px; height: 50px"/>
                             </div>
-                            <div class="col-lg-6" style="position: absolute; top: 10px; right: 0">
+                            <div id="actName" class="col-lg-6" style="position: absolute; top: 10px; right: 0">
                                 <div class="card text-white bg-dark mb-3" style="width: 30%; float: right">
                                     <div class="card-header text-center"><em>Activity 1</em></div>
                                 </div>
@@ -145,7 +122,7 @@
                                 <div class="row">
 
                                     <!-- Shapes -->
-                                    <div class="col-lg-6 text-right" style="width: 100%">
+                                    <div id="shapesList" class="col-sm-6" style="width: 100%">
                                             <ul style="padding: 0" type="none">
                                                 <li>
                                                     <p>
@@ -174,7 +151,7 @@
                                         </div>
 
                                     <!-- Colors -->
-                                    <div class="col-lg-6 text-left" style="width: 100%">
+                                    <div id="colorsList" class="col-sm-6" style="width: 100%">
                                         <ul style="padding: 0" type="none">
                                             <li>
                                                 <p>
@@ -205,17 +182,17 @@
                             </div>
 
                             <!-- Back & Next Buttons -->
-                            <div class="col-lg-12" style="padding-bottom: 10px; padding-top: 10px">
+                            <div class="col-sm-12" style="padding-bottom: 10px; padding-top: 10px">
                                 <hr>
                                 <div class="row">
-                                    <div class="col-lg-2 text-left">
+                                    <div id="pre" class="col-sm-2">
                                         <a href="/shapes/main"><button id="previousAct" class="btn btn-outline-dark btn-sm">&#8592;
                                                 Previous</button></a>
                                     </div>
 
-                                    <div class="col-lg-8"></div>
+                                    <div class="col-sm-8"></div>
 
-                                    <div class="col-lg-2 text-right">
+                                    <div id="post" class="col-sm-2">
                                         <a href="/shapes/act2"><button id="nextAct" data-act="act1" class="btn btn-outline-dark btn-sm">Next
                                                 &#8594;</button></a>
                                     </div>
@@ -227,6 +204,12 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="../../../js/sidebar.js"></script>
 </body>
 
 </html>

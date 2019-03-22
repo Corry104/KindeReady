@@ -110,4 +110,19 @@ $(document).ready(function() {
     $("#logout").on("click", function() {
         sessionStorage.clear();
     });
+
+    $(window).on("resize", function() {
+        checkWindowSize();
+    });
+
+    checkWindowSize();
 });
+
+function checkWindowSize() {
+
+    if ($(window).width() <= 991) {
+        $("#toLetters").attr("href", "#");
+    } else {
+        $("#toLetters").attr("href", "/letter/main");
+    }
+};
